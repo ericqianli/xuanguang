@@ -269,7 +269,8 @@ def render(i, p):
     bar = ""
     if edge and edge.startswith("bar"):      # e.g. "bar:10:#4a2b23" — solid band on the paper side of the photo, no gap
         _, bw, bc = (edge.split(":") + ["10", "#4a2b23"])[:3]
-        bar = f'<div style="position:absolute;top:0;height:1000px;{"left" if side == "L" else "right"}:{iw}px;width:{bw}px;background:{bc}"></div>'
+        # drawn under the photo and 1px wider, so that a scaled web page (fractional CSS pixels) never shows a seam between the two
+        bar = f'<div style="position:absolute;top:0;height:1000px;{"left" if side == "L" else "right"}:{iw - 1}px;width:{int(bw) + 1}px;background:{bc}"></div>'
         edge = None
     if stack_html:
         photo = stack_html
@@ -315,7 +316,7 @@ def render(i, p):
         head=f'<div class="cjk h">{title}</div><div class="lat sub">{lt(sub, lc=False)}</div>'
         if u: head=f'<a href="https://{u}" style="color:inherit;text-decoration:none;display:block">{head}</a>'
         text += f'{head}{tag}<div class="rule"></div><div class="cjk body">{body}</div></div>'
-    return f'<div class="page"{page_style}>{photo}{bar}{text}{phd}{folio_html(folio,folio_side)}</div>'
+    return f'<div class="page"{page_style}>{bar}{photo}{text}{phd}{folio_html(folio,folio_side)}</div>'
 
 html = '<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css"><style>' + CSS + "</style></head><body>\n" + "\n".join(render(i, p) for i, p in enumerate(pages)) + "\n</body></html>"
 open("P_outline.html", "w", encoding="utf8").write(html)

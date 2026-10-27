@@ -8,3 +8,4 @@ __pycache__/
 
 # fonts branch checkout (CI) / local copy
 fonts/
+P_variant.html

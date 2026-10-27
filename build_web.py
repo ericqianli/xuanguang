@@ -129,14 +129,21 @@ chars = set(text) | set(chr(c) for c in range(0x20, 0x7f)) | set("×·「」，�
 (WEB / "fonts" / "chars.txt").write_text("".join(sorted(chars)), encoding="utf8")
 FONTS = {200: "ExtraLight", 300: "Light", 400: "Regular"}
 from fontTools.ttLib import TTCollection
-def _sc_index(ttc):
-    for k, f in enumerate(TTCollection(ttc, lazy=True).fonts):
-        if f["name"].getDebugName(1).startswith("Noto Serif CJK SC"): return k
-    raise SystemExit(f"Noto Serif CJK SC not found in {ttc}")
+def font_source(name):
+    """(file, font-number) for one weight of Noto Serif CJK SC: the repo's own OTF (fonts/ or ~/.local/share/fonts,
+    from the `fonts` branch) first, else the system TTC with the SC face index."""
+    for d in (ROOT / "fonts", pathlib.Path.home() / ".local/share/fonts", pathlib.Path("/usr/share/fonts/opentype/noto")):
+        f = d / f"NotoSerifCJKsc-{name}.otf"
+        if f.exists(): return str(f), None
+    ttc = pathlib.Path(f"/usr/share/fonts/opentype/noto/NotoSerifCJK-{name}.ttc")
+    if ttc.exists():
+        for k, f in enumerate(TTCollection(str(ttc), lazy=True).fonts):
+            if f["name"].getDebugName(1).startswith("Noto Serif CJK SC"): return str(ttc), k
+    raise SystemExit(f"Noto Serif CJK SC {name} not found (looked in fonts/, ~/.local/share/fonts, system noto dir)")
 for w, name in FONTS.items():
-    ttc = f"/usr/share/fonts/opentype/noto/NotoSerifCJK-{name}.ttc"
-    subprocess.run(["pyftsubset", ttc, f"--font-number={_sc_index(ttc)}",
-                    f"--text-file={WEB/'fonts'/'chars.txt'}", "--flavor=woff2", "--layout-features=*", "--no-hinting",
+    src, num = font_source(name)
+    subprocess.run(["pyftsubset", src] + ([f"--font-number={num}"] if num is not None else []) +
+                   [f"--text-file={WEB/'fonts'/'chars.txt'}", "--flavor=woff2", "--layout-features=*", "--no-hinting",
                     f"--output-file={WEB/'fonts'/f'NotoSerifSC-{w}.woff2'}"], check=True)
 faces = "\n".join(f'@font-face{{font-family:"Noto Serif CJK SC";font-weight:{w};font-display:swap;src:url(fonts/NotoSerifSC-{w}.woff2) format("woff2")}}' for w in FONTS)
 

@@ -16,12 +16,28 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: Fonts (Noto Serif CJK, all weights)
-        run: sudo apt-get update -q && sudo apt-get install -y -q fonts-noto-cjk fonts-noto-cjk-extra && fc-cache -f
-      - name: Python deps + Chromium
-        run: |
-          pip install -q -r requirements.txt
-          python -m playwright install --with-deps chromium
+          cache: pip
+      - name: Fonts (Noto Serif CJK SC, from the repo's `fonts` branch)
+        uses: actions/checkout@v4
+        with:
+          ref: fonts
+          path: fonts
+      - name: Register fonts
+        run: mkdir -p ~/.local/share/fonts && cp fonts/*.otf ~/.local/share/fonts/ && fc-cache -f && fc-list | grep -c "Noto Serif CJK SC"
+      - name: Python deps
+        run: pip install -q -r requirements.txt
+      - name: Cache Chromium
+        id: chromium
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-chromium-1.63.0
+      - name: Install Chromium
+        if: steps.chromium.outputs.cache-hit != 'true'
+        run: python -m playwright install --with-deps chromium
+      - name: Chromium system deps (cache hit)
+        if: steps.chromium.outputs.cache-hit == 'true'
+        run: python -m playwright install-deps chromium
       - name: Build PDF + site
         run: |
           python build.py

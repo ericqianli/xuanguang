@@ -5,3 +5,6 @@ P_outline.html
 img/baked_*
 __pycache__/
 *.pyc
+
+# fonts branch checkout (CI) / local copy
+fonts/

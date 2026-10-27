@@ -144,7 +144,7 @@ CSS = """
 def img_w(src):
     w,h=_I.open(src).size; return int(1000*w/h)
 
-def stack_div(srcs, side, blend=80, n=0):
+def stack_div(srcs, side, blend=80, n=0, edge=None):
     """Two images stacked in one column, overlapping by `blend` px with a soft vertical dissolve; baked to one opaque PNG."""
     pos = "left" if side == "L" else "right"
     ims=[_I.open(x).convert("RGB") for x in srcs]
@@ -165,6 +165,10 @@ def stack_div(srcs, side, blend=80, n=0):
             alpha[:blend,0,0]=(1-_np.cos(t*_np.pi))/2   # smooth ramp 0→1
             canvas[top:top+h]=canvas[top:top+h]*(1-alpha)+a*alpha
         y+=h-blend
+    if edge and not edge.startswith("bar"):   # same edge library as single photos (e.g. "fade:120"), applied to the paper-facing side of the column
+        kind, _, bandstr = edge.partition(":"); band = int(bandstr) if bandstr else 260
+        m=_edge_mask(kind, W, side, 11+n, band)[..., None]
+        canvas=canvas*m+_np.array([243,239,230],_np.float32)*(1-m)
     path=f"img/baked_stack_{n}.png"
     _I.fromarray(canvas.clip(0,255).astype(_np.uint8)).save(path)
     return f'<div class="img" style="{pos}:0;top:0;width:{W}px;height:{H}px;background-image:url({path});background-size:100% 100%"></div>', W
@@ -187,7 +191,7 @@ def render(i, p):
     edge = p[8] if len(p) > 8 else None
     inset = p[9] if len(p) > 9 else 0
     if isinstance(image, (list, tuple)):
-        stack_html, iw = stack_div([IMG[x] for x in image], side, n=n)
+        stack_html, iw = stack_div([IMG[x] for x in image], side, n=n, edge=edge)
     else:
         stack_html = None
         iw = img_w(IMG[image]) if image else 800
@@ -262,6 +266,11 @@ def render(i, p):
     phd = f'<div class="cjk ph" style="{ph_side}:110px">{ph}</div>' if ph else ""
     tag = f'<div class="cjk tag">{tagline.replace("；","；<br>").replace("，由","，<br>由")}</div>' if tagline else ""
     page_style = ""
+    bar = ""
+    if edge and edge.startswith("bar"):      # e.g. "bar:10:#4a2b23" — solid band on the paper side of the photo, no gap
+        _, bw, bc = (edge.split(":") + ["10", "#4a2b23"])[:3]
+        bar = f'<div style="position:absolute;top:0;height:1000px;{"left" if side == "L" else "right"}:{iw}px;width:{bw}px;background:{bc}"></div>'
+        edge = None
     if stack_html:
         photo = stack_html
     elif edge and edge.split(":")[0] in ("deckle", "fade", "ink", "grain"):
@@ -306,7 +315,7 @@ def render(i, p):
         head=f'<div class="cjk h">{title}</div><div class="lat sub">{lt(sub, lc=False)}</div>'
         if u: head=f'<a href="https://{u}" style="color:inherit;text-decoration:none;display:block">{head}</a>'
         text += f'{head}{tag}<div class="rule"></div><div class="cjk body">{body}</div></div>'
-    return f'<div class="page"{page_style}>{photo}{text}{phd}{folio_html(folio,folio_side)}</div>'
+    return f'<div class="page"{page_style}>{photo}{bar}{text}{phd}{folio_html(folio,folio_side)}</div>'
 
 html = '<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css"><style>' + CSS + "</style></head><body>\n" + "\n".join(render(i, p) for i, p in enumerate(pages)) + "\n</body></html>"
 open("P_outline.html", "w", encoding="utf8").write(html)

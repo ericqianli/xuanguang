@@ -148,6 +148,7 @@ pages:
     folio: 06 · 设计创造
     image: [attic_render, attic_photo]      # 上下两图
     side: R
+    edge: bar:10:#4a2b23                    # 照片左缘贴一道 10px 实线，颜色取自实物图里榻榻米的缘
 
   - title: 器物收藏
     sub: Objects · 古董 · 茶器 · 花器 · 香炉 · 卷轴

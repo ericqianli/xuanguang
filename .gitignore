@@ -1,0 +1,7 @@
+# generated
+web/
+out/
+P_outline.html
+img/baked_*
+__pycache__/
+*.pyc

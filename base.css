@@ -1,0 +1,8 @@
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#888}
+.page{width:1600px;height:1000px;position:relative;overflow:hidden;margin:0 0 40px 0}
+.cjk{font-family:"Noto Serif CJK SC","Noto Serif CJK JP",serif}
+.lat{font-family:"Noto Serif CJK SC","Noto Serif CJK JP",serif;text-transform:uppercase}
+.sans{font-family:"Inter","Inter Display",sans-serif}
+.v{writing-mode:vertical-rl;text-orientation:upright}
+.img{position:absolute;background-size:cover;background-position:center;background-repeat:no-repeat}

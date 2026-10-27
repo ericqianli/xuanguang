@@ -1,0 +1,7 @@
+pyyaml
+pillow
+numpy
+pypdf
+fonttools
+brotli
+playwright==1.63.0

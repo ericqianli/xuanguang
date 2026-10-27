@@ -189,6 +189,6 @@ contact:
 
 # ---------- 网页 ----------
 site:
-  domain: ""                    # 临时留空，先在 ericqianli.github.io/xuanguang/ 测试；DNS 好了改回 xuanguang.starlia.ai
+  domain: xuanguang.starlia.ai    # 留空则发布在 ericqianli.github.io/xuanguang/
   pdf_name: Starlia_XuanGuang.pdf
   description: 玄光 × Starlia —— 回到完美的内在觉知。一生一花、落星集、太玄琴社、能量水晶、Lumilab.AI、设计创造、器物收藏、禅修探索。

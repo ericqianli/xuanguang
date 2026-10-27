@@ -226,7 +226,7 @@ index = f'''<!doctype html>
 </html>
 '''
 (WEB / "index.html").write_text(index, encoding="utf8")
-(WEB / "CNAME").write_text(DOMAIN + "\n")
+if DOMAIN: (WEB / "CNAME").write_text(DOMAIN + "\n")      # leave site.domain empty to publish at ericqianli.github.io/xuanguang/
 (WEB / ".nojekyll").write_text("")
 
 # artifact preview variant: no document skeleton (the host adds one), PDF opens in a new tab instead of downloading

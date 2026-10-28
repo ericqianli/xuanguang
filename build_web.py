@@ -158,7 +158,7 @@ a{{color:inherit;text-decoration:none}}
 .book{{display:none}}
 .sheet{{width:calc(1600px*var(--s));height:calc(1000px*var(--s));margin:0 auto;position:relative;overflow:hidden;scroll-snap-align:start}}
 .sheet .page{{transform:scale(var(--s));transform-origin:0 0;margin:0}}
-.pdf{{position:fixed;right:22px;bottom:22px;color:#6b665c;text-decoration:none;z-index:9;display:none;flex-direction:column;align-items:center;gap:6px}}
+.pdf{{position:fixed;right:22px;bottom:22px;color:#6b665c;text-decoration:none;z-index:9;display:none;flex-direction:column;align-items:center;gap:14px}}
 .pdf-t{{writing-mode:vertical-rl;text-orientation:mixed;font-size:12px;letter-spacing:.35em;text-transform:uppercase;margin-bottom:-.35em}}   /* cancel the trailing letter-space */
 .pdf-a{{display:block}}
 /* ---- flow ---- */

@@ -158,8 +158,9 @@ a{{color:inherit;text-decoration:none}}
 .book{{display:none}}
 .sheet{{width:calc(1600px*var(--s));height:calc(1000px*var(--s));margin:0 auto;position:relative;overflow:hidden;scroll-snap-align:start}}
 .sheet .page{{transform:scale(var(--s));transform-origin:0 0;margin:0}}
-.pdf{{position:fixed;right:22px;bottom:22px;writing-mode:vertical-rl;text-orientation:mixed;font-size:12px;letter-spacing:.35em;color:#6b665c;text-transform:uppercase;text-decoration:none;z-index:9;display:none}}
-.pdf .lt{{position:relative;left:.11em}}
+.pdf{{position:fixed;right:22px;bottom:22px;color:#6b665c;text-decoration:none;z-index:9;display:none;flex-direction:column;align-items:center;gap:6px}}
+.pdf-t{{writing-mode:vertical-rl;text-orientation:mixed;font-size:12px;letter-spacing:.35em;text-transform:uppercase;margin-bottom:-.35em}}   /* cancel the trailing letter-space */
+.pdf-a{{display:block}}
 /* ---- flow ---- */
 .flow{{display:block;max-width:640px;margin:0 auto}}
 .flow .lt{{position:static;left:0}}   /* the vertical-text nudge must not apply to horizontal text */
@@ -197,7 +198,7 @@ a{{color:inherit;text-decoration:none}}
 .f-end{{font-size:12px;letter-spacing:.5em;color:#8a8577;font-weight:300;margin-top:64px}}
 @media (min-width:900px) and (min-height:560px){{
   html{{scroll-snap-type:y proximity}}
-  .book,.pdf{{display:block}} .flow{{display:none}}
+  .book{{display:block}} .pdf{{display:flex}} .flow{{display:none}}
 }}
 """
 index = f'''<!doctype html>
@@ -218,7 +219,7 @@ index = f'''<!doctype html>
 <div class="book">
 {book}
 </div>
-<a class="pdf" href="{PDF_NAME}" download><span class="lt">PDF</span> <span style="text-orientation:upright">↓</span></a>
+<a class="pdf" href="{PDF_NAME}" download><span class="pdf-t">PDF</span><svg class="pdf-a" viewBox="0 0 10 14" width="8" height="11" aria-hidden="true"><path d="M5 0.5v12M1 9l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1"/></svg></a>
 <div class="flow">
 {flow}
 </div>
@@ -247,7 +248,7 @@ art = f'''<title>玄光 × Starlia</title>
 <div class="book">
 {book}
 </div>
-<a class="pdf" href="{PDF_NAME}" target="_blank" rel="noopener"><span class="lt">PDF</span> <span style="text-orientation:upright">↓</span></a>
+<a class="pdf" href="{PDF_NAME}" target="_blank" rel="noopener"><span class="pdf-t">PDF</span><svg class="pdf-a" viewBox="0 0 10 14" width="8" height="11" aria-hidden="true"><path d="M5 0.5v12M1 9l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1"/></svg></a>
 <div class="flow">
 {flow.replace(f'href="{PDF_NAME}" download', f'href="{PDF_NAME}" target="_blank" rel="noopener"')}
 </div>

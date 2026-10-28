@@ -218,7 +218,7 @@ index = f'''<!doctype html>
 <div class="book">
 {book}
 </div>
-<a class="pdf" href="{PDF_NAME}" download><span class="lt">PDF ↓</span></a>
+<a class="pdf" href="{PDF_NAME}" download><span class="lt">PDF</span> <span style="text-orientation:upright">↓</span></a>
 <div class="flow">
 {flow}
 </div>
@@ -247,7 +247,7 @@ art = f'''<title>玄光 × Starlia</title>
 <div class="book">
 {book}
 </div>
-<a class="pdf" href="{PDF_NAME}" target="_blank" rel="noopener"><span class="lt">PDF ↓</span></a>
+<a class="pdf" href="{PDF_NAME}" target="_blank" rel="noopener"><span class="lt">PDF</span> <span style="text-orientation:upright">↓</span></a>
 <div class="flow">
 {flow.replace(f'href="{PDF_NAME}" download', f'href="{PDF_NAME}" target="_blank" rel="noopener"')}
 </div>

@@ -23,15 +23,15 @@ brand:
     - en: Music
       zh: Taixuan Guqin Society
       text: Eyes follow the returning geese, hands sweep the five strings; at ease, the mind roams the great mystery.
-    - en: Crystal
-      zh: Energy Crystals
-      text: Through the essence of creation, feel the vibration of life.
-    - en: Technology
-      zh: Lumilab.AI
-      text: Frontier AI meets traditional wisdom, bringing inner exploration into daily life.
     - en: Creation
       zh: Design & Creation
       text: "Ceramics, woodwork, design, building: through creation, we reach the source of life."
+    - en: Technology
+      zh: Lumilab.AI
+      text: Frontier AI meets traditional wisdom, bringing inner exploration into daily life.
+    - en: Crystal
+      zh: Energy Crystals
+      text: Through the essence of creation, feel the vibration of life.
     - en: Objects
       zh: Collected Objects
       text: "Beautiful souls outlast time, bearing witness across a thousand years to the permanence of life."
@@ -42,8 +42,8 @@ brand:
 urls:
   "01": isshoikka.com
   "02": haoshou.app
-  "05": starlia.ai/crystal
   "06": starlia.ai/ring
+  "07": starlia.ai/crystal
 
 pages:
   - title: Isshoikka
@@ -130,16 +130,16 @@ pages:
     edge: deckle2:77:20
     inset: 160
 
-  - title: Energy Crystals
-    valign: 0.333
-    sub: Crystal
-    tagline: Through the essence of creation, feel the vibration of life.
+  - title: Design & Creation
+    valign: 0.333          # free space 1/3 above, 2/3 below
+    sub: Ceramics · Woodwork · Design · Building
+    tagline: Through creation, we reach the source of life.
     body:
-      - Crystals are the condensed energy of heaven and earth. They echo the frequencies of the universe and carry a quiet spiritual inspiration. Their purity can also cleanse the soul and support the journey inward. Called by the crystals, Starlia draws on the purest energy points on earth to help kindred spirits find their soulmate.
-    folio: 05 · Energy Crystals
-    image: crystal_sq
+      - Xuan Guang also works in ceramics, origami, woodwork and bowl turning, with a particular feel for wabi-sabi design and for building it in the real world — finding, in the act of creating, a connection to the source of life.
+    folio: 05 · Design & Creation
+    image: [attic_render, attic_photo]
     side: R
-    edge: grain:176
+    edge: bar:10:#4a2b23
 
   - title: Lumilab.AI
     sub: Technology
@@ -151,16 +151,16 @@ pages:
     side: L
     edge: fade
 
-  - title: Design & Creation
-    valign: 0.333          # free space 1/3 above, 2/3 below
-    sub: Ceramics · Woodwork · Design · Building
-    tagline: Through creation, we reach the source of life.
+  - title: Energy Crystals
+    valign: 0.333
+    sub: Crystal
+    tagline: Through the essence of creation, feel the vibration of life.
     body:
-      - Xuan Guang also works in ceramics, origami, woodwork and bowl turning, with a particular feel for wabi-sabi design and for building it in the real world — finding, in the act of creating, a connection to the source of life.
-    folio: 07 · Design & Creation
-    image: [attic_render, attic_photo]
+      - Crystals are the condensed energy of heaven and earth. They echo the frequencies of the universe and carry a quiet spiritual inspiration. Their purity can also cleanse the soul and support the journey inward. Called by the crystals, Starlia draws on the purest energy points on earth to help kindred spirits find their soulmate.
+    folio: 07 · Energy Crystals
+    image: crystal_sq
     side: R
-    edge: bar:10:#4a2b23
+    edge: grain:176
 
   - title: Collected Objects
     sub: Antiques · Tea Ware · Vessels · Censers · Scrolls

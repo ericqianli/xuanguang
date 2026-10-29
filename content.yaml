@@ -37,15 +37,15 @@ brand:
     - en: Music
       zh: 太玄琴社
       text: 目送归鸿，手挥五弦；俯仰自得，游心太玄。
-    - en: Crystal
-      zh: 能量水晶
-      text: 通过造物的精华，体会生命的振动。
-    - en: Technology
-      zh: Lumilab.AI
-      text: 融合前沿 AI 科技和传统智慧，推动内在探索生活化，成为每一个当下的主人。
     - en: Creation
       zh: 设计创造
       text: 陶艺、木工、设计、建造：通过创作抵达生命的源泉。
+    - en: Technology
+      zh: Lumilab.AI
+      text: 融合前沿 AI 科技和传统智慧，推动内在探索生活化，成为每一个当下的主人。
+    - en: Crystal
+      zh: 能量水晶
+      text: 通过造物的精华，体会生命的振动。
     - en: Objects
       zh: 器物收藏
       text: 古董、茶器、花器、香炉、卷轴：美丽的灵魂超越时空，跨越千古见证生命永恒。
@@ -57,8 +57,8 @@ brand:
 urls:
   "01": isshoikka.com
   "02": haoshou.app
-  "05": starlia.ai/crystal
   "06": starlia.ai/ring
+  "07": starlia.ai/crystal
 
 # ---------- 正文页，按顺序 ----------
 # 每页：title 标题 / sub 英文小标 / tagline 标题句 / body 正文段落 / folio 页脚 / image 照片 / side 照片在哪边 / edge 照片边缘处理
@@ -139,15 +139,15 @@ pages:
     edge: deckle2:77:20       # 左右都撕边；两个数字是撕口的随机种子，改了形状就变
     inset: 160                # 照片离左页边 160px，与封面相同
 
-  - title: 能量水晶
-    sub: Crystal
-    tagline: 通过造物的精华，体会生命的振动。
+  - title: 设计创造
+    sub: Creation · 陶艺 · 木工 · 设计 · 建造
+    tagline: 通过创作抵达生命的源泉。
     body:
-      - 水晶是天地能量的结晶，回响宇宙的频率，蕴含灵性的启发。水晶的洁净亦能洗涤灵魂，帮助深入探索内在的旅程。Starlia 受到水晶的感召，通过全球最纯净的能量点，帮助有缘人链接到他们的灵魂伴侣。
-    folio: 05 · 能量水晶
-    image: crystal_sq
+      - 玄光亦涉猎陶艺、纸艺、木工、车制木碗等。尤擅侘寂风格的设计及落地，在创造中体会与生命本源的链接。
+    folio: 05 · 设计创造
+    image: [attic_render, attic_photo]      # 上下两图
     side: R
-    edge: grain:176
+    edge: bar:10:#4a2b23                    # 照片左缘贴一道 10px 实线，颜色取自实物图里榻榻米的缘
 
   - title: Lumilab.AI
     sub: Technology
@@ -159,15 +159,15 @@ pages:
     side: L
     edge: fade
 
-  - title: 设计创造
-    sub: Creation · 陶艺 · 木工 · 设计 · 建造
-    tagline: 通过创作抵达生命的源泉。
+  - title: 能量水晶
+    sub: Crystal
+    tagline: 通过造物的精华，体会生命的振动。
     body:
-      - 玄光亦涉猎陶艺、纸艺、木工、车制木碗等。尤擅侘寂风格的设计及落地，在创造中体会与生命本源的链接。
-    folio: 07 · 设计创造
-    image: [attic_render, attic_photo]      # 上下两图
+      - 水晶是天地能量的结晶，回响宇宙的频率，蕴含灵性的启发。水晶的洁净亦能洗涤灵魂，帮助深入探索内在的旅程。Starlia 受到水晶的感召，通过全球最纯净的能量点，帮助有缘人链接到他们的灵魂伴侣。
+    folio: 07 · 能量水晶
+    image: crystal_sq
     side: R
-    edge: bar:10:#4a2b23                    # 照片左缘贴一道 10px 实线，颜色取自实物图里榻榻米的缘
+    edge: grain:176
 
   - title: 器物收藏
     sub: Objects · 古董 · 茶器 · 花器 · 香炉 · 卷轴

@@ -12,6 +12,8 @@
 cover:
   name: 玄光
   brand: STARLIA
+  mark: ●                 # 名字与 STARLIA 之间的符号（英文版用 ×）
+  mark_size: .42em
   subtitle: 回到完美的内在觉知
 
 # ---------- 目录页 ----------

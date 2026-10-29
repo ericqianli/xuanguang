@@ -67,7 +67,7 @@ def flow_section(i, p, ed):
     if kind == "cover":
         return f'''<section class="f-cover">
   <img src="{web_img(B.IMG["cover"], 1600)}" alt="">
-  <div class="f-ct"><div class="f-title cjk"><div style="margin-right:-.38em">{C["cover"]["name"]}</div><div class="x">×</div><div class="lat" style="letter-spacing:.3em;margin-right:-.3em">{C["cover"]["brand"]}</div></div>
+  <div class="f-ct"><div class="f-title cjk"><div style="margin-right:-.38em">{C["cover"]["name"]}</div><div class="x" style="font-size:{C["cover"].get("mark_size", ".9em")}">{C["cover"].get("mark", "×")}</div><div class="lat" style="letter-spacing:.3em;margin-right:-.3em">{C["cover"]["brand"]}</div></div>
   <div class="f-subtitle cjk">{C["cover"]["subtitle"]}</div></div>
 </section>'''
     if kind == "brand":
@@ -139,7 +139,7 @@ for ed in EDITIONS.values():
 
 # ---------------------------------------------------------------- fonts: one subset of Noto Serif CJK SC covering both editions
 text = _html.unescape(re.sub(r"<[^>]+>", "", "".join(ed["book_html"] + ed["flow_html"] for ed in EDITIONS.values())))
-chars = set(text) | set(chr(c) for c in range(0x20, 0x7f)) | set("×·「」，。；：、！？（）〇一二三四五六七八九十  “”‘’—–…")
+chars = set(text) | set(chr(c) for c in range(0x20, 0x7f)) | set("×●·「」，。；：、！？（）〇一二三四五六七八九十  “”‘’—–…")
 (WEB / "fonts" / "chars.txt").write_text("".join(sorted(chars)), encoding="utf8")
 FONTS = {200: "ExtraLight", 300: "Light", 400: "Regular"}
 from fontTools.ttLib import TTCollection

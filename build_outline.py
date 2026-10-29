@@ -204,7 +204,7 @@ def render(i, p):
         cw=img_w(IMG[image]); off=int(1600*0.10)
         return f'''<div class="page">
   <div class="img fit" style="left:{off}px;top:0;width:{cw}px;height:1000px;background-image:url({IMG[image]});background-position:left center"></div>
-  <div class="cjk side" style="position:absolute;right:110px;top:100px;font-size:48px;font-weight:300;line-height:1;letter-spacing:.38em"><span class="up">{C["cover"]["name"]}<span style="color:#8a8577;font-size:.9em">×</span></span><span style="letter-spacing:.3em;position:relative;left:3px">{C["cover"]["brand"]}</span></div>
+  <div class="cjk side" style="position:absolute;right:110px;top:100px;font-size:48px;font-weight:300;line-height:1;letter-spacing:.38em"><span class="up">{C["cover"]["name"]}<span style="color:#8a8577;font-size:{C["cover"].get("mark_size", ".9em")}">{C["cover"].get("mark", "×")}</span></span><span style="letter-spacing:.3em;position:relative;left:3px">{C["cover"]["brand"]}</span></div>
   <div class="cjk up" style="position:absolute;right:196px;top:116px;font-size:18px;letter-spacing:.45em;font-weight:300;color:#4a463f">{C["cover"]["subtitle"]}</div>
 </div>'''
     if kind == "brand":

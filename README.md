@@ -23,7 +23,6 @@
 | `side` | 照片在 `L` 左 / `R` 右 |
 | `edge` | 照片与留白的衔接：`deckle` 撕边 · `deckle2:种子:种子` 两侧撕边 · `grain:宽度` 颗粒溶解 · `fade` 长渐变 · `ink:宽度` 墨晕 · `wall+ink` 墙色延展 · `bar:宽度:颜色` 实线镶边 · `near` 文字贴近照片 |
 | `inset` | 照片离页边的距离（配合 `deckle2`） |
-| `halign: center` | 仅中文版：文字块在照片旁的留白中左右居中（默认靠照片一侧，离照片 110px） |
 | `width` / `x` / `align: near` / `valign` | 仅英文版：栏宽、左边位置、靠近照片、垂直位置（`top` / `middle` / `bottom` 或 `0.333` 这样的比例，表示空白上下如何分） |
 | 封面 `mark` / `mark_size` / `mark_color` / `mark_margin` | 名字与 STARLIA 之间的符号及其大小、颜色、上下间距 |
 

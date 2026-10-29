@@ -26,7 +26,7 @@ def _page(d):
         return (kind, None, None, None, None, d.get("folio", ""), None)
     paras = ([d["tagline"]] if d.get("tagline") else []) + _body(d.get("body", []))
     image = d.get("image"); image = tuple(image) if isinstance(image, list) else image
-    return ("img", d["title"], d.get("sub", ""), paras, image, d.get("folio", ""), None, d.get("side"), d.get("edge"), d.get("inset", 0), bool(d.get("tagline")), d.get("halign"))
+    return ("img", d["title"], d.get("sub", ""), paras, image, d.get("folio", ""), None, d.get("side"), d.get("edge"), d.get("inset", 0), bool(d.get("tagline")))
 
 pages = [("cover", None, None, None, "cover", None, None), ("brand", None, None, None, None, C["brand"]["title"], None)] \
       + [_page(d) for d in C["pages"]] + [("contact", None, None, None, None, "", None)]
@@ -131,7 +131,7 @@ CSS = """
 .vb .sub{font-size:12px;letter-spacing:.35em;text-transform:uppercase;color:#6b665c;margin-left:44px}
 .vb .tag{font-size:17px;letter-spacing:.14em;font-weight:400;line-height:1.9;text-orientation:mixed;margin-left:36px}
 .vb .rule{width:1px;height:48px;background:#2b2925;opacity:.35;margin-left:36px}
-.vb .body{font-size:17px;line-height:2.3;letter-spacing:.08em;color:#4a463f;font-weight:300;text-orientation:mixed}
+.vb .body{font-size:15px;line-height:2.3;letter-spacing:.08em;color:#4a463f;font-weight:300;text-orientation:mixed}
 .vb .body p{margin-left:1.1em}
 .vb .body p.quote{margin-right:2.4em}
 .vb .body a{color:inherit;text-decoration:none;border-right:1px solid rgba(43,41,37,.35);padding-right:1px}
@@ -246,10 +246,10 @@ def render(i, p):
         zsub=d["sub"].replace(" · ", " &nbsp;·&nbsp; ")
         zps="\n".join(f'    <p{" style=\"margin-bottom:1.3em\"" if k < len(zb)-1 else ""}>{zh(x)}</p>' for k,x in enumerate(zb))
         return f'''<div class="page">
-  <div class="cjk" style="position:absolute;left:0;right:0;top:304px;text-align:center;font-size:44px;letter-spacing:.42em;padding-left:.42em;font-weight:200">{zh(d["title"])}</div>
-  <div class="lat" style="position:absolute;left:0;right:0;top:390px;text-align:center;font-size:13px;letter-spacing:.35em;color:#7a7568">{zsub}</div>
-  <div class="hair" style="left:799px;top:446px;width:1px;height:40px"></div>
-  <div class="cjk" style="position:absolute;left:390px;right:390px;top:526px;text-align:center;font-size:17px;line-height:2.3;letter-spacing:.06em;color:#4a463f;font-weight:300">
+  <div class="cjk" style="position:absolute;left:0;right:0;top:300px;text-align:center;font-size:38px;letter-spacing:.42em;font-weight:200">{zh(d["title"])}</div>
+  <div class="lat" style="position:absolute;left:0;right:0;top:380px;text-align:center;font-size:13px;letter-spacing:.35em;color:#7a7568">{zsub}</div>
+  <div class="hair" style="left:799px;top:460px;width:1px;height:60px"></div>
+  <div class="cjk" style="position:absolute;left:400px;right:400px;top:570px;text-align:center;font-size:15px;line-height:2.3;letter-spacing:.06em;color:#4a463f;font-weight:300">
 {zps}
   </div>
   {folio_html(folio,"right")}
@@ -317,18 +317,14 @@ def render(i, p):
         text = (f'<div class="vb" style="right:{title_right}"><div class="cjk h">{title}</div><div class="lat sub">{lt(sub, lc=False)}</div>{tag}</div>'
                 f'<div class="vb" style="right:{body_right};height:700px"><div class="rule" style="margin-left:0"></div><div class="cjk body">{body}</div></div>')
     else:
-        halign = p[11] if len(p) > 11 else None
         if edge == "near":   # whole block pulled in next to the photo: anchor its LEFT edge 110px from the photo
             text = f'<div class="vb" style="left:{iw + 93}px;right:auto">'
-        elif halign == "center":   # block centred in the paper area beside the photo (flex: the vb shrinks to its columns)
-            paper = f"left:{iw}px;right:0" if side == "L" else f"left:0;right:{iw}px"
-            text = f'<div style="position:absolute;top:110px;height:780px;{paper};display:flex;justify-content:center"><div class="vb" style="position:static">'
         else:
             text = f'<div class="vb" style="right:{vb_right}">'
         u=URL.get((folio or "")[:2])
         head=f'<div class="cjk h">{title}</div><div class="lat sub">{lt(sub, lc=False)}</div>'
         if u: head=f'<a href="https://{u}" style="color:inherit;text-decoration:none;display:block">{head}</a>'
-        text += f'{head}{tag}<div class="rule"></div><div class="cjk body">{body}</div></div>' + ("</div>" if halign == "center" else "")
+        text += f'{head}{tag}<div class="rule"></div><div class="cjk body">{body}</div></div>'
     return f'<div class="page"{page_style}>{bar}{photo}{text}{phd}{folio_html(folio,folio_side)}</div>'
 
 html = '<!doctype html><html><head><meta charset="utf-8"><link rel="stylesheet" href="base.css"><style>' + CSS + "</style></head><body>\n" + "\n".join(render(i, p) for i, p in enumerate(pages)) + "\n</body></html>"

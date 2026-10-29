@@ -15,7 +15,7 @@ cover:
   mark: •                 # 名字与 STARLIA 之间的符号（英文版用 ×）
   mark_size: 1.5em
   mark_color: "#2b2925"   # 与文字同色
-  mark_margin: -.30em      # 点上下各收掉的间距
+  mark_margin: -.24em      # 点上下各收掉的间距
   subtitle: 回到完美的内在觉知
 
 # ---------- 目录页 ----------

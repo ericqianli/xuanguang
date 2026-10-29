@@ -12,7 +12,6 @@ WEB = ROOT / "web"
 PAPER = "#f3efe6"
 PDF_SRC = ROOT / "out" / "Starlia_final.pdf"
 C = B.C
-AXIS = "v"          # corner labels: "v" vertical column (Chinese site), "h" horizontal row (English site)
 PDF_NAME = C["site"]["pdf_name"]
 DOMAIN = C["site"]["domain"]
 
@@ -159,12 +158,16 @@ a{{color:inherit;text-decoration:none}}
 .book{{display:none}}
 .sheet{{width:calc(1600px*var(--s));height:calc(1000px*var(--s));margin:0 auto;position:relative;overflow:hidden;scroll-snap-align:start}}
 .sheet .page{{transform:scale(var(--s));transform-origin:0 0;margin:0}}
-/* corner labels (language toggle top-right, PDF bottom-right) are drawn as SVG by corners.js:
-   every glyph run is measured on a canvas and placed by its INK centre, so they stay centred whatever the font or size */
-.corner{{position:fixed;right:22px;z-index:9;display:none;color:#6b665c}}
-.corner.top{{top:22px}} .corner.bottom{{bottom:22px}}
-.corner a{{color:#6b665c;transition:color .2s}} .corner a:hover{{color:#2b2925}}
-.corner .cur{{color:#2b2925}}
+.pdf{{position:fixed;right:22px;bottom:22px;color:#6b665c;text-decoration:none;z-index:9;display:none;flex-direction:column;align-items:center;gap:10px}}
+.pdf-t{{writing-mode:vertical-rl;text-orientation:mixed;font-size:12px;letter-spacing:.35em;text-transform:uppercase;margin-bottom:-.35em;position:relative;left:.11em}}   /* same cap-height nudge as every rotated Latin run in the book */   /* cancel the trailing letter-space */
+.pdf-a{{display:block}}
+/* language toggle: same corner treatment as the PDF link, mirrored to the top right */
+.lang{{position:fixed;right:22px;top:22px;z-index:9;display:none;flex-direction:column;align-items:center;gap:8px;font-size:12px;letter-spacing:.35em;text-transform:uppercase}}
+.lang .cur{{writing-mode:vertical-rl;text-orientation:upright;color:#2b2925;margin-bottom:-.35em}}
+.lang .sep{{width:12px;height:1px;background:rgba(43,41,37,.3)}}
+.lang a{{writing-mode:vertical-rl;text-orientation:mixed;color:#6b665c;text-decoration:none;margin-bottom:-.35em;transition:color .2s}}
+.lang a .lt{{position:relative;left:.11em}}
+.lang a:hover{{color:#2b2925}}
 /* ---- flow ---- */
 .flow{{display:block;max-width:640px;margin:0 auto}}
 .flow .lt{{position:static;left:0}}   /* the vertical-text nudge must not apply to horizontal text */
@@ -202,7 +205,7 @@ a{{color:inherit;text-decoration:none}}
 .f-end{{font-size:12px;letter-spacing:.5em;color:#8a8577;font-weight:300;margin-top:64px}}
 @media (min-width:900px) and (min-height:560px){{
   html{{scroll-snap-type:y proximity}}
-  .book{{display:block}} .corner{{display:block}} .flow{{display:none}}
+  .book{{display:block}} .pdf,.lang{{display:flex}} .flow{{display:none}}
 }}
 """
 index = f'''<!doctype html>
@@ -223,8 +226,8 @@ index = f'''<!doctype html>
 <div class="book">
 {book}
 </div>
-<div class="corner top" data-items='[{{"t":"中","cur":1}},{{"sep":1}},{{"t":"EN","href":"en/"}}]'></div>
-<div class="corner bottom" data-items='[{{"t":"PDF","href":"{PDF_NAME}","dl":1}},{{"arrow":1}}]'></div>
+<div class="lang cjk"><span class="cur">中</span><span class="sep"></span><a class="lat" href="en/"><span class="lt">EN</span></a></div>
+<a class="pdf lat" href="{PDF_NAME}" download><span class="pdf-t">PDF</span><svg class="pdf-a" viewBox="0 0 10 14" width="8" height="11" aria-hidden="true"><path d="M5 0.5v12M1 9l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1"/></svg></a>
 <div class="flow">
 {flow}
 </div>
@@ -233,44 +236,6 @@ index = f'''<!doctype html>
   var r=document.documentElement;
   function fit(){{ r.style.setProperty('--s', Math.min(innerWidth/1600, innerHeight/1000)); }}
   fit(); addEventListener('resize', fit); addEventListener('orientationchange', fit);
-}})();
-(async function corners(){{
-  // Generic corner labels. Each glyph run is measured on a canvas (tight ink box) and placed so that its ink centre
-  // sits on the column/row axis, and runs are spaced by ink, not by font boxes — independent of font, size and browser.
-  var AXIS="{AXIS}", FONT='"Noto Serif CJK SC"', SIZE=12, LS=0.35*SIZE, GAP=9, W=24, NS="http://www.w3.org/2000/svg";
-  try{{ await document.fonts.load(SIZE+"px "+FONT); await document.fonts.ready; }}catch(e){{}}
-  var cv=document.createElement("canvas").getContext("2d"); cv.font=SIZE+"px "+FONT;
-  function ink(s){{ var x=0,L=null,R=0,A=0,D=0; for(var ch of s){{ var m=cv.measureText(ch);
-      var l=x-m.actualBoundingBoxLeft, rr=x+m.actualBoundingBoxRight; if(L===null)L=l; R=rr;
-      A=Math.max(A,m.actualBoundingBoxAscent); D=Math.max(D,m.actualBoundingBoxDescent); x+=m.width+LS; }} return {{L:L,R:R,A:A,D:D}}; }}
-  function el(n,at){{ var e=document.createElementNS(NS,n); for(var k in at) e.setAttribute(k,at[k]); return e; }}
-  document.querySelectorAll(".corner").forEach(function(box){{
-    var items=JSON.parse(box.dataset.items), svg=el("svg",{{}}), cur=0, c=W/2, nodes=[];
-    items.forEach(function(it,i){{
-      if(i) cur+=GAP;
-      var node;
-      if(it.t){{ var m=ink(it.t), cjk=/[\u3400-\u9fff]/.test(it.t), rot=(AXIS==="v" && !cjk);
-        node=el("text",{{"font-family":FONT,"font-size":SIZE,"letter-spacing":LS,fill:"currentColor"}}); node.textContent=it.t;
-        if(AXIS==="v"){{
-          if(rot){{ node.setAttribute("transform","translate("+(c-(m.A-m.D)/2)+","+(cur-m.L)+") rotate(90)"); cur+=m.R-m.L; }}
-          else   {{ node.setAttribute("x",c-(m.L+m.R)/2); node.setAttribute("y",cur+m.A); cur+=m.A+m.D; }}
-        }} else {{ node.setAttribute("x",cur-m.L); node.setAttribute("y",c+(m.A-m.D)/2); cur+=m.R-m.L; }}
-      }} else if(it.sep){{
-        node = AXIS==="v" ? el("line",{{x1:c-6,x2:c+6,y1:cur+.5,y2:cur+.5}}) : el("line",{{y1:c-6,y2:c+6,x1:cur+.5,x2:cur+.5}});
-        node.setAttribute("stroke","rgba(43,41,37,.3)"); cur+=1;
-      }} else if(it.arrow){{
-        node=el("path",{{d:"M4 0.5v10M1 7.5l3 3 3-3",fill:"none",stroke:"currentColor","stroke-width":"1"}});
-        node.setAttribute("transform", AXIS==="v" ? "translate("+(c-4)+","+cur+")" : "translate("+cur+","+(c-5.5)+")"); cur+= AXIS==="v" ? 11 : 8;
-      }}
-      if(it.href){{ var a=el("a",{{href:it.href}}); if(it.dl) a.setAttribute("download",""); else {{a.setAttribute("target","_blank");a.setAttribute("rel","noopener");}} a.appendChild(node); node=a; }}
-      if(it.cur) node.setAttribute("class","cur");
-      nodes.push(node);
-    }});
-    var len=Math.ceil(cur);
-    svg.setAttribute("width", AXIS==="v"?W:len); svg.setAttribute("height", AXIS==="v"?len:W);
-    svg.setAttribute("viewBox", "0 0 "+(AXIS==="v"?W:len)+" "+(AXIS==="v"?len:W)); svg.style.display="block"; svg.style.overflow="visible";
-    nodes.forEach(function(n){{svg.appendChild(n);}}); box.innerHTML=""; box.appendChild(svg);
-  }});
 }})();
 </script>
 </body>
@@ -291,8 +256,8 @@ art = f'''<title>玄光 × Starlia</title>
 <div class="book">
 {book}
 </div>
-<div class="corner top" data-items='[{{"t":"中","cur":1}},{{"sep":1}},{{"t":"EN","href":"en/"}}]'></div>
-<div class="corner bottom" data-items='[{{"t":"PDF","href":"{PDF_NAME}"}},{{"arrow":1}}]'></div>
+<div class="lang cjk"><span class="cur">中</span><span class="sep"></span><a class="lat" href="en/"><span class="lt">EN</span></a></div>
+<a class="pdf lat" href="{PDF_NAME}" target="_blank" rel="noopener"><span class="pdf-t">PDF</span><svg class="pdf-a" viewBox="0 0 10 14" width="8" height="11" aria-hidden="true"><path d="M5 0.5v12M1 9l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1"/></svg></a>
 <div class="flow">
 {flow.replace(f'href="{PDF_NAME}" download', f'href="{PDF_NAME}" target="_blank" rel="noopener"')}
 </div>
@@ -301,44 +266,6 @@ art = f'''<title>玄光 × Starlia</title>
   var r=document.documentElement;
   function fit(){{ r.style.setProperty('--s', Math.min(innerWidth/1600, innerHeight/1000)); }}
   fit(); addEventListener('resize', fit); addEventListener('orientationchange', fit);
-}})();
-(async function corners(){{
-  // Generic corner labels. Each glyph run is measured on a canvas (tight ink box) and placed so that its ink centre
-  // sits on the column/row axis, and runs are spaced by ink, not by font boxes — independent of font, size and browser.
-  var AXIS="{AXIS}", FONT='"Noto Serif CJK SC"', SIZE=12, LS=0.35*SIZE, GAP=9, W=24, NS="http://www.w3.org/2000/svg";
-  try{{ await document.fonts.load(SIZE+"px "+FONT); await document.fonts.ready; }}catch(e){{}}
-  var cv=document.createElement("canvas").getContext("2d"); cv.font=SIZE+"px "+FONT;
-  function ink(s){{ var x=0,L=null,R=0,A=0,D=0; for(var ch of s){{ var m=cv.measureText(ch);
-      var l=x-m.actualBoundingBoxLeft, rr=x+m.actualBoundingBoxRight; if(L===null)L=l; R=rr;
-      A=Math.max(A,m.actualBoundingBoxAscent); D=Math.max(D,m.actualBoundingBoxDescent); x+=m.width+LS; }} return {{L:L,R:R,A:A,D:D}}; }}
-  function el(n,at){{ var e=document.createElementNS(NS,n); for(var k in at) e.setAttribute(k,at[k]); return e; }}
-  document.querySelectorAll(".corner").forEach(function(box){{
-    var items=JSON.parse(box.dataset.items), svg=el("svg",{{}}), cur=0, c=W/2, nodes=[];
-    items.forEach(function(it,i){{
-      if(i) cur+=GAP;
-      var node;
-      if(it.t){{ var m=ink(it.t), cjk=/[\u3400-\u9fff]/.test(it.t), rot=(AXIS==="v" && !cjk);
-        node=el("text",{{"font-family":FONT,"font-size":SIZE,"letter-spacing":LS,fill:"currentColor"}}); node.textContent=it.t;
-        if(AXIS==="v"){{
-          if(rot){{ node.setAttribute("transform","translate("+(c-(m.A-m.D)/2)+","+(cur-m.L)+") rotate(90)"); cur+=m.R-m.L; }}
-          else   {{ node.setAttribute("x",c-(m.L+m.R)/2); node.setAttribute("y",cur+m.A); cur+=m.A+m.D; }}
-        }} else {{ node.setAttribute("x",cur-m.L); node.setAttribute("y",c+(m.A-m.D)/2); cur+=m.R-m.L; }}
-      }} else if(it.sep){{
-        node = AXIS==="v" ? el("line",{{x1:c-6,x2:c+6,y1:cur+.5,y2:cur+.5}}) : el("line",{{y1:c-6,y2:c+6,x1:cur+.5,x2:cur+.5}});
-        node.setAttribute("stroke","rgba(43,41,37,.3)"); cur+=1;
-      }} else if(it.arrow){{
-        node=el("path",{{d:"M4 0.5v10M1 7.5l3 3 3-3",fill:"none",stroke:"currentColor","stroke-width":"1"}});
-        node.setAttribute("transform", AXIS==="v" ? "translate("+(c-4)+","+cur+")" : "translate("+cur+","+(c-5.5)+")"); cur+= AXIS==="v" ? 11 : 8;
-      }}
-      if(it.href){{ var a=el("a",{{href:it.href}}); if(it.dl) a.setAttribute("download",""); else {{a.setAttribute("target","_blank");a.setAttribute("rel","noopener");}} a.appendChild(node); node=a; }}
-      if(it.cur) node.setAttribute("class","cur");
-      nodes.push(node);
-    }});
-    var len=Math.ceil(cur);
-    svg.setAttribute("width", AXIS==="v"?W:len); svg.setAttribute("height", AXIS==="v"?len:W);
-    svg.setAttribute("viewBox", "0 0 "+(AXIS==="v"?W:len)+" "+(AXIS==="v"?len:W)); svg.style.display="block"; svg.style.overflow="visible";
-    nodes.forEach(function(n){{svg.appendChild(n);}}); box.innerHTML=""; box.appendChild(svg);
-  }});
 }})();
 </script>
 '''

@@ -210,8 +210,8 @@ def render(i, p):
         cells = "".join(f'<div style="border-right:1px solid rgba(43,41,37,.3);padding-right:16px;margin-left:24px;height:fit-content"><div class="lat small" style="margin-left:12px">{lt(en, lc=False)}</div><div class="cjk side" style="font-size:19px;letter-spacing:.15em;margin-left:10px">{z}</div><div class="cjk body" style="font-size:14px;line-height:2.1">{zh(txt)}</div></div>' for en, z, txt in brand)
         return f'''<div class="page">
   <div class="vb" style="right:110px">
-    <div class="lat" style="font-size:30px;letter-spacing:.3em;font-weight:300;margin-left:40px">{C["brand"]["title"]}</div>
-    <div class="cjk side" style="font-size:17px;line-height:1.9;letter-spacing:.12em;font-weight:400;margin-left:50px">{"<br>".join(zh(x) for x in C["brand"]["statement"])}</div>
+    <div class="lat" style="font-size:30px;letter-spacing:.3em;font-weight:300;margin-left:28px">{C["brand"]["title"]}</div>
+    <div class="cjk side" style="font-size:17px;line-height:1.9;letter-spacing:.12em;font-weight:400;margin-left:36px">{"<br>".join(zh(x) for x in C["brand"]["statement"])}</div>
     {cells}
   </div>
   {folio_html(folio,"right")}

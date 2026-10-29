@@ -40,15 +40,15 @@ brand:
     - en: Creation
       zh: 设计创造
       text: 陶艺、木工、设计、建造：通过创作抵达生命的源泉。
-    - en: Technology
-      zh: Lumilab.AI
-      text: 融合前沿 AI 科技和传统智慧，推动内在探索生活化，成为每一个当下的主人。
-    - en: Crystal
-      zh: 能量水晶
-      text: 通过造物的精华，体会生命的振动。
     - en: Objects
       zh: 器物收藏
       text: 古董、茶器、花器、香炉、卷轴：美丽的灵魂超越时空，跨越千古见证生命永恒。
+    - en: Crystal
+      zh: 能量水晶
+      text: 通过造物的精华，体会生命的振动。
+    - en: Technology
+      zh: Lumilab.AI
+      text: 融合前沿 AI 科技和传统智慧，推动内在探索生活化，成为每一个当下的主人。
     - en: Zen
       zh: 禅修探索
       text: 生命的本质，是超越的智慧。
@@ -57,8 +57,8 @@ brand:
 urls:
   "01": isshoikka.com
   "02": haoshou.app
-  "06": starlia.ai/ring
   "07": starlia.ai/crystal
+  "08": starlia.ai/ring
 
 # ---------- 正文页，按顺序 ----------
 # 每页：title 标题 / sub 英文小标 / tagline 标题句 / body 正文段落 / folio 页脚 / image 照片 / side 照片在哪边 / edge 照片边缘处理
@@ -149,15 +149,16 @@ pages:
     side: R
     edge: bar:10:#4a2b23                    # 照片左缘贴一道 10px 实线，颜色取自实物图里榻榻米的缘
 
-  - title: Lumilab.AI
-    sub: Technology
-    tagline: 融合前沿 AI 科技和传统智慧，推动内在探索生活化，成为每一个当下的主人。
+  - title: 器物收藏
+    sub: Objects · 古董 · 茶器 · 花器 · 香炉 · 卷轴
+    tagline: 美丽的灵魂超越时空，跨越千古见证生命永恒。
     body:
-      - 当今物质富足，科技进步，可人们的精神健康却每况愈下。Lumilab.AI 创立于 2025 年，立足于结合最新的 AI 技术和传统智慧，帮助人们了解自己的内在系统，尤其是觉知和调控自己的情绪，塑造更加稳定、自洽、幸福的生活。
-    folio: 06 · Lumilab
-    image: lumilab
+      - 器物是沧海桑田的见证。斯人已逝，而他们的精神和情感通过器物流转，千年后依旧启发并鼓舞着后人。细查传承之不朽，即能了悟生命之永恒。
+      - Starlia 专注于收藏富含人文情感和温度的古董，包括茶器、花器、瓷器、铁器、香炉、卷轴等，从跨越沧桑的见证中播撒探寻内在不朽的种子。
+    folio: 06 · 器物收藏
+    image: objects
     side: L
-    edge: fade
+    edge: deckle
 
   - title: 能量水晶
     sub: Crystal
@@ -169,16 +170,15 @@ pages:
     side: R
     edge: grain:176
 
-  - title: 器物收藏
-    sub: Objects · 古董 · 茶器 · 花器 · 香炉 · 卷轴
-    tagline: 美丽的灵魂超越时空，跨越千古见证生命永恒。
+  - title: Lumilab.AI
+    sub: Technology
+    tagline: 融合前沿 AI 科技和传统智慧，推动内在探索生活化，成为每一个当下的主人。
     body:
-      - 器物是沧海桑田的见证。斯人已逝，而他们的精神和情感通过器物流转，千年后依旧启发并鼓舞着后人。细查传承之不朽，即能了悟生命之永恒。
-      - Starlia 专注于收藏富含人文情感和温度的古董，包括茶器、花器、瓷器、铁器、香炉、卷轴等，从跨越沧桑的见证中播撒探寻内在不朽的种子。
-    folio: 08 · 器物收藏
-    image: objects
+      - 当今物质富足，科技进步，可人们的精神健康却每况愈下。Lumilab.AI 创立于 2025 年，立足于结合最新的 AI 技术和传统智慧，帮助人们了解自己的内在系统，尤其是觉知和调控自己的情绪，塑造更加稳定、自洽、幸福的生活。
+    folio: 08 · Lumilab
+    image: lumilab
     side: L
-    edge: deckle
+    edge: fade
 
   - kind: zen                    # 禅修页（无图，横排居中）
     title: 生命的本质，是超越的智慧。

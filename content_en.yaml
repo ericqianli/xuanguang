@@ -26,15 +26,15 @@ brand:
     - en: Creation
       zh: Design & Creation
       text: "Ceramics, woodwork, design, building: through creation, we reach the source of life."
-    - en: Technology
-      zh: Lumilab.AI
-      text: Frontier AI meets traditional wisdom, bringing inner exploration into daily life.
-    - en: Crystal
-      zh: Energy Crystals
-      text: Through the essence of creation, feel the vibration of life.
     - en: Objects
       zh: Collected Objects
       text: "Beautiful souls outlast time, bearing witness across a thousand years to the permanence of life."
+    - en: Crystal
+      zh: Energy Crystals
+      text: Through the essence of creation, feel the vibration of life.
+    - en: Technology
+      zh: Lumilab.AI
+      text: Frontier AI meets traditional wisdom, bringing inner exploration into daily life.
     - en: Zen
       zh: Zen Practice
       text: The essence of life is transcendent wisdom.
@@ -42,8 +42,8 @@ brand:
 urls:
   "01": isshoikka.com
   "02": haoshou.app
-  "06": starlia.ai/ring
   "07": starlia.ai/crystal
+  "08": starlia.ai/ring
 
 pages:
   - title: Isshoikka
@@ -141,15 +141,16 @@ pages:
     side: R
     edge: bar:10:#4a2b23
 
-  - title: Lumilab.AI
-    sub: Technology
-    tagline: Frontier AI meets traditional wisdom, bringing inner exploration into daily life — so that each of us can be the master of the present moment.
+  - title: Collected Objects
+    sub: Antiques · Tea Ware · Vessels · Censers · Scrolls
+    tagline: Beautiful souls outlast time; across a thousand years they bear witness to the permanence of life.
     body:
-      - We live amid material abundance and rapid technological progress, yet mental health keeps declining. Lumilab.AI was founded in 2025 to join the latest AI with traditional wisdom — helping people understand their inner system, above all to be aware of and to regulate their emotions, and to build a steadier, more coherent and happier life.
-    folio: 06 · Lumilab
-    image: lumilab
+      - Objects are witnesses to seas turning into fields. Their makers are gone, yet their spirit and feeling flow on through what they made, still inspiring people a thousand years later. Look closely at what endures through inheritance, and you glimpse the permanence of life.
+      - Starlia collects antiques rich in human feeling and warmth — tea ware, flower vessels, porcelain, ironware, censers, scrolls — and from these witnesses of time sows the seed of searching for what is imperishable within.
+    folio: 06 · Objects
+    image: objects
     side: L
-    edge: fade
+    edge: deckle
 
   - title: Energy Crystals
     valign: 0.333
@@ -162,16 +163,15 @@ pages:
     side: R
     edge: grain:176
 
-  - title: Collected Objects
-    sub: Antiques · Tea Ware · Vessels · Censers · Scrolls
-    tagline: Beautiful souls outlast time; across a thousand years they bear witness to the permanence of life.
+  - title: Lumilab.AI
+    sub: Technology
+    tagline: Frontier AI meets traditional wisdom, bringing inner exploration into daily life — so that each of us can be the master of the present moment.
     body:
-      - Objects are witnesses to seas turning into fields. Their makers are gone, yet their spirit and feeling flow on through what they made, still inspiring people a thousand years later. Look closely at what endures through inheritance, and you glimpse the permanence of life.
-      - Starlia collects antiques rich in human feeling and warmth — tea ware, flower vessels, porcelain, ironware, censers, scrolls — and from these witnesses of time sows the seed of searching for what is imperishable within.
-    folio: 08 · Objects
-    image: objects
+      - We live amid material abundance and rapid technological progress, yet mental health keeps declining. Lumilab.AI was founded in 2025 to join the latest AI with traditional wisdom — helping people understand their inner system, above all to be aware of and to regulate their emotions, and to build a steadier, more coherent and happier life.
+    folio: 08 · Lumilab
+    image: lumilab
     side: L
-    edge: deckle
+    edge: fade
 
   - kind: zen
     title: The essence of life is transcendent wisdom.

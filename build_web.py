@@ -161,6 +161,13 @@ a{{color:inherit;text-decoration:none}}
 .pdf{{position:fixed;right:22px;bottom:22px;color:#6b665c;text-decoration:none;z-index:9;display:none;flex-direction:column;align-items:center;gap:10px}}
 .pdf-t{{writing-mode:vertical-rl;text-orientation:mixed;font-size:12px;letter-spacing:.35em;text-transform:uppercase;margin-bottom:-.35em}}   /* cancel the trailing letter-space */
 .pdf-a{{display:block}}
+/* language toggle: same corner treatment as the PDF link, mirrored to the top right */
+.lang{{position:fixed;right:22px;top:22px;z-index:9;display:none;flex-direction:column;align-items:center;gap:8px;font-size:12px;letter-spacing:.35em;text-transform:uppercase}}
+.lang .cur{{writing-mode:vertical-rl;text-orientation:upright;color:#2b2925;margin-bottom:-.35em}}
+.lang .sep{{width:12px;height:1px;background:rgba(43,41,37,.3)}}
+.lang a{{writing-mode:vertical-rl;text-orientation:mixed;color:#6b665c;text-decoration:none;margin-bottom:-.35em;transition:color .2s}}
+.lang a .lt{{position:relative;left:.11em}}
+.lang a:hover{{color:#2b2925}}
 /* ---- flow ---- */
 .flow{{display:block;max-width:640px;margin:0 auto}}
 .flow .lt{{position:static;left:0}}   /* the vertical-text nudge must not apply to horizontal text */
@@ -198,7 +205,7 @@ a{{color:inherit;text-decoration:none}}
 .f-end{{font-size:12px;letter-spacing:.5em;color:#8a8577;font-weight:300;margin-top:64px}}
 @media (min-width:900px) and (min-height:560px){{
   html{{scroll-snap-type:y proximity}}
-  .book{{display:block}} .pdf{{display:flex}} .flow{{display:none}}
+  .book{{display:block}} .pdf,.lang{{display:flex}} .flow{{display:none}}
 }}
 """
 index = f'''<!doctype html>
@@ -219,6 +226,7 @@ index = f'''<!doctype html>
 <div class="book">
 {book}
 </div>
+<div class="lang cjk"><span class="cur">中</span><span class="sep"></span><a class="lat" href="en/"><span class="lt">EN</span></a></div>
 <a class="pdf" href="{PDF_NAME}" download><span class="pdf-t">PDF</span><svg class="pdf-a" viewBox="0 0 10 14" width="8" height="11" aria-hidden="true"><path d="M5 0.5v12M1 9l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1"/></svg></a>
 <div class="flow">
 {flow}
@@ -248,6 +256,7 @@ art = f'''<title>玄光 × Starlia</title>
 <div class="book">
 {book}
 </div>
+<div class="lang cjk"><span class="cur">中</span><span class="sep"></span><a class="lat" href="en/"><span class="lt">EN</span></a></div>
 <a class="pdf" href="{PDF_NAME}" target="_blank" rel="noopener"><span class="pdf-t">PDF</span><svg class="pdf-a" viewBox="0 0 10 14" width="8" height="11" aria-hidden="true"><path d="M5 0.5v12M1 9l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1"/></svg></a>
 <div class="flow">
 {flow.replace(f'href="{PDF_NAME}" download', f'href="{PDF_NAME}" target="_blank" rel="noopener"')}

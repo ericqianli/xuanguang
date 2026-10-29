@@ -16,7 +16,7 @@ cover:
   mark_size: 1.5em
   mark_color: "#2b2925"   # 与文字同色
   mark_margin: -.24em      # 点上下各收掉的间距
-  subtitle: 回到完美的内在觉知
+  subtitle: 回到完美的内在
 
 # ---------- 目录页 ----------
 brand:
@@ -205,10 +205,10 @@ contact:
     - isshoikka.com
     - haoshou.app
   email: li@starlia.ai
-  closing: 回到完美的内在觉知
+  closing: 回到完美的内在
 
 # ---------- 网页 ----------
 site:
   domain: xuanguang.starlia.ai    # 留空则发布在 ericqianli.github.io/xuanguang/
   pdf_name: Starlia_XuanGuang.pdf
-  description: 玄光 × Starlia —— 回到完美的内在觉知。一生一花、落星集、太玄琴社、能量水晶、Lumilab.AI、设计创造、器物收藏、禅修探索。
+  description: 玄光 × Starlia —— 回到完美的内在。一生一花、落星集、太玄琴社、能量水晶、Lumilab.AI、设计创造、器物收藏、禅修探索。

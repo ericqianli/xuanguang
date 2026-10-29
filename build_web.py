@@ -170,26 +170,11 @@ a{{color:inherit;text-decoration:none}}
 .book{{display:none}}
 .sheet{{width:calc(1600px*var(--s));height:calc(1000px*var(--s));margin:0 auto;position:relative;overflow:hidden;scroll-snap-align:start}}
 .sheet .page{{transform:scale(var(--s));transform-origin:0 0;margin:0}}
-/* ---- corner labels: vertical column on the Chinese site, horizontal row on the English site ---- */
-.pdf{{position:fixed;right:22px;bottom:22px;color:#6b665c;text-decoration:none;z-index:9;display:none;flex-direction:column;align-items:center;gap:10px;transition:color .2s}}
-.pdf:hover{{color:#2b2925}}   /* letters and arrow (stroke=currentColor) darken together, like the language link */
-.pdf-t{{writing-mode:vertical-rl;text-orientation:mixed;font-size:12px;letter-spacing:.35em;text-transform:uppercase;margin-bottom:-.35em;position:relative;left:.11em}}   /* same cap-height nudge as every rotated Latin run in the book */
-.pdf-a{{display:block}}
-.pdf-t,.lang .cur,.lang a{{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif}}   /* corner labels (PDF, EN, 中) in the plain system sans */
-.lang{{position:fixed;right:22px;top:22px;z-index:9;display:none;flex-direction:column;align-items:center;gap:8px;font-size:12px;letter-spacing:.35em;text-transform:uppercase}}
-.lang .cur{{writing-mode:vertical-rl;text-orientation:upright;color:#2b2925;margin-bottom:-.35em}}
-.lang .sep{{width:12px;height:1px;background:rgba(43,41,37,.3)}}
-.lang a{{writing-mode:vertical-rl;text-orientation:mixed;color:#6b665c;text-decoration:none;margin-bottom:-.35em;transition:color .2s}}
-.lang a .lt{{position:relative;left:.11em}}
-.lang a:hover{{color:#2b2925}}
-/* horizontal variants (English site) */
-.axis-h .pdf{{flex-direction:row;gap:9px}}
-.axis-h .pdf-t{{writing-mode:horizontal-tb;margin-bottom:0;letter-spacing:.2em;margin-right:-.2em;left:0}}
-.axis-h .lang{{flex-direction:row;gap:8px}}
-.axis-h .lang .cur,.axis-h .lang a{{writing-mode:horizontal-tb;margin-bottom:0;letter-spacing:.2em;margin-right:-.2em}}
-.axis-h .lang .cur{{text-orientation:initial}}
-.axis-h .lang .sep{{width:1px;height:12px}}
-.axis-h .lang a .lt{{left:0}}
+/* ---- corner labels (language toggle top-right, PDF bottom-right): drawn as SVG by the script below ---- */
+.corner{{position:fixed;right:22px;z-index:9;display:none;color:#6b665c;font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif}}
+.corner.top{{top:22px}} .corner.bottom{{bottom:22px}}
+.corner a{{color:#6b665c;transition:color .2s}} .corner a:hover{{color:#2b2925}}
+.corner .cur{{color:#2b2925}}
 /* ---- flow ---- */
 .flow{{display:block;max-width:640px;margin:0 auto}}
 .flow .lt{{position:static;left:0}}   /* the vertical-text nudge must not apply to horizontal text */
@@ -237,7 +222,7 @@ a{{color:inherit;text-decoration:none}}
 .axis-h .f-end{{letter-spacing:.3em;text-transform:uppercase;font-size:11px}}
 @media (min-width:900px) and (min-height:560px){{
   html{{scroll-snap-type:y proximity}}
-  .book{{display:block}} .pdf,.lang{{display:flex}} .flow{{display:none}}
+  .book{{display:block}} .corner{{display:block}} .flow{{display:none}}
 }}
 """
 FIT_JS = '''<script>
@@ -246,14 +231,58 @@ FIT_JS = '''<script>
   function fit(){ r.style.setProperty('--s', Math.min(innerWidth/1600, innerHeight/1000)); }
   fit(); addEventListener('resize', fit); addEventListener('orientationchange', fit);
 })();
+// Corner labels, drawn as SVG. Every glyph run is measured on a canvas (tight ink box) and placed so that its ink
+// centre sits exactly on the column/row axis; runs are spaced by ink, not by font boxes. Independent of font, size
+// and browser, so the labels stay centred and symmetric whatever the corners are set in.
+(function(){
+  var AXIS=document.documentElement.className.indexOf('axis-h')>=0?'h':'v', SIZE=12, NS='http://www.w3.org/2000/svg';
+  var LS=(AXIS==='v'?0.35:0.2)*SIZE, W=16;                 // W: box width → axis 22+8 = 30px from the edge
+  function go(){
+    var cv=document.createElement('canvas').getContext('2d');
+    document.querySelectorAll('.corner').forEach(function(box){
+      var FONT=getComputedStyle(box).fontFamily; cv.font=SIZE+'px '+FONT;
+      function ink(s){ var x=0,L=null,R=0,A=0,D=0; for(var ch of s){ var m=cv.measureText(ch);
+          var l=x-m.actualBoundingBoxLeft, rr=x+m.actualBoundingBoxRight; if(L===null)L=l; R=rr;
+          A=Math.max(A,m.actualBoundingBoxAscent); D=Math.max(D,m.actualBoundingBoxDescent); x+=m.width+LS; } return {L:L,R:R,A:A,D:D}; }
+      function el(n,at){ var e=document.createElementNS(NS,n); for(var k in at) e.setAttribute(k,at[k]); return e; }
+      var items=JSON.parse(box.dataset.items), svg=el('svg',{}), cur=0, c=W/2, nodes=[], pdf=box.classList.contains('bottom');
+      var GAP = pdf ? (AXIS==='v'?10:6) : 9;
+      items.forEach(function(it,i){
+        if(i) cur+=GAP;
+        var node;
+        if(it.t){ var m=ink(it.t), cjk=/[\u3400-\u9fff]/.test(it.t), rot=(AXIS==='v' && !cjk);
+          node=el('text',{'font-family':FONT,'font-size':SIZE,'letter-spacing':LS,fill:'currentColor'}); node.textContent=it.t;
+          if(AXIS==='v'){
+            if(rot){ node.setAttribute('transform','translate('+(c-(m.A-m.D)/2)+','+(cur-m.L)+') rotate(90)'); cur+=m.R-m.L; }
+            else   { node.setAttribute('x',c-(m.L+m.R)/2); node.setAttribute('y',cur+m.A); cur+=m.A+m.D; }
+          } else { node.setAttribute('x',cur-m.L); node.setAttribute('y',c+(m.A-m.D)/2); cur+=m.R-m.L; }
+        } else if(it.sep){
+          node = AXIS==='v' ? el('line',{x1:c-6,x2:c+6,y1:cur+.5,y2:cur+.5}) : el('line',{y1:c-6,y2:c+6,x1:cur+.5,x2:cur+.5});
+          node.setAttribute('stroke','rgba(43,41,37,.3)'); cur+=1;
+        } else if(it.arrow){
+          node=el('path',{d:'M4 0.5v10M1 7.5l3 3 3-3',fill:'none',stroke:'currentColor','stroke-width':'1'});
+          node.setAttribute('transform', AXIS==='v' ? 'translate('+(c-4)+','+cur+')' : 'translate('+cur+','+(c-5.5)+')'); cur+= AXIS==='v' ? 11 : 8;
+        }
+        if(it.href){ var a=el('a',{href:it.href}); if(it.dl) a.setAttribute('download',''); else if(!it.nav){a.setAttribute('target','_blank');a.setAttribute('rel','noopener');} a.appendChild(node); node=a; }
+        if(it.cur) node.setAttribute('class','cur');
+        nodes.push(node);
+      });
+      var len=Math.ceil(cur);
+      svg.setAttribute('width', AXIS==='v'?W:len); svg.setAttribute('height', AXIS==='v'?len:W);
+      svg.setAttribute('viewBox','0 0 '+(AXIS==='v'?W:len)+' '+(AXIS==='v'?len:W)); svg.style.display='block'; svg.style.overflow='visible';
+      nodes.forEach(function(n){svg.appendChild(n);}); box.innerHTML=''; box.appendChild(svg);
+    });
+  }
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(go); else go();
+})();
 </script>'''
 
 def corners(ed, preview=False):
+    """data for the SVG corner renderer: current language · separator · other language (top); PDF · arrow (bottom)"""
     C = ed["C"]; PDF_NAME = C["site"]["pdf_name"]; oth, ohref = ed["other"]
-    pdf_attr = ' target="_blank" rel="noopener"' if preview else " download"
-    oth_html = f'<span class="lt">{oth}</span>' if oth.isascii() else oth
-    return (f'<div class="lang cjk"><span class="cur{" sys" if ed["cur"].isascii() else ""}">{ed["cur"]}</span><span class="sep"></span><a class="lat" href="{ohref}">{oth_html}</a></div>\n'
-            f'<a class="pdf lat" href="{ed["prefix"]}{PDF_NAME}"{pdf_attr}><span class="pdf-t">PDF</span><svg class="pdf-a" viewBox="0 0 10 14" width="8" height="11" aria-hidden="true"><path d="M5 0.5v12M1 9l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1"/></svg></a>')
+    top = f'[{{"t":"{ed["cur"]}","cur":1}},{{"sep":1}},{{"t":"{oth}","href":"{ohref}","nav":1}}]'
+    bottom = f'[{{"t":"PDF","href":"{ed["prefix"]}{PDF_NAME}"{"" if preview else ",\"dl\":1"}}},{{"arrow":1}}]'
+    return f"<div class=\"corner top\" data-items='{top}'></div>\n<div class=\"corner bottom\" data-items='{bottom}'></div>"
 
 def page(ed, preview=False):
     C = ed["C"]; P = ed["prefix"]

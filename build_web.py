@@ -226,8 +226,8 @@ index = f'''<!doctype html>
 <div class="book">
 {book}
 </div>
-<div class="lang"><span class="cur cjk">中</span><span class="sep"></span><a href="en/"><span class="lt">EN</span></a></div>
-<a class="pdf" href="{PDF_NAME}" download><span class="pdf-t">PDF</span><svg class="pdf-a" viewBox="0 0 10 14" width="8" height="11" aria-hidden="true"><path d="M5 0.5v12M1 9l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1"/></svg></a>
+<div class="lang cjk"><span class="cur">中</span><span class="sep"></span><a class="lat" href="en/"><span class="lt">EN</span></a></div>
+<a class="pdf lat" href="{PDF_NAME}" download><span class="pdf-t">PDF</span><svg class="pdf-a" viewBox="0 0 10 14" width="8" height="11" aria-hidden="true"><path d="M5 0.5v12M1 9l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1"/></svg></a>
 <div class="flow">
 {flow}
 </div>
@@ -256,8 +256,8 @@ art = f'''<title>玄光 × Starlia</title>
 <div class="book">
 {book}
 </div>
-<div class="lang"><span class="cur cjk">中</span><span class="sep"></span><a href="en/"><span class="lt">EN</span></a></div>
-<a class="pdf" href="{PDF_NAME}" target="_blank" rel="noopener"><span class="pdf-t">PDF</span><svg class="pdf-a" viewBox="0 0 10 14" width="8" height="11" aria-hidden="true"><path d="M5 0.5v12M1 9l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1"/></svg></a>
+<div class="lang cjk"><span class="cur">中</span><span class="sep"></span><a class="lat" href="en/"><span class="lt">EN</span></a></div>
+<a class="pdf lat" href="{PDF_NAME}" target="_blank" rel="noopener"><span class="pdf-t">PDF</span><svg class="pdf-a" viewBox="0 0 10 14" width="8" height="11" aria-hidden="true"><path d="M5 0.5v12M1 9l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1"/></svg></a>
 <div class="flow">
 {flow.replace(f'href="{PDF_NAME}" download', f'href="{PDF_NAME}" target="_blank" rel="noopener"')}
 </div>

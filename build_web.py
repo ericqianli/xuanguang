@@ -171,7 +171,8 @@ a{{color:inherit;text-decoration:none}}
 .sheet{{width:calc(1600px*var(--s));height:calc(1000px*var(--s));margin:0 auto;position:relative;overflow:hidden;scroll-snap-align:start}}
 .sheet .page{{transform:scale(var(--s));transform-origin:0 0;margin:0}}
 /* ---- corner labels: vertical column on the Chinese site, horizontal row on the English site ---- */
-.pdf{{position:fixed;right:22px;bottom:22px;color:#6b665c;text-decoration:none;z-index:9;display:none;flex-direction:column;align-items:center;gap:10px}}
+.pdf{{position:fixed;right:22px;bottom:22px;color:#6b665c;text-decoration:none;z-index:9;display:none;flex-direction:column;align-items:center;gap:10px;transition:color .2s}}
+.pdf:hover{{color:#2b2925}}   /* letters and arrow (stroke=currentColor) darken together, like the language link */
 .pdf-t{{writing-mode:vertical-rl;text-orientation:mixed;font-size:12px;letter-spacing:.35em;text-transform:uppercase;margin-bottom:-.35em;position:relative;left:.11em}}   /* same cap-height nudge as every rotated Latin run in the book */
 .pdf-a{{display:block}}
 .pdf-t,.lang a,.lang .sys{{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif}}   /* the five Latin letters of the corners in the plain system sans */

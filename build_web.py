@@ -181,6 +181,7 @@ a{{color:inherit;text-decoration:none}}
 .f-cover img,.f-pics img{{display:block;width:100%;height:auto}}
 .f-ct{{padding:56px 28px 40px;text-align:center}}
 .f-title{{font-size:30px;font-weight:300;letter-spacing:.38em;line-height:1;display:flex;flex-direction:column;align-items:center;gap:22px}}
+.f-title .x{{line-height:.6}}   /* the mark's own box is small so the gaps around it stay even */
 .axis-h .f-title{{text-transform:uppercase;font-size:26px;letter-spacing:.3em}}
 .axis-h .flow{{font-feature-settings:"pwid"}}   /* proportional Latin punctuation (curly quotes, apostrophes) in the CJK serif */
 .f-title .x{{color:#8a8577;font-size:.9em;letter-spacing:0}}

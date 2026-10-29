@@ -174,6 +174,7 @@ a{{color:inherit;text-decoration:none}}
 .pdf{{position:fixed;right:22px;bottom:22px;color:#6b665c;text-decoration:none;z-index:9;display:none;flex-direction:column;align-items:center;gap:10px}}
 .pdf-t{{writing-mode:vertical-rl;text-orientation:mixed;font-size:12px;letter-spacing:.35em;text-transform:uppercase;margin-bottom:-.35em;position:relative;left:.11em}}   /* same cap-height nudge as every rotated Latin run in the book */
 .pdf-a{{display:block}}
+.pdf-t,.lang a{{font-family:initial}}   /* the five Latin letters of the corners in the browser's default (system) font */
 .lang{{position:fixed;right:22px;top:22px;z-index:9;display:none;flex-direction:column;align-items:center;gap:8px;font-size:12px;letter-spacing:.35em;text-transform:uppercase}}
 .lang .cur{{writing-mode:vertical-rl;text-orientation:upright;color:#2b2925;margin-bottom:-.35em}}
 .lang .sep{{width:12px;height:1px;background:rgba(43,41,37,.3)}}

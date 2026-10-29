@@ -322,11 +322,11 @@ def page(ed, preview=False):
 (WEB / "artifact.html").write_text(page(EDITIONS["zh"], preview=True), encoding="utf8")
 for ed in EDITIONS.values():
     shutil.copy(ed["pdf_src"], WEB / ed["C"]["site"]["pdf_name"])
-# favicon: the seal impression (img/favicon_rgba.png), red on transparent; apple touch icon on paper
-fav = Image.open(ROOT / "img" / "favicon_rgba.png").convert("RGBA")
+# favicon: the seal impression (img/favicon_src.png), its own alpha kept as is
+fav = Image.open(ROOT / "img" / "favicon_src.png").convert("RGBA")
 for n in (32, 192, 512): fav.resize((n, n), Image.LANCZOS).save(WEB / f"favicon-{n}.png")
 fav.resize((48, 48), Image.LANCZOS).save(WEB / "favicon.ico", sizes=[(16, 16), (32, 32), (48, 48)])
-touch = Image.new("RGBA", (180, 180), (243, 239, 230, 255)); icon = fav.resize((140, 140), Image.LANCZOS); touch.alpha_composite(icon, (20, 20)); touch.convert("RGB").save(WEB / "apple-touch-icon.png")
+fav.resize((180, 180), Image.LANCZOS).save(WEB / "apple-touch-icon.png")
 DOMAIN = B.C["site"]["domain"]
 if DOMAIN: (WEB / "CNAME").write_text(DOMAIN + "\n")      # leave site.domain empty to publish at ericqianli.github.io/xuanguang/
 (WEB / ".nojekyll").write_text("")

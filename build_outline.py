@@ -246,10 +246,10 @@ def render(i, p):
         zsub=d["sub"].replace(" · ", " &nbsp;·&nbsp; ")
         zps="\n".join(f'    <p{" style=\"margin-bottom:1.3em\"" if k < len(zb)-1 else ""}>{zh(x)}</p>' for k,x in enumerate(zb))
         return f'''<div class="page">
-  <div class="cjk" style="position:absolute;left:0;right:0;top:294px;text-align:center;font-size:44px;letter-spacing:.42em;padding-left:.42em;font-weight:200">{zh(d["title"])}</div>
-  <div class="lat" style="position:absolute;left:0;right:0;top:380px;text-align:center;font-size:13px;letter-spacing:.35em;color:#7a7568">{zsub}</div>
-  <div class="hair" style="left:799px;top:436px;width:1px;height:60px"></div>
-  <div class="cjk" style="position:absolute;left:390px;right:390px;top:536px;text-align:center;font-size:17px;line-height:2.3;letter-spacing:.06em;color:#4a463f;font-weight:300">
+  <div class="cjk" style="position:absolute;left:0;right:0;top:304px;text-align:center;font-size:44px;letter-spacing:.42em;padding-left:.42em;font-weight:200">{zh(d["title"])}</div>
+  <div class="lat" style="position:absolute;left:0;right:0;top:390px;text-align:center;font-size:13px;letter-spacing:.35em;color:#7a7568">{zsub}</div>
+  <div class="hair" style="left:799px;top:446px;width:1px;height:40px"></div>
+  <div class="cjk" style="position:absolute;left:390px;right:390px;top:526px;text-align:center;font-size:17px;line-height:2.3;letter-spacing:.06em;color:#4a463f;font-weight:300">
 {zps}
   </div>
   {folio_html(folio,"right")}

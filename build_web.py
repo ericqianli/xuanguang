@@ -175,7 +175,7 @@ a{{color:inherit;text-decoration:none}}
 .pdf:hover{{color:#2b2925}}   /* letters and arrow (stroke=currentColor) darken together, like the language link */
 .pdf-t{{writing-mode:vertical-rl;text-orientation:mixed;font-size:12px;letter-spacing:.35em;text-transform:uppercase;margin-bottom:-.35em;position:relative;left:.11em}}   /* same cap-height nudge as every rotated Latin run in the book */
 .pdf-a{{display:block}}
-.pdf-t,.lang a,.lang .sys{{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif}}   /* the five Latin letters of the corners in the plain system sans */
+.pdf-t,.lang .cur,.lang a{{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif}}   /* corner labels (PDF, EN, 中) in the plain system sans */
 .lang{{position:fixed;right:22px;top:22px;z-index:9;display:none;flex-direction:column;align-items:center;gap:8px;font-size:12px;letter-spacing:.35em;text-transform:uppercase}}
 .lang .cur{{writing-mode:vertical-rl;text-orientation:upright;color:#2b2925;margin-bottom:-.35em}}
 .lang .sep{{width:12px;height:1px;background:rgba(43,41,37,.3)}}
@@ -184,9 +184,9 @@ a{{color:inherit;text-decoration:none}}
 .lang a:hover{{color:#2b2925}}
 /* horizontal variants (English site) */
 .axis-h .pdf{{flex-direction:row;gap:9px}}
-.axis-h .pdf-t{{writing-mode:horizontal-tb;margin-bottom:0;margin-right:-.35em;left:0}}
+.axis-h .pdf-t{{writing-mode:horizontal-tb;margin-bottom:0;letter-spacing:.2em;margin-right:-.2em;left:0}}
 .axis-h .lang{{flex-direction:row;gap:8px}}
-.axis-h .lang .cur,.axis-h .lang a{{writing-mode:horizontal-tb;margin-bottom:0;margin-right:-.35em}}
+.axis-h .lang .cur,.axis-h .lang a{{writing-mode:horizontal-tb;margin-bottom:0;letter-spacing:.2em;margin-right:-.2em}}
 .axis-h .lang .cur{{text-orientation:initial}}
 .axis-h .lang .sep{{width:1px;height:12px}}
 .axis-h .lang a .lt{{left:0}}

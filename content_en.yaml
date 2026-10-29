@@ -17,6 +17,9 @@ brand:
     - en: Poetry
       zh: Falling Stars
       text: Stars fall to earth as words; words, refined, return as stars.
+    - en: Calligraphy
+      zh: Calligraphy & Seal Carving
+      text: "Stroke by stroke, square and round at once; nature as the teacher without, the heart as the source within."
     - en: Music
       zh: Taixuan Guqin Society
       text: Eyes follow the returning geese, hands sweep the five strings; at ease, the mind roams the great mystery.
@@ -39,8 +42,8 @@ brand:
 urls:
   "01": isshoikka.com
   "02": haoshou.app
-  "04": starlia.ai/crystal
-  "05": starlia.ai/ring
+  "05": starlia.ai/crystal
+  "06": starlia.ai/ring
 
 pages:
   - title: Isshoikka
@@ -114,13 +117,24 @@ pages:
     align: near            # the player looks left: text sits toward the photo
     width: 620
 
+  - title: Calligraphy & Seal Carving
+    sub: Brush · Knife · Stone
+    tagline: "Stroke by stroke, square and round at once; nature as the teacher without, the heart as the source within."
+    body:
+      - Raised among calligraphy, painting and seal carving at home, Xuan Guang writes in the regular and seal scripts and carves in the spirit of the natural. In the stillness of each stroke, polish and cleverness fall away, until only the purest nature of the heart remains.
+    folio: 04 · Calligraphy
+    image: seal
+    side: L
+    edge: deckle2:77:20
+    inset: 160
+
   - title: Energy Crystals
     valign: 0.333
     sub: Crystal
     tagline: Through the essence of creation, feel the vibration of life.
     body:
       - Crystals are the condensed energy of heaven and earth. They echo the frequencies of the universe and carry a quiet spiritual inspiration. Their purity can also cleanse the soul and support the journey inward. Called by the crystals, Starlia draws on the purest energy points on earth to help kindred spirits find their soulmate.
-    folio: 04 · Energy Crystals
+    folio: 05 · Energy Crystals
     image: crystal_sq
     side: R
     edge: grain:176
@@ -130,7 +144,7 @@ pages:
     tagline: Frontier AI meets traditional wisdom, bringing inner exploration into daily life — so that each of us can be the master of the present moment.
     body:
       - We live amid material abundance and rapid technological progress, yet mental health keeps declining. Lumilab.AI was founded in 2025 to join the latest AI with traditional wisdom — helping people understand their inner system, above all to be aware of and to regulate their emotions, and to build a steadier, more coherent and happier life.
-    folio: 05 · Lumilab
+    folio: 06 · Lumilab
     image: lumilab
     side: L
     edge: fade
@@ -141,7 +155,7 @@ pages:
     tagline: Through making, we reach the source of life.
     body:
       - Xuan Guang also works in ceramics, woodwork and bowl turning, with a particular feel for wabi-sabi design and for building it in the real world — finding, in the act of making, a connection to the source of life.
-    folio: 06 · Design & Making
+    folio: 07 · Design & Making
     image: [attic_render, attic_photo]
     side: R
     edge: bar:10:#4a2b23
@@ -152,7 +166,7 @@ pages:
     body:
       - Objects are witnesses to seas turning into fields. Their makers are gone, yet their spirit and feeling flow on through what they made, still inspiring people a thousand years later. Look closely at what endures through inheritance, and you glimpse the permanence of life.
       - Starlia collects antiques rich in human feeling and warmth — tea ware, flower vessels, porcelain, ironware, censers, scrolls — and from these witnesses of time sows the seed of searching for what is imperishable within.
-    folio: 07 · Objects
+    folio: 08 · Objects
     image: objects
     side: L
     edge: deckle
@@ -163,7 +177,7 @@ pages:
     body:
       - "In 2023, by a turn of fate, Xuan Guang set out on the path of Zen practice. Everything learned before fell into place, and the direction of life became clear: to explore that perfect and complete inner source."
       - "Starlia holds this: the essence of life is transcendent wisdom, and it shows itself in every good quality. When we bring awareness, everything becomes a path toward that beautiful essence. May everyone walk this path of light."
-    folio: 08 · Zen
+    folio: 09 · Zen
 
   - title: Xuan Guang
     sub: Li Qian

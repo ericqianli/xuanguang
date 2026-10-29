@@ -3,7 +3,7 @@
 PAPER = "#f3efe6"
 BAKE = ""            # prefix for baked image files (the English build sets "en_" so the two editions never share a file)
 from PIL import Image as _I
-IMG = {"rose": "img/36.jpg", "oncidium": "img/21.jpg", "poem": "img/poem_right.png", "guqin": "img/guqin.jpg", "lumilab": "img/lumilab_sq.jpg", "crystal_sq": "img/crystal_sq.jpg", "attic_render": "img/attic_render.jpg", "attic_photo": "img/attic_photo.jpg", "objects": "img/objects_sq.jpg", "portrait": "img/portrait.jpg", "cover": "img/cover.jpg", "rose_top10": "img/rose_top10.jpg", "workshop": "img/workshop.jpg"}
+IMG = {"rose": "img/36.jpg", "oncidium": "img/21.jpg", "poem": "img/poem_right.png", "guqin": "img/guqin.jpg", "lumilab": "img/lumilab_sq.jpg", "crystal_sq": "img/crystal_sq.jpg", "attic_render": "img/attic_render.jpg", "attic_photo": "img/attic_photo.jpg", "objects": "img/objects_sq.jpg", "portrait": "img/portrait.jpg", "cover": "img/cover.jpg", "rose_top10": "img/rose_top10.jpg", "workshop": "img/workshop.jpg", "seal": "img/seal.jpg"}
 
 import yaml as _yaml, pathlib as _pl
 C = _yaml.safe_load(open(_pl.Path(__file__).with_name("content.yaml"), encoding="utf8"))
@@ -178,7 +178,6 @@ def img_div(src, side, cls="", extra=""):
     pos = "left" if side == "L" else "right"
     return f'<div class="img fit {cls}" style="{pos}:0;top:0;width:{img_w(src)}px;height:1000px;background-image:url({src});background-position:{pos} center;{extra}"></div>'
 
-URL={"01":"isshoikka.com","02":"haoshou.app","04":"starlia.ai/crystal","05":"starlia.ai/ring"}   # section → site, shown in the folio
 def folio_html(folio, pos):
     if not folio: return ""
     u=URL.get(folio[:2])
@@ -208,7 +207,7 @@ def render(i, p):
   <div class="cjk up" style="position:absolute;right:196px;top:116px;font-size:18px;letter-spacing:.45em;font-weight:300;color:#4a463f">{C["cover"]["subtitle"]}</div>
 </div>'''
     if kind == "brand":
-        cells = "".join(f'<div style="border-right:1px solid rgba(43,41,37,.3);padding-right:16px;margin-left:34px;height:fit-content"><div class="lat small" style="margin-left:12px">{lt(en, lc=False)}</div><div class="cjk side" style="font-size:19px;letter-spacing:.15em;margin-left:10px">{z}</div><div class="cjk body" style="font-size:14px;line-height:2.1">{zh(txt)}</div></div>' for en, z, txt in brand)
+        cells = "".join(f'<div style="border-right:1px solid rgba(43,41,37,.3);padding-right:16px;margin-left:24px;height:fit-content"><div class="lat small" style="margin-left:12px">{lt(en, lc=False)}</div><div class="cjk side" style="font-size:19px;letter-spacing:.15em;margin-left:10px">{z}</div><div class="cjk body" style="font-size:14px;line-height:2.1">{zh(txt)}</div></div>' for en, z, txt in brand)
         return f'''<div class="page">
   <div class="vb" style="right:110px">
     <div class="lat" style="font-size:30px;letter-spacing:.3em;font-weight:300;margin-left:40px">{C["brand"]["title"]}</div>
@@ -291,6 +290,15 @@ def render(i, p):
         photo=f'<div class="img" style="{"left" if side=="L" else "right"}:0;top:0;width:{W}px;height:{H}px;background-image:url({path});background-size:100% 100%"></div>'
     elif edge == "wall":
         photo = img_div(IMG[image], side); page_style = f' style="background:{wall_colour(IMG[image], side)}"'
+    elif edge and edge.startswith("deckle2"):   # torn on BOTH sides, floated in from the page edge by `inset` (书法篆刻)
+        _, sl, sr = (edge.split(":") + ["77", "20"])[:3]
+        W=iw; H=1000
+        src=_I.open(IMG[image]).convert("RGB").resize((W,H),_I.LANCZOS)
+        ml=_edge_mask("deckle", W, "R", int(sl))[...,None]; mr=_edge_mask("deckle", W, "L", int(sr))[...,None]
+        paper=_np.array([243,239,230],_np.float32)
+        out=_np.array(src).astype(_np.float32)*ml*mr+paper*(1-ml*mr)
+        path=f"img/baked_{BAKE}{n}.png"; _I.fromarray(out.clip(0,255).astype(_np.uint8)).save(path)
+        photo=f'<div class="img" style="{"left" if side=="L" else "right"}:{inset}px;top:0;width:{W}px;height:{H}px;background-image:url({path});background-size:100% 100%"></div>'
     elif edge and edge.startswith("wall+"):
         kind = edge.split("+",1)[1]
         wc = wall_colour(IMG[image], side); page_style = f' style="background:{wc}"'

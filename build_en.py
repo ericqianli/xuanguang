@@ -45,7 +45,7 @@ def photo_prefix(i, d):
     pre = html[:cut]
     side = d.get("side") or ("L" if (i + 1) % 2 == 1 else "R")
     iw = B.img_w(B.IMG[d["image"]]) if not isinstance(d["image"], list) else int(re.search(r'width:(\d+)px;height:1000px;background-image:url\(img/baked_en_stack', pre).group(1))
-    return pre, side, iw
+    return pre, side, iw + int(d.get("inset", 0))      # an inset photo takes its gap with it
 
 def page_html(i, d):
     kind = d.get("kind", "img")
@@ -115,7 +115,7 @@ def brand():
   <div style="position:absolute;left:110px;top:118px;right:110px">
     <div class="lat" style="font-size:30px;letter-spacing:.3em;font-weight:300">{k["title"]}</div>
     <div class="cjk" style="font-size:19px;line-height:1.75;font-weight:400;margin-top:28px;max-width:680px">{"<br>".join(k["statement"])}</div>
-    <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:64px 40px;margin-top:110px">{cells}</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:56px 56px;margin-top:96px">{cells}</div>
   </div>
   <div class="lat hfolio" style="right:110px">{k["title"]}</div>
 </div>'''

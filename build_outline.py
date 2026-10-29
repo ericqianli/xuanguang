@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """Generate P_outline.html from a simple page list (one source → PDF + web later)."""
 PAPER = "#f3efe6"
+BAKE = ""            # prefix for baked image files (the English build sets "en_" so the two editions never share a file)
 from PIL import Image as _I
 IMG = {"rose": "img/36.jpg", "oncidium": "img/21.jpg", "poem": "img/poem_right.png", "guqin": "img/guqin.jpg", "lumilab": "img/lumilab_sq.jpg", "crystal_sq": "img/crystal_sq.jpg", "attic_render": "img/attic_render.jpg", "attic_photo": "img/attic_photo.jpg", "objects": "img/objects_sq.jpg", "portrait": "img/portrait.jpg", "cover": "img/cover.jpg", "rose_top10": "img/rose_top10.jpg", "workshop": "img/workshop.jpg"}
 
@@ -169,7 +170,7 @@ def stack_div(srcs, side, blend=80, n=0, edge=None):
         kind, _, bandstr = edge.partition(":"); band = int(bandstr) if bandstr else 260
         m=_edge_mask(kind, W, side, 11+n, band)[..., None]
         canvas=canvas*m+_np.array([243,239,230],_np.float32)*(1-m)
-    path=f"img/baked_stack_{n}.png"
+    path=f"img/baked_{BAKE}stack_{n}.png"
     _I.fromarray(canvas.clip(0,255).astype(_np.uint8)).save(path)
     return f'<div class="img" style="{pos}:0;top:0;width:{W}px;height:{H}px;background-image:url({path});background-size:100% 100%"></div>', W
 
@@ -286,7 +287,7 @@ def render(i, p):
             else: m[:, W-inset:]=0
         paper=_np.array([243,239,230],_np.float32)
         out=_np.array(src).astype(_np.float32)*m[...,None]+paper*(1-m[...,None])
-        path=f"img/baked_{n}.png"; _I.fromarray(out.clip(0,255).astype(_np.uint8)).save(path)
+        path=f"img/baked_{BAKE}{n}.png"; _I.fromarray(out.clip(0,255).astype(_np.uint8)).save(path)
         photo=f'<div class="img" style="{"left" if side=="L" else "right"}:0;top:0;width:{W}px;height:{H}px;background-image:url({path});background-size:100% 100%"></div>'
     elif edge == "wall":
         photo = img_div(IMG[image], side); page_style = f' style="background:{wall_colour(IMG[image], side)}"'
@@ -298,7 +299,7 @@ def render(i, p):
         m=_edge_mask(kind, W, side, 11+n)
         paper=_np.array([int(wc[1:3],16),int(wc[3:5],16),int(wc[5:7],16)],_np.float32)
         out=_np.array(src).astype(_np.float32)*m[...,None]+paper*(1-m[...,None])
-        path=f"img/baked_{n}.png"; _I.fromarray(out.clip(0,255).astype(_np.uint8)).save(path)
+        path=f"img/baked_{BAKE}{n}.png"; _I.fromarray(out.clip(0,255).astype(_np.uint8)).save(path)
         photo=f'<div class="img" style="{"left" if side=="L" else "right"}:0;top:0;width:{W}px;height:{H}px;background-image:url({path});background-size:100% 100%"></div>'
     else:
         photo = img_div(IMG[image], side)

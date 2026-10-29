@@ -174,7 +174,7 @@ a{{color:inherit;text-decoration:none}}
 .pdf{{position:fixed;right:22px;bottom:22px;color:#6b665c;text-decoration:none;z-index:9;display:none;flex-direction:column;align-items:center;gap:10px}}
 .pdf-t{{writing-mode:vertical-rl;text-orientation:mixed;font-size:12px;letter-spacing:.35em;text-transform:uppercase;margin-bottom:-.35em;position:relative;left:.11em}}   /* same cap-height nudge as every rotated Latin run in the book */
 .pdf-a{{display:block}}
-.pdf-t,.lang a{{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif}}   /* the five Latin letters of the corners in the plain system sans */
+.pdf-t,.lang a,.lang .sys{{font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,sans-serif}}   /* the five Latin letters of the corners in the plain system sans */
 .lang{{position:fixed;right:22px;top:22px;z-index:9;display:none;flex-direction:column;align-items:center;gap:8px;font-size:12px;letter-spacing:.35em;text-transform:uppercase}}
 .lang .cur{{writing-mode:vertical-rl;text-orientation:upright;color:#2b2925;margin-bottom:-.35em}}
 .lang .sep{{width:12px;height:1px;background:rgba(43,41,37,.3)}}
@@ -251,7 +251,7 @@ def corners(ed, preview=False):
     C = ed["C"]; PDF_NAME = C["site"]["pdf_name"]; oth, ohref = ed["other"]
     pdf_attr = ' target="_blank" rel="noopener"' if preview else " download"
     oth_html = f'<span class="lt">{oth}</span>' if oth.isascii() else oth
-    return (f'<div class="lang cjk"><span class="cur{"" if ed["cur"].isascii() else ""}">{ed["cur"]}</span><span class="sep"></span><a class="lat" href="{ohref}">{oth_html}</a></div>\n'
+    return (f'<div class="lang cjk"><span class="cur{" sys" if ed["cur"].isascii() else ""}">{ed["cur"]}</span><span class="sep"></span><a class="lat" href="{ohref}">{oth_html}</a></div>\n'
             f'<a class="pdf lat" href="{ed["prefix"]}{PDF_NAME}"{pdf_attr}><span class="pdf-t">PDF</span><svg class="pdf-a" viewBox="0 0 10 14" width="8" height="11" aria-hidden="true"><path d="M5 0.5v12M1 9l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1"/></svg></a>')
 
 def page(ed, preview=False):

@@ -131,7 +131,7 @@ CSS = """
 .vb .sub{font-size:12px;letter-spacing:.35em;text-transform:uppercase;color:#6b665c;margin-left:44px}
 .vb .tag{font-size:17px;letter-spacing:.14em;font-weight:400;line-height:1.9;text-orientation:mixed;margin-left:36px}
 .vb .rule{width:1px;height:48px;background:#2b2925;opacity:.35;margin-left:36px}
-.vb .body{font-size:16px;line-height:2.1;letter-spacing:.07em;color:#4a463f;font-weight:300;text-orientation:mixed}
+.vb .body{font-size:16px;line-height:2.3;letter-spacing:.08em;color:#4a463f;font-weight:300;text-orientation:mixed}
 .vb .body p{margin-left:1.1em}
 .vb .body p.quote{margin-right:2.4em}
 .vb .body a{color:inherit;text-decoration:none;border-right:1px solid rgba(43,41,37,.35);padding-right:1px}

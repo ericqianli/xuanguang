@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en" class="axis-h">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Xuan Guang × Starlia</title>
+<meta name="description" content="Xuan Guang × Starlia — Return to our perfect nature.">
+<link rel="icon" href="../favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="../favicon-192.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="alternate" hreflang="zh-Hans" href="../">
+<style>
+@font-face{font-family:"Noto Serif CJK SC";font-weight:200;font-display:swap;src:url(../fonts/NotoSerifSC-200.woff2) format("woff2")}
+@font-face{font-family:"Noto Serif CJK SC";font-weight:300;font-display:swap;src:url(../fonts/NotoSerifSC-300.woff2) format("woff2")}
+@font-face{font-family:"Noto Serif CJK SC";font-weight:400;font-display:swap;src:url(../fonts/NotoSerifSC-400.woff2) format("woff2")}
+*{box-sizing:border-box;margin:0;padding:0}
+
+.page{width:1600px;height:1000px;position:relative;overflow:hidden;margin:0 0 40px 0}
+.cjk{font-family:"Noto Serif CJK SC","Noto Serif CJK JP",serif}
+.lat{font-family:"Noto Serif CJK SC","Noto Serif CJK JP",serif;text-transform:uppercase}
+.sans{font-family:"Inter","Inter Display",sans-serif}
+.v{writing-mode:vertical-rl;text-orientation:upright}
+.img{position:absolute;background-size:cover;background-position:center;background-repeat:no-repeat}
+
+
+.page{background:#f3efe6;color:#2b2925}
+.hair{position:absolute;background:#2b2925;opacity:.35}
+.fit{background-size:auto 100%}
+.up{writing-mode:vertical-rl;text-orientation:upright}
+.side{writing-mode:vertical-rl;text-orientation:mixed}
+.small{font-size:12px;letter-spacing:.35em;text-transform:uppercase;color:#6b665c}
+.vb{position:absolute;top:110px;height:780px;writing-mode:vertical-rl;text-orientation:mixed}
+.vb>*{display:block}
+.vb .h{font-size:30px;letter-spacing:.3em;font-weight:300;text-orientation:mixed;margin-left:16px}
+.vb .sub{font-size:12px;letter-spacing:.35em;text-transform:uppercase;color:#6b665c;margin-left:44px}
+.vb .tag{font-size:17px;letter-spacing:.14em;font-weight:400;line-height:1.9;text-orientation:mixed;margin-left:36px}
+.vb .rule{width:1px;height:48px;background:#2b2925;opacity:.35;margin-left:36px}
+.vb .body{font-size:15px;line-height:2.3;letter-spacing:.08em;color:#4a463f;font-weight:300;text-orientation:mixed}
+.vb .body p{margin-left:1.1em}
+.vb .body p.quote{margin-right:2.4em}
+.vb .body a{color:inherit;text-decoration:none;border-right:1px solid rgba(43,41,37,.35);padding-right:1px}
+.fade-r{-webkit-mask-image:linear-gradient(90deg,#000 0%,#000 55%,rgba(0,0,0,0) 100%);mask-image:linear-gradient(90deg,#000 0%,#000 55%,rgba(0,0,0,0) 100%)}
+.fade-l{-webkit-mask-image:linear-gradient(270deg,#000 0%,#000 55%,rgba(0,0,0,0) 100%);mask-image:linear-gradient(270deg,#000 0%,#000 55%,rgba(0,0,0,0) 100%)}
+.lt{position:relative;left:.11em}.lt.lc{left:.2em}
+.folio{position:absolute;bottom:62px;writing-mode:vertical-rl;text-orientation:mixed;font-size:12px;letter-spacing:.35em;color:#6b665c;text-transform:uppercase}
+.ph{position:absolute;bottom:62px;font-size:11px;letter-spacing:.3em;color:#b0a894}
+
+
+.page{font-feature-settings:"pwid"}   /* proportional Latin punctuation in the CJK serif (curly quotes etc.) */
+.hb{position:absolute}
+.hb .h{font-size:34px;font-weight:300;letter-spacing:.03em;line-height:1.25;color:#2b2925}
+.hb .sub{font-size:12px;letter-spacing:.32em;text-transform:uppercase;color:#6b665c;margin-top:18px}
+.hb .tag{font-size:19px;font-weight:400;line-height:1.7;margin-top:38px;color:#2b2925}
+.hb .rule{width:48px;height:1px;background:#2b2925;opacity:.35;margin:34px 0}
+.hb .body{font-size:16px;line-height:1.9;color:#403c36;font-weight:300}
+.hb .body p{margin:0 0 1.1em}
+.hb .body p.quote{margin-top:1.7em;padding-left:18px;border-left:1px solid rgba(43,41,37,.25)}
+.hb .body .lab{font-weight:400;color:#2b2925}
+.hb .body a{color:inherit;text-decoration:none;border-bottom:1px solid rgba(43,41,37,.4);padding-bottom:1px}
+.hfolio{position:absolute;bottom:62px;font-size:12px;letter-spacing:.3em;text-transform:uppercase;color:#6b665c;white-space:nowrap}
+.hfolio a{color:inherit;text-decoration:none;text-transform:none;letter-spacing:.18em}
+
+
+html{background:#f3efe6;color:#2b2925;-webkit-text-size-adjust:100%}
+body{background:#f3efe6;margin:0}
+a{color:inherit;text-decoration:none}
+/* ---- book ---- */
+.book{display:none}
+.sheet{width:calc(1600px*var(--s));height:calc(1000px*var(--s));margin:0 auto;position:relative;overflow:hidden;scroll-snap-align:start}
+.sheet .page{transform:scale(var(--s));transform-origin:0 0;margin:0}
+/* ---- corner labels (language toggle top-right, PDF bottom-right): drawn as SVG by the script below ---- */
+.corner{position:fixed;right:22px;z-index:9;display:none;color:#6b665c;font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif}
+.corner.top{top:22px} .corner.bottom{bottom:22px}
+.corner a{color:#6b665c;transition:color .2s} .corner a:hover{color:#2b2925}
+.corner .cur{color:#2b2925}
+/* ---- flow ---- */
+.flow{display:block;max-width:640px;margin:0 auto}
+.flow .lt{position:static;left:0}   /* the vertical-text nudge must not apply to horizontal text */
+.f-cover img,.f-pics img{display:block;width:100%;height:auto}
+.f-ct{padding:56px 28px 40px;text-align:center}
+.f-title{font-size:30px;font-weight:300;letter-spacing:.38em;line-height:1;display:flex;flex-direction:column;align-items:center;gap:22px}
+.f-title .x{line-height:.6}   /* the mark's own box is small so the gaps around it stay even */
+.axis-h .f-title{text-transform:uppercase;font-size:26px;letter-spacing:.3em}
+.axis-h .flow{font-feature-settings:"pwid"}   /* proportional Latin punctuation (curly quotes, apostrophes) in the CJK serif */
+.f-title .x{color:#8a8577;font-size:.9em;letter-spacing:0}
+.f-subtitle{font-size:14px;letter-spacing:.45em;font-weight:300;color:#4a463f;margin-top:22px;padding-left:.45em}
+.axis-h .f-subtitle{font-size:12px;letter-spacing:.3em;text-transform:uppercase;padding-left:.3em}
+.f-sec{padding:0 0 64px}
+.f-text{padding:40px 28px 0}
+.f-h{font-size:26px;letter-spacing:.3em;font-weight:300;line-height:1.4}
+.axis-h .f-h{letter-spacing:.03em;line-height:1.3}
+.f-small{font-size:11px;letter-spacing:.35em;text-transform:uppercase;color:#6b665c;margin-top:10px}
+.f-tag{font-size:17px;letter-spacing:.12em;font-weight:400;line-height:1.9;margin-top:30px}
+.axis-h .f-tag{letter-spacing:0;line-height:1.7}
+.f-rule{width:40px;height:1px;background:#2b2925;opacity:.35;margin:30px 0}
+.f-body{font-size:15px;line-height:2.2;letter-spacing:.06em;color:#4a463f;font-weight:300}
+.axis-h .f-body{font-size:16px;line-height:1.85;letter-spacing:0;color:#403c36}
+.f-body p{margin:0 0 1.2em}
+.f-body p.f-quote{margin-top:1.8em}
+.axis-h .f-body p.f-quote{padding-left:16px;border-left:1px solid rgba(43,41,37,.25)}
+.f-label{font-weight:400;color:#2b2925}
+.f-body a{text-decoration:none;border-bottom:1px solid rgba(43,41,37,.45);padding-bottom:2px}
+.f-url{font-size:11px;letter-spacing:.3em;color:#6b665c;margin-top:8px}
+.f-url a{text-decoration:none;text-transform:none;letter-spacing:.2em}
+.f-brand{padding:72px 28px 40px}
+.f-cells{margin-top:12px}
+.f-cell{border-left:1px solid rgba(43,41,37,.3);padding-left:18px;margin:34px 0}
+.f-cellh{font-size:19px;letter-spacing:.15em;margin:6px 0 8px}
+.axis-h .f-cellh{letter-spacing:.02em}
+.f-sanmi{padding:80px 28px}
+.f-line{font-size:19px;letter-spacing:.2em;font-weight:300;line-height:1.9;text-align:center;margin-bottom:22px}
+.axis-h .f-line{letter-spacing:.02em;line-height:1.6}
+.f-strong{font-size:21px;font-weight:400}
+.f-zen{padding:80px 28px}
+.f-contact{padding:96px 28px 80px;text-align:center}
+.f-logo{width:150px;display:block;margin:0 auto}
+.f-ccol{margin:28px 0}
+.f-cval{font-size:15px;line-height:2;letter-spacing:.1em;color:#4a463f;font-weight:300;margin-top:4px}
+.f-cval a{text-decoration:none}
+.f-end{font-size:12px;letter-spacing:.5em;color:#8a8577;font-weight:300;margin-top:64px}
+.axis-h .f-end{letter-spacing:.3em;text-transform:uppercase;font-size:11px}
+@media (min-width:900px) and (min-height:560px){
+  html{scroll-snap-type:y proximity}
+  .book{display:block} .corner{display:block} .flow{display:none}
+}
+
+</style>
+</head>
+<body>
+<div class="book">
+<div class="sheet"><div class="page">
+  <div class="img fit" style="left:160px;top:0;width:667px;height:1000px;background-image:url(../img/cover.jpg);background-position:left center"></div>
+  <div class="cjk" style="position:absolute;right:110px;top:112px;text-align:right;color:#2b2925">
+    <div style="font-size:40px;font-weight:300;letter-spacing:.28em;line-height:1;text-transform:uppercase;margin-right:-.28em">Xuan Guang</div>
+    <div style="font-size:26px;color:#8a8577;margin:22px 0;line-height:1">×</div>
+    <div style="font-size:40px;font-weight:300;letter-spacing:.3em;line-height:1;margin-right:-.3em">STARLIA</div>
+    <div style="font-size:13px;letter-spacing:.3em;font-weight:300;color:#4a463f;margin-top:40px;text-transform:uppercase;margin-right:-.3em">Return to our perfect nature</div>
+  </div>
+</div></div>
+<div class="sheet"><div class="page">
+  <div style="position:absolute;left:110px;top:118px;right:110px">
+    <div class="lat" style="font-size:30px;letter-spacing:.3em;font-weight:300">Starlia</div>
+    <div class="cjk" style="font-size:19px;line-height:1.75;font-weight:400;margin-top:28px;max-width:680px">Starlia believes our inner nature is already perfect.<br>With awareness, many paths lead to a complete life.</div>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:56px 56px;margin-top:96px"><div style="border-left:1px solid rgba(43,41,37,.3);padding-left:20px">
+      <div class="lat" style="font-size:11px;letter-spacing:.32em;color:#6b665c">Ikebana</div>
+      <div class="cjk" style="font-size:21px;letter-spacing:.02em;margin:8px 0 10px;color:#2b2925">Isshoikka</div>
+      <div class="cjk" style="font-size:15px;line-height:1.8;color:#403c36;font-weight:300">Zen and flower, one taste: in the nature of a flower, we meet the nature of life.</div></div><div style="border-left:1px solid rgba(43,41,37,.3);padding-left:20px">
+      <div class="lat" style="font-size:11px;letter-spacing:.32em;color:#6b665c">Poetry</div>
+      <div class="cjk" style="font-size:21px;letter-spacing:.02em;margin:8px 0 10px;color:#2b2925">Falling Stars</div>
+      <div class="cjk" style="font-size:15px;line-height:1.8;color:#403c36;font-weight:300">Stars fall to earth as words; words, refined, return as stars.</div></div><div style="border-left:1px solid rgba(43,41,37,.3);padding-left:20px">
+      <div class="lat" style="font-size:11px;letter-spacing:.32em;color:#6b665c">Calligraphy</div>
+      <div class="cjk" style="font-size:21px;letter-spacing:.02em;margin:8px 0 10px;color:#2b2925">Calligraphy & Seal Carving</div>
+      <div class="cjk" style="font-size:15px;line-height:1.8;color:#403c36;font-weight:300">Stroke by stroke, square or round; nature as the teacher without, the mind as the source within.</div></div><div style="border-left:1px solid rgba(43,41,37,.3);padding-left:20px">
+      <div class="lat" style="font-size:11px;letter-spacing:.32em;color:#6b665c">Music</div>
+      <div class="cjk" style="font-size:21px;letter-spacing:.02em;margin:8px 0 10px;color:#2b2925">Taixuan Guqin Society</div>
+      <div class="cjk" style="font-size:15px;line-height:1.8;color:#403c36;font-weight:300">Eyes follow the returning geese, hands sweep the five strings; at ease, the mind roams the great mystery.</div></div><div style="border-left:1px solid rgba(43,41,37,.3);padding-left:20px">
+      <div class="lat" style="font-size:11px;letter-spacing:.32em;color:#6b665c">Creation</div>
+      <div class="cjk" style="font-size:21px;letter-spacing:.02em;margin:8px 0 10px;color:#2b2925">Design & Creation</div>
+      <div class="cjk" style="font-size:15px;line-height:1.8;color:#403c36;font-weight:300">Ceramics, woodwork, design, building: through creation, we reach the source of life.</div></div><div style="border-left:1px solid rgba(43,41,37,.3);padding-left:20px">
+      <div class="lat" style="font-size:11px;letter-spacing:.32em;color:#6b665c">Technology</div>
+      <div class="cjk" style="font-size:21px;letter-spacing:.02em;margin:8px 0 10px;color:#2b2925">Lumilab.AI</div>
+      <div class="cjk" style="font-size:15px;line-height:1.8;color:#403c36;font-weight:300">Frontier AI meets traditional wisdom, bringing inner exploration into daily life.</div></div><div style="border-left:1px solid rgba(43,41,37,.3);padding-left:20px">
+      <div class="lat" style="font-size:11px;letter-spacing:.32em;color:#6b665c">Crystal</div>
+      <div class="cjk" style="font-size:21px;letter-spacing:.02em;margin:8px 0 10px;color:#2b2925">Energy Crystals</div>
+      <div class="cjk" style="font-size:15px;line-height:1.8;color:#403c36;font-weight:300">Through the essence of creation, feel the vibration of life.</div></div><div style="border-left:1px solid rgba(43,41,37,.3);padding-left:20px">
+      <div class="lat" style="font-size:11px;letter-spacing:.32em;color:#6b665c">Objects</div>
+      <div class="cjk" style="font-size:21px;letter-spacing:.02em;margin:8px 0 10px;color:#2b2925">Collected Objects</div>
+      <div class="cjk" style="font-size:15px;line-height:1.8;color:#403c36;font-weight:300">Beautiful souls outlast time, bearing witness across a thousand years to the permanence of life.</div></div><div style="border-left:1px solid rgba(43,41,37,.3);padding-left:20px">
+      <div class="lat" style="font-size:11px;letter-spacing:.32em;color:#6b665c">Zen</div>
+      <div class="cjk" style="font-size:21px;letter-spacing:.02em;margin:8px 0 10px;color:#2b2925">Zen Practice</div>
+      <div class="cjk" style="font-size:15px;line-height:1.8;color:#403c36;font-weight:300">The essence of life is transcendent wisdom.</div></div></div>
+  </div>
+  <div class="lat hfolio" style="right:110px">Starlia</div>
+</div></div>
+<div class="sheet"><div class="page"><div class="img fit " style="left:0;top:0;width:796px;height:1000px;background-image:url(../img/21.jpg);background-position:left center;"></div><div class="hb" style="left:906px;width:480px;top:0;height:1000px;display:flex;flex-direction:column;justify-content:flex-start;padding-top:118px"><div><a href="https://isshoikka.com" style="color:inherit;text-decoration:none;display:block"><div class="cjk h">Isshoikka</div><div class="lat sub">Ikebana · One Life, One Flower</div></a><div class="cjk tag">Zen and flower, one taste: in the nature of a flower, we meet the nature of life.</div><div class="rule"></div><div class="cjk body"><p>Isshoikka began in 2015 to bring Zen into the practice of ikebana — the flower as a mirror in which we see ourselves. It now has <a href="https://www.facebook.com/isshoikka">260K followers</a>, and its workshops in Silicon Valley are warmly received.</p><p>Its founder, Xuan Guang, has practiced ikebana for more than a decade, studying and exhibiting many times at the Ikenobo headquarters in Kyoto, and holds the Ikenobo teaching license. Zen practice flows into every arrangement, opening a deep and quiet joy of being one with nature. Carried into daily life, this same “Zen and flower, one taste” becomes more ease, more coherence, more naturalness.</p></div></div></div><div class="lat hfolio" style="right:110px">01 · Isshoikka · <a href="https://isshoikka.com">isshoikka.com</a></div></div></div>
+<div class="sheet"><div class="page"><div class="img fit " style="right:0;top:0;width:750px;height:1000px;background-image:url(../img/workshop.jpg);background-position:right center;"></div><div class="hb" style="left:185px;width:480px;top:0;height:1000px;display:flex;flex-direction:column;justify-content:flex-start;padding-top:118px"><div><a href="https://isshoikka.com" style="color:inherit;text-decoration:none;display:block"><div class="cjk h">Silence</div><div class="lat sub">Workshop · Isshoikka</div></a><div class="cjk tag">No phones. No talking.<br>No assumptions. No judgement.</div><div class="rule"></div><div class="cjk body"><p>Pick up the flower. Look. Cut. Place. Every moment is awareness; every stillness, a quiet joy.</p><p class="quote">“In a space so quiet and so fluid, I felt the beauty of plants as they are. With every cut of a branch or leaf, I was feeling the plant itself. Arranging the material to follow the form of ikebana became a journey inward, asking what is natural and what is beautiful.” — Student C.</p></div></div></div><div class="lat hfolio" style="left:110px">01 · Isshoikka · <a href="https://isshoikka.com">isshoikka.com</a></div></div></div>
+<div class="sheet"><div class="page" style="background:#d8d1b3"><div class="img" style="left:0;top:0;width:796px;height:1000px;background-image:url(../img/baked_en_5.jpg);background-size:100% 100%"></div><div class="hb" style="left:918px;width:560px;top:0;height:1000px;display:flex;flex-direction:column;justify-content:center"><div><a href="https://isshoikka.com" style="color:inherit;text-decoration:none;display:block"><div class="cjk h">One Stem, the Whole World</div><div class="lat sub">Ikebana · Three Ways of Seeing</div></a><div class="rule"></div><div class="cjk body"><p><span class="lab">Impermanence · </span>“Standing before the wind that scatters blossoms and strips the leaves, one may receive the seed of awakening.”</p><p><span class="lab">Nature · </span>“Let yourself listen to the silent, hidden order of nature.”</p><p><span class="lab">Oneness · </span>“The natural form is the root of expression; within it lies the ideal image of what we perceive.”</p><p class="quote">“Observing and trimming with full attention, I found that a single material could show such different character. Along the way it opened many reflections on philosophy and on life.” — Student K.</p></div></div></div><div class="lat hfolio" style="right:110px">01 · Isshoikka · <a href="https://isshoikka.com">isshoikka.com</a></div></div></div>
+<div class="sheet"><div class="page">
+  <div class="cjk" style="position:absolute;left:0;right:0;top:330px;text-align:center;color:#2b2925"><div style="font-size:27px;font-weight:300;line-height:1.7;letter-spacing:.02em">Worldly ikebana seeks the pleasure of the senses;</div><div style="font-size:27px;font-weight:300;line-height:1.7;letter-spacing:.02em">transcendent ikebana seeks the resonance of feeling;</div><div style="font-size:27px;font-weight:300;line-height:1.7;letter-spacing:.02em">ultimate ikebana is the oneness of human and nature.</div>
+    <div style="width:48px;height:1px;background:#2b2925;opacity:.35;margin:40px auto"></div>
+    <div style="font-size:33px;font-weight:300;letter-spacing:.03em">The nature of the flower is our own nature.</div>
+  </div>
+  <div class="lat hfolio" style="right:110px">01 · Isshoikka · <a href="https://isshoikka.com">isshoikka.com</a></div>
+</div></div>
+<div class="sheet"><div class="page"><div class="img fit " style="left:0;top:0;width:727px;height:1000px;background-image:url(../img/poem_right.jpg);background-position:left center;"></div><div class="hb" style="left:863px;width:540px;top:0;height:1000px;display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:118px"><div><a href="https://haoshou.app" style="color:inherit;text-decoration:none;display:block"><div class="cjk h">Falling Stars</div><div class="lat sub">Poetry · Jiuge Poetry Society</div></a><div class="cjk tag">Stars fall to earth as words; words, refined, return as stars.</div><div class="rule"></div><div class="cjk body"><p>For more than twenty years Xuan Guang has written poetry whenever feeling arose — the turning seasons, seas becoming fields, mountains and rivers, grasses and flowers, sun, moon and stars. Not polished for its own sake, but written as the heart goes, in conversation with heaven and earth, often reaching beyond the dust of the world. Recent poems carry Zen into verse, tracing back to the source.</p><p>Over a thousand poems, collected in <a href="https://haoshou.app">Falling Stars</a>.</p><p>In 2022, co-founded the Jiuge Poetry Society at Google — gatherings online and in person, introductions to classical poetry, and the sharing of new work — reaching thousands of people.</p></div></div></div><div class="lat hfolio" style="right:110px">02 · Falling Stars · <a href="https://haoshou.app">haoshou.app</a></div></div></div>
+<div class="sheet"><div class="page"><div class="img" style="right:0;top:0;width:678px;height:1000px;background-image:url(../img/baked_en_8.jpg);background-size:100% 100%"></div><div class="hb" style="left:192px;width:620px;top:0;height:1000px;display:flex;flex-direction:column;justify-content:flex-start;padding-top:118px"><div><div class="cjk h">Taixuan Guqin Society</div><div class="lat sub">Music · Guqin</div><div class="cjk tag">Eyes follow the returning geese, hands sweep the five strings; at ease, the mind roams the great mystery.</div><div class="rule"></div><div class="cjk body"><p>The Taixuan Guqin Society began in 2022, to find in the sound of the qin the unity of heaven and humankind. We prize the plain over the ornate — music that is natural and unforced. In playing, we watch the movement of feeling within, and become one with nature.</p><p>Xuan Guang is especially devoted to reviving pieces from ancient tablature, and also plays the xiao and the piano. The society has performed widely at cultural gatherings across Silicon Valley and is invited each year by the City of Mountain View for its Lunar New Year celebration. It now has more than a hundred members.</p></div></div></div><div class="lat hfolio" style="left:110px">03 · Taixuan Guqin</div></div></div>
+<div class="sheet"><div class="page"><div class="img" style="left:160px;top:0;width:721px;height:1000px;background-image:url(../img/baked_en_9.jpg);background-size:100% 100%"></div><div class="hb" style="left:1000px;width:480px;top:0;height:1000px;display:flex;flex-direction:column;"><div style="flex:0.667"></div><div><div class="cjk h">Calligraphy & Seal Carving</div><div class="lat sub">Brush · Paper · Knife · Stone</div><div class="cjk tag">Stroke by stroke, square or round; nature as the teacher without, the mind as the source within.</div><div class="rule"></div><div class="cjk body"><p>Calligraphy is the meeting of paper and ink; seal carving, the clash of metal and stone. Between one stroke and the next, mind and nature become one.</p><p>Raised among calligraphy, painting and seal carving at home, Xuan Guang writes in the regular and seal scripts and carves in the spirit of the natural. In the stillness of each stroke, polish and cleverness fall away, until only the purest nature of the mind remains.</p></div></div><div style="flex:0.33299999999999996"></div></div><div class="lat hfolio" style="right:110px">04 · Calligraphy</div></div></div>
+<div class="sheet"><div class="page"><div style="position:absolute;top:0;height:1000px;right:935px;width:11px;background:#4a2b23"></div><div class="img" style="right:0;top:0;width:936px;height:1000px;background-image:url(../img/baked_en_stack_10.jpg);background-size:100% 100%"></div><div class="hb" style="left:110px;width:434px;top:0;height:1000px;display:flex;flex-direction:column;"><div style="flex:0.333"></div><div><div class="cjk h">Design & Creation</div><div class="lat sub">Ceramics · Woodwork · Design · Building</div><div class="cjk tag">Through creation, we reach the source of life.</div><div class="rule"></div><div class="cjk body"><p>Xuan Guang also works in ceramics, origami, woodwork and bowl turning, with a particular feel for wabi-sabi design and for building it in the real world — finding, in the act of creating, a connection to the source of life.</p></div></div><div style="flex:0.667"></div></div><div class="lat hfolio" style="left:110px">05 · Design & Creation</div></div></div>
+<div class="sheet"><div class="page"><div class="img" style="left:0;top:0;width:1000px;height:1000px;background-image:url(../img/baked_en_11.jpg);background-size:100% 100%"></div><div class="hb" style="left:1110px;width:380px;top:0;height:1000px;display:flex;flex-direction:column;justify-content:flex-start;padding-top:118px"><div><a href="https://starlia.ai/ring" style="color:inherit;text-decoration:none;display:block"><div class="cjk h">Lumilab.AI</div><div class="lat sub">Technology</div></a><div class="cjk tag">Frontier AI meets traditional wisdom, bringing inner exploration into daily life — so that each of us can be the master of the present moment.</div><div class="rule"></div><div class="cjk body"><p>We live amid material abundance and rapid technological progress, yet mental health keeps declining. Lumilab.AI was founded in 2025 to join the latest AI with traditional wisdom — helping people understand their inner system, above all to be aware of and to regulate their emotions, and to build a steadier, more coherent and happier life.</p></div></div></div><div class="lat hfolio" style="right:110px">06 · Lumilab · <a href="https://starlia.ai/ring">starlia.ai/ring</a></div></div></div>
+<div class="sheet"><div class="page"><div class="img" style="right:0;top:0;width:1000px;height:1000px;background-image:url(../img/baked_en_12.jpg);background-size:100% 100%"></div><div class="hb" style="left:110px;width:380px;top:0;height:1000px;display:flex;flex-direction:column;"><div style="flex:0.333"></div><div><a href="https://starlia.ai/crystal" style="color:inherit;text-decoration:none;display:block"><div class="cjk h">Energy Crystals</div><div class="lat sub">Crystal</div></a><div class="cjk tag">Through the essence of creation, feel the vibration of life.</div><div class="rule"></div><div class="cjk body"><p>Crystals are the condensed energy of heaven and earth. They echo the frequencies of the universe and carry a quiet spiritual inspiration. Their purity can also cleanse the soul and support the journey inward. Called by the crystals, Starlia draws on the purest energy points on earth to help kindred spirits find their soulmate.</p></div></div><div style="flex:0.667"></div></div><div class="lat hfolio" style="left:110px">07 · Energy Crystals · <a href="https://starlia.ai/crystal">starlia.ai/crystal</a></div></div></div>
+<div class="sheet"><div class="page"><div class="img" style="left:0;top:0;width:1000px;height:1000px;background-image:url(../img/baked_en_13.jpg);background-size:100% 100%"></div><div class="hb" style="left:1110px;width:380px;top:0;height:1000px;display:flex;flex-direction:column;justify-content:flex-start;padding-top:118px"><div><div class="cjk h">Collected Objects</div><div class="lat sub">Antiques · Tea Ware · Vessels · Censers · Scrolls</div><div class="cjk tag">Beautiful souls outlast time; across a thousand years they bear witness to the permanence of life.</div><div class="rule"></div><div class="cjk body"><p>Objects are witnesses to seas turning into fields. Their makers are gone, yet their spirit and feeling flow on through what they made, still inspiring people a thousand years later. Look closely at what endures through inheritance, and you glimpse the permanence of life.</p><p>Starlia collects antiques rich in human feeling and warmth — tea ware, flower vessels, porcelain, ironware, censers, scrolls — and from these witnesses of time sows the seed of searching for what is imperishable within.</p></div></div></div><div class="lat hfolio" style="right:110px">08 · Objects</div></div></div>
+<div class="sheet"><div class="page">
+  <div class="cjk" style="position:absolute;left:0;right:0;top:296px;text-align:center;font-size:40px;letter-spacing:.02em;font-weight:200">The essence of life is transcendent wisdom.</div>
+  <div class="lat" style="position:absolute;left:0;right:0;top:372px;text-align:center;font-size:12px;letter-spacing:.35em;color:#7a7568">Zen · Practice</div>
+  <div class="hair" style="left:799px;top:450px;width:1px;height:60px"></div>
+  <div class="cjk" style="position:absolute;left:470px;right:470px;top:560px;text-align:center;font-size:16px;line-height:1.9;color:#403c36;font-weight:300"><p style="margin-bottom:1.3em">In 2023, by a turn of fate, Xuan Guang set out on the path of Zen practice. Everything learned before fell into place, and the direction of life became clear: to explore that perfect and complete inner source.</p><p style="margin-bottom:1.3em">Starlia holds this: the essence of life is transcendent wisdom, expressed in every beautiful virtue. When we bring awareness, everything becomes a path toward that perfect essence. May everyone walk this path of light.</p></div>
+  <div class="lat hfolio" style="right:110px">09 · Zen</div>
+</div></div>
+<div class="sheet"><div class="page"><div class="img fit " style="right:0;top:0;width:1000px;height:1000px;background-image:url(../img/portrait.jpg);background-position:right center;"></div><div class="hb" style="left:110px;width:380px;top:0;height:1000px;display:flex;flex-direction:column;justify-content:flex-start;padding-top:118px"><div><div class="cjk h">Xuan Guang</div><div class="lat sub">Li Qian</div><div class="rule"></div><div class="cjk body"><p>Xuan Guang, born Li Qian, has family roots in Hangzhou and lives in Silicon Valley. Bachelor’s degrees from Zhejiang University’s Chu Kochen Honors College and the University of Hong Kong; master’s and PhD in computer science from the University of Michigan. More than ten years at Facebook and Google as an engineering manager.</p><p>Raised in a family steeped in the arts, with interests spanning poetry, music, calligraphy, seal carving, ikebana, tea, kendo, ceramics, woodwork, origami, hanfu and collecting. Founder of Isshoikka, the Taixuan Guqin Society, the Jiuge Poetry Society, Ocean & Morus, Starlia, Lumilab.AI and the Inner Exploration Lab.</p><p>Many years of sustained Zen practice and volunteer work, devoted to bringing inner exploration into every field — to inspire a life that is complete, perfect, joyful and happy.</p></div></div></div></div></div>
+<div class="sheet"><div class="page">
+  <img src="../img/logo.png" style="position:absolute;left:670px;top:268px;width:260px">
+  <div class="hair" style="left:799px;top:604px;width:1px;height:56px"></div>
+  <div style="position:absolute;left:0;right:0;top:704px;display:flex;justify-content:center;gap:40px"><div style="width:300px;text-align:center"><div class="lat" style="font-size:11px;letter-spacing:.4em;color:#8a8577">WeChat</div><div class="cjk" style="font-size:15px;line-height:2.2;letter-spacing:.06em;margin-top:10px;color:#4a463f;font-weight:300">6462973</div></div><div style="width:300px;text-align:center"><div class="lat" style="font-size:11px;letter-spacing:.4em;color:#8a8577">Web</div><div class="cjk" style="font-size:15px;line-height:2.2;letter-spacing:.06em;margin-top:10px;color:#4a463f;font-weight:300"><a href="https://starlia.ai" style="color:inherit;text-decoration:none">starlia.ai</a><br><a href="https://isshoikka.com" style="color:inherit;text-decoration:none">isshoikka.com</a><br><a href="https://haoshou.app" style="color:inherit;text-decoration:none">haoshou.app</a></div></div><div style="width:300px;text-align:center"><div class="lat" style="font-size:11px;letter-spacing:.4em;color:#8a8577">Email</div><div class="cjk" style="font-size:15px;line-height:2.2;letter-spacing:.06em;margin-top:10px;color:#4a463f;font-weight:300"><a href="mailto:li@starlia.ai" style="color:inherit;text-decoration:none">li@starlia.ai</a></div></div></div>
+  <div class="lat" style="position:absolute;left:0;right:0;top:884px;text-align:center;font-size:11px;letter-spacing:.4em;color:#8a8577;font-weight:300">Return to our perfect nature</div>
+</div></div>
+</div>
+<div class="corner top" data-items='[{"t":"EN","cur":1},{"sep":1},{"t":"中","href":"../","nav":1}]'></div>
+<div class="corner bottom" data-items='[{"t":"PDF","href":"../Starlia_XuanGuang_EN.pdf","dl":1},{"arrow":1}]'></div>
+<div class="flow">
+<section class="f-cover">
+  <img src="../img/cover.jpg" alt="">
+  <div class="f-ct"><div class="f-title cjk"><div style="margin-right:-.38em">Xuan Guang</div><div class="x" style="font-size:.9em;color:#8a8577">×</div><div class="lat" style="letter-spacing:.3em;margin-right:-.3em">STARLIA</div></div>
+  <div class="f-subtitle cjk">Return to our perfect nature</div></div>
+</section>
+<section class="f-sec f-brand">
+  <div class="lat f-h" style="letter-spacing:.3em">Starlia</div>
+  <div class="cjk f-tag">Starlia believes our inner nature is already perfect.<br>With awareness, many paths lead to a complete life.</div>
+  <div class="f-rule"></div>
+  <div class="f-cells"><div class="f-cell"><div class="lat f-small">Ikebana</div><div class="cjk f-cellh">Isshoikka</div><div class="cjk f-body">Zen and flower, one taste: in the nature of a flower, we meet the nature of life.</div></div><div class="f-cell"><div class="lat f-small">Poetry</div><div class="cjk f-cellh">Falling Stars</div><div class="cjk f-body">Stars fall to earth as words; words, refined, return as stars.</div></div><div class="f-cell"><div class="lat f-small">Calligraphy</div><div class="cjk f-cellh">Calligraphy & Seal Carving</div><div class="cjk f-body">Stroke by stroke, square or round; nature as the teacher without, the mind as the source within.</div></div><div class="f-cell"><div class="lat f-small">Music</div><div class="cjk f-cellh">Taixuan Guqin Society</div><div class="cjk f-body">Eyes follow the returning geese, hands sweep the five strings; at ease, the mind roams the great mystery.</div></div><div class="f-cell"><div class="lat f-small">Creation</div><div class="cjk f-cellh">Design & Creation</div><div class="cjk f-body">Ceramics, woodwork, design, building: through creation, we reach the source of life.</div></div><div class="f-cell"><div class="lat f-small">Technology</div><div class="cjk f-cellh">Lumilab.AI</div><div class="cjk f-body">Frontier AI meets traditional wisdom, bringing inner exploration into daily life.</div></div><div class="f-cell"><div class="lat f-small">Crystal</div><div class="cjk f-cellh">Energy Crystals</div><div class="cjk f-body">Through the essence of creation, feel the vibration of life.</div></div><div class="f-cell"><div class="lat f-small">Objects</div><div class="cjk f-cellh">Collected Objects</div><div class="cjk f-body">Beautiful souls outlast time, bearing witness across a thousand years to the permanence of life.</div></div><div class="f-cell"><div class="lat f-small">Zen</div><div class="cjk f-cellh">Zen Practice</div><div class="cjk f-body">The essence of life is transcendent wisdom.</div></div></div>
+</section>
+<section class="f-sec">
+  <div class="f-pics"><img src="../img/21.jpg" alt=""></div>
+  <div class="f-text"><a href="https://isshoikka.com" style="color:inherit;text-decoration:none;display:block"><div class="cjk f-h">Isshoikka</div><div class="lat f-small">Ikebana · One Life, One Flower</div></a><div class="cjk f-tag">Zen and flower, one taste: in the nature of a flower, we meet the nature of life.</div><div class="f-rule"></div><div class="cjk f-body"><p>Isshoikka began in 2015 to bring Zen into the practice of ikebana — the flower as a mirror in which we see ourselves. It now has <a href="https://www.facebook.com/isshoikka">260K followers</a>, and its workshops in Silicon Valley are warmly received.</p><p>Its founder, Xuan Guang, has practiced ikebana for more than a decade, studying and exhibiting many times at the Ikenobo headquarters in Kyoto, and holds the Ikenobo teaching license. Zen practice flows into every arrangement, opening a deep and quiet joy of being one with nature. Carried into daily life, this same “Zen and flower, one taste” becomes more ease, more coherence, more naturalness.</p></div><div class="f-url lat"><a href="https://isshoikka.com">isshoikka.com</a></div></div>
+</section>
+<section class="f-sec">
+  <div class="f-pics"><img src="../img/workshop.jpg" alt=""></div>
+  <div class="f-text"><a href="https://isshoikka.com" style="color:inherit;text-decoration:none;display:block"><div class="cjk f-h">Silence</div><div class="lat f-small">Workshop · Isshoikka</div></a><div class="cjk f-tag">No phones. No talking.<br>No assumptions. No judgement.</div><div class="f-rule"></div><div class="cjk f-body"><p>Pick up the flower. Look. Cut. Place. Every moment is awareness; every stillness, a quiet joy.</p><p class="f-quote">“In a space so quiet and so fluid, I felt the beauty of plants as they are. With every cut of a branch or leaf, I was feeling the plant itself. Arranging the material to follow the form of ikebana became a journey inward, asking what is natural and what is beautiful.” — Student C.</p></div><div class="f-url lat"><a href="https://isshoikka.com">isshoikka.com</a></div></div>
+</section>
+<section class="f-sec">
+  <div class="f-pics"><img src="../img/36.jpg" alt=""></div>
+  <div class="f-text"><a href="https://isshoikka.com" style="color:inherit;text-decoration:none;display:block"><div class="cjk f-h">One Stem, the Whole World</div><div class="lat f-small">Ikebana · Three Ways of Seeing</div></a><div class="f-rule"></div><div class="cjk f-body"><p><span class="f-label">Impermanence · </span>“Standing before the wind that scatters blossoms and strips the leaves, one may receive the seed of awakening.”</p><p><span class="f-label">Nature · </span>“Let yourself listen to the silent, hidden order of nature.”</p><p><span class="f-label">Oneness · </span>“The natural form is the root of expression; within it lies the ideal image of what we perceive.”</p><p class="f-quote">“Observing and trimming with full attention, I found that a single material could show such different character. Along the way it opened many reflections on philosophy and on life.” — Student K.</p></div><div class="f-url lat"><a href="https://isshoikka.com">isshoikka.com</a></div></div>
+</section>
+<section class="f-sec f-sanmi">
+  <div class="cjk f-line">Worldly ikebana seeks the pleasure of the senses;</div>
+  <div class="cjk f-line">transcendent ikebana seeks the resonance of feeling;</div>
+  <div class="cjk f-line">ultimate ikebana is the oneness of human and nature.</div>
+  <div class="f-rule" style="margin:34px auto"></div>
+  <div class="cjk f-line f-strong">The nature of the flower is our own nature.</div>
+</section>
+<section class="f-sec">
+  <div class="f-pics"><img src="../img/poem_right.jpg" alt=""></div>
+  <div class="f-text"><a href="https://haoshou.app" style="color:inherit;text-decoration:none;display:block"><div class="cjk f-h">Falling Stars</div><div class="lat f-small">Poetry · Jiuge Poetry Society</div></a><div class="cjk f-tag">Stars fall to earth as words; words, refined, return as stars.</div><div class="f-rule"></div><div class="cjk f-body"><p>For more than twenty years Xuan Guang has written poetry whenever feeling arose — the turning seasons, seas becoming fields, mountains and rivers, grasses and flowers, sun, moon and stars. Not polished for its own sake, but written as the heart goes, in conversation with heaven and earth, often reaching beyond the dust of the world. Recent poems carry Zen into verse, tracing back to the source.</p><p>Over a thousand poems, collected in <a href="https://haoshou.app">Falling Stars</a>.</p><p>In 2022, co-founded the Jiuge Poetry Society at Google — gatherings online and in person, introductions to classical poetry, and the sharing of new work — reaching thousands of people.</p></div><div class="f-url lat"><a href="https://haoshou.app">haoshou.app</a></div></div>
+</section>
+<section class="f-sec">
+  <div class="f-pics"><img src="../img/guqin.jpg" alt=""></div>
+  <div class="f-text"><div class="cjk f-h">Taixuan Guqin Society</div><div class="lat f-small">Music · Guqin</div><div class="cjk f-tag">Eyes follow the returning geese, hands sweep the five strings; at ease, the mind roams the great mystery.</div><div class="f-rule"></div><div class="cjk f-body"><p>The Taixuan Guqin Society began in 2022, to find in the sound of the qin the unity of heaven and humankind. We prize the plain over the ornate — music that is natural and unforced. In playing, we watch the movement of feeling within, and become one with nature.</p><p>Xuan Guang is especially devoted to reviving pieces from ancient tablature, and also plays the xiao and the piano. The society has performed widely at cultural gatherings across Silicon Valley and is invited each year by the City of Mountain View for its Lunar New Year celebration. It now has more than a hundred members.</p></div></div>
+</section>
+<section class="f-sec">
+  <div class="f-pics"><img src="../img/seal.jpg" alt=""></div>
+  <div class="f-text"><div class="cjk f-h">Calligraphy & Seal Carving</div><div class="lat f-small">Brush · Paper · Knife · Stone</div><div class="cjk f-tag">Stroke by stroke, square or round; nature as the teacher without, the mind as the source within.</div><div class="f-rule"></div><div class="cjk f-body"><p>Calligraphy is the meeting of paper and ink; seal carving, the clash of metal and stone. Between one stroke and the next, mind and nature become one.</p><p>Raised among calligraphy, painting and seal carving at home, Xuan Guang writes in the regular and seal scripts and carves in the spirit of the natural. In the stillness of each stroke, polish and cleverness fall away, until only the purest nature of the mind remains.</p></div></div>
+</section>
+<section class="f-sec">
+  <div class="f-pics"><img src="../img/attic_render.jpg" alt=""><img src="../img/attic_photo.jpg" alt=""></div>
+  <div class="f-text"><div class="cjk f-h">Design & Creation</div><div class="lat f-small">Ceramics · Woodwork · Design · Building</div><div class="cjk f-tag">Through creation, we reach the source of life.</div><div class="f-rule"></div><div class="cjk f-body"><p>Xuan Guang also works in ceramics, origami, woodwork and bowl turning, with a particular feel for wabi-sabi design and for building it in the real world — finding, in the act of creating, a connection to the source of life.</p></div></div>
+</section>
+<section class="f-sec">
+  <div class="f-pics"><img src="../img/lumilab_sq.jpg" alt=""></div>
+  <div class="f-text"><a href="https://starlia.ai/ring" style="color:inherit;text-decoration:none;display:block"><div class="cjk f-h">Lumilab.AI</div><div class="lat f-small">Technology</div></a><div class="cjk f-tag">Frontier AI meets traditional wisdom, bringing inner exploration into daily life — so that each of us can be the master of the present moment.</div><div class="f-rule"></div><div class="cjk f-body"><p>We live amid material abundance and rapid technological progress, yet mental health keeps declining. Lumilab.AI was founded in 2025 to join the latest AI with traditional wisdom — helping people understand their inner system, above all to be aware of and to regulate their emotions, and to build a steadier, more coherent and happier life.</p></div><div class="f-url lat"><a href="https://starlia.ai/ring">starlia.ai/ring</a></div></div>
+</section>
+<section class="f-sec">
+  <div class="f-pics"><img src="../img/crystal_sq.jpg" alt=""></div>
+  <div class="f-text"><a href="https://starlia.ai/crystal" style="color:inherit;text-decoration:none;display:block"><div class="cjk f-h">Energy Crystals</div><div class="lat f-small">Crystal</div></a><div class="cjk f-tag">Through the essence of creation, feel the vibration of life.</div><div class="f-rule"></div><div class="cjk f-body"><p>Crystals are the condensed energy of heaven and earth. They echo the frequencies of the universe and carry a quiet spiritual inspiration. Their purity can also cleanse the soul and support the journey inward. Called by the crystals, Starlia draws on the purest energy points on earth to help kindred spirits find their soulmate.</p></div><div class="f-url lat"><a href="https://starlia.ai/crystal">starlia.ai/crystal</a></div></div>
+</section>
+<section class="f-sec">
+  <div class="f-pics"><img src="../img/objects_sq.jpg" alt=""></div>
+  <div class="f-text"><div class="cjk f-h">Collected Objects</div><div class="lat f-small">Antiques · Tea Ware · Vessels · Censers · Scrolls</div><div class="cjk f-tag">Beautiful souls outlast time; across a thousand years they bear witness to the permanence of life.</div><div class="f-rule"></div><div class="cjk f-body"><p>Objects are witnesses to seas turning into fields. Their makers are gone, yet their spirit and feeling flow on through what they made, still inspiring people a thousand years later. Look closely at what endures through inheritance, and you glimpse the permanence of life.</p><p>Starlia collects antiques rich in human feeling and warmth — tea ware, flower vessels, porcelain, ironware, censers, scrolls — and from these witnesses of time sows the seed of searching for what is imperishable within.</p></div></div>
+</section>
+<section class="f-sec f-zen">
+  <div class="cjk f-h" style="text-align:center;letter-spacing:.02em">The essence of life is transcendent wisdom.</div>
+  <div class="lat f-small" style="text-align:center;margin-top:14px">Zen &nbsp;·&nbsp; Practice</div>
+  <div class="f-rule" style="margin:34px auto"></div>
+  <div class="cjk f-body" style="text-align:center">
+    <p>In 2023, by a turn of fate, Xuan Guang set out on the path of Zen practice. Everything learned before fell into place, and the direction of life became clear: to explore that perfect and complete inner source.</p>
+    <p>Starlia holds this: the essence of life is transcendent wisdom, expressed in every beautiful virtue. When we bring awareness, everything becomes a path toward that perfect essence. May everyone walk this path of light.</p>
+  </div>
+</section>
+<section class="f-sec">
+  <div class="f-pics"><img src="../img/portrait.jpg" alt=""></div>
+  <div class="f-text"><div class="cjk f-h">Xuan Guang</div><div class="lat f-small">Li Qian</div><div class="f-rule"></div><div class="cjk f-body"><p>Xuan Guang, born Li Qian, has family roots in Hangzhou and lives in Silicon Valley. Bachelor’s degrees from Zhejiang University’s Chu Kochen Honors College and the University of Hong Kong; master’s and PhD in computer science from the University of Michigan. More than ten years at Facebook and Google as an engineering manager.</p><p>Raised in a family steeped in the arts, with interests spanning poetry, music, calligraphy, seal carving, ikebana, tea, kendo, ceramics, woodwork, origami, hanfu and collecting. Founder of Isshoikka, the Taixuan Guqin Society, the Jiuge Poetry Society, Ocean & Morus, Starlia, Lumilab.AI and the Inner Exploration Lab.</p><p>Many years of sustained Zen practice and volunteer work, devoted to bringing inner exploration into every field — to inspire a life that is complete, perfect, joyful and happy.</p></div></div>
+</section>
+<section class="f-sec f-contact">
+  <img class="f-logo" src="../img/logo.png" alt="Starlia">
+  <div class="f-rule" style="margin:36px auto"></div>
+  <div class="f-ccol"><div class="lat f-small">WeChat</div><div class="cjk f-cval">6462973</div></div>
+  <div class="f-ccol"><div class="lat f-small">Web</div><div class="cjk f-cval"><a href="https://starlia.ai" style="color:inherit;text-decoration:none">starlia.ai</a><br><a href="https://isshoikka.com" style="color:inherit;text-decoration:none">isshoikka.com</a><br><a href="https://haoshou.app" style="color:inherit;text-decoration:none">haoshou.app</a></div></div>
+  <div class="f-ccol"><div class="lat f-small">Email</div><div class="cjk f-cval"><a href="mailto:li@starlia.ai" style="color:inherit;text-decoration:none">li@starlia.ai</a></div></div>
+  <div class="f-ccol"><div class="lat f-small">PDF</div><div class="cjk f-cval"><a href="../Starlia_XuanGuang_EN.pdf" download style="color:inherit;text-decoration:none">Download the PDF ↓</a></div></div>
+  <div class="cjk f-end">Return to our perfect nature</div>
+</section>
+</div>
+<script>
+(function(){
+  var r=document.documentElement;
+  function fit(){ r.style.setProperty('--s', Math.min(innerWidth/1600, innerHeight/1000)); }
+  fit(); addEventListener('resize', fit); addEventListener('orientationchange', fit);
+})();
+// Corner labels, drawn as SVG. Every glyph run is measured on a canvas (tight ink box) and placed so that its ink
+// centre sits exactly on the column/row axis; runs are spaced by ink, not by font boxes. Independent of font, size
+// and browser, so the labels stay centred and symmetric whatever the corners are set in.
+(function(){
+  var AXIS=document.documentElement.className.indexOf('axis-h')>=0?'h':'v', SIZE=12, NS='http://www.w3.org/2000/svg';
+  var LS=(AXIS==='v'?0.35:0.2)*SIZE, W=16;                 // W: box width → axis 22+8 = 30px from the edge
+  function go(){
+    var cv=document.createElement('canvas').getContext('2d');
+    document.querySelectorAll('.corner').forEach(function(box){
+      var FONT=getComputedStyle(box).fontFamily; cv.font=SIZE+'px '+FONT;
+      function ink(s){ var x=0,L=null,R=0,A=0,D=0; for(var ch of s){ var m=cv.measureText(ch);
+          var l=x-m.actualBoundingBoxLeft, rr=x+m.actualBoundingBoxRight; if(L===null)L=l; R=rr;
+          A=Math.max(A,m.actualBoundingBoxAscent); D=Math.max(D,m.actualBoundingBoxDescent); x+=m.width+LS; } return {L:L,R:R,A:A,D:D}; }
+      function el(n,at){ var e=document.createElementNS(NS,n); for(var k in at) e.setAttribute(k,at[k]); return e; }
+      var items=JSON.parse(box.dataset.items), svg=el('svg',{}), cur=0, c=W/2, nodes=[], pdf=box.classList.contains('bottom');
+      var GAP = pdf ? (AXIS==='v'?10:6) : 9;
+      items.forEach(function(it,i){
+        if(i) cur+=GAP;
+        var node;
+        if(it.t){ var m=ink(it.t), cjk=/[㐀-鿿]/.test(it.t), rot=(AXIS==='v' && !cjk);
+          node=el('text',{'font-family':FONT,'font-size':SIZE,'letter-spacing':LS,fill:'currentColor'}); node.textContent=it.t;
+          if(AXIS==='v'){
+            if(rot){ node.setAttribute('transform','translate('+(c-(m.A-m.D)/2)+','+(cur-m.L)+') rotate(90)'); cur+=m.R-m.L; }
+            else   { node.setAttribute('x',c-(m.L+m.R)/2); node.setAttribute('y',cur+m.A); cur+=m.A+m.D; }
+          } else { node.setAttribute('x',cur-m.L); node.setAttribute('y',c+(m.A-m.D)/2); cur+=m.R-m.L; }
+        } else if(it.sep){
+          node = AXIS==='v' ? el('line',{x1:c-6,x2:c+6,y1:cur+.5,y2:cur+.5}) : el('line',{y1:c-6,y2:c+6,x1:cur+.5,x2:cur+.5});
+          node.setAttribute('stroke','rgba(43,41,37,.3)'); cur+=1;
+        } else if(it.arrow){
+          node=el('path',{d:'M4 0.5v10M1 7.5l3 3 3-3',fill:'none',stroke:'currentColor','stroke-width':'1'});
+          node.setAttribute('transform', AXIS==='v' ? 'translate('+(c-4)+','+cur+')' : 'translate('+cur+','+(c-5.5)+')'); cur+= AXIS==='v' ? 11 : 8;
+        }
+        if(it.href){ var a=el('a',{href:it.href}); if(it.dl) a.setAttribute('download',''); else if(!it.nav){a.setAttribute('target','_blank');a.setAttribute('rel','noopener');} a.appendChild(node); node=a; }
+        if(it.cur) node.setAttribute('class','cur');
+        nodes.push(node);
+      });
+      var len=Math.ceil(cur);
+      svg.setAttribute('width', AXIS==='v'?W:len); svg.setAttribute('height', AXIS==='v'?len:W);
+      svg.setAttribute('viewBox','0 0 '+(AXIS==='v'?W:len)+' '+(AXIS==='v'?len:W)); svg.style.display='block'; svg.style.overflow='visible';
+      nodes.forEach(function(n){svg.appendChild(n);}); box.innerHTML=''; box.appendChild(svg);
+    });
+  }
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(go); else go();
+})();
+</script>
+</body>
+</html>

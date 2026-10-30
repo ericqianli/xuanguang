@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="zh-Hans" class="axis-v">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>玄光 × Starlia</title>
+<meta name="description" content="玄光 × Starlia —— 回到完美的内在。一生一花、落星集、太玄琴社、能量水晶、Lumilab.AI、设计创造、器物收藏、禅修探索。">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="alternate" hreflang="en" href="en/">
+<style>
+@font-face{font-family:"Noto Serif CJK SC";font-weight:200;font-display:swap;src:url(fonts/NotoSerifSC-200.woff2) format("woff2")}
+@font-face{font-family:"Noto Serif CJK SC";font-weight:300;font-display:swap;src:url(fonts/NotoSerifSC-300.woff2) format("woff2")}
+@font-face{font-family:"Noto Serif CJK SC";font-weight:400;font-display:swap;src:url(fonts/NotoSerifSC-400.woff2) format("woff2")}
+*{box-sizing:border-box;margin:0;padding:0}
+
+.page{width:1600px;height:1000px;position:relative;overflow:hidden;margin:0 0 40px 0}
+.cjk{font-family:"Noto Serif CJK SC","Noto Serif CJK JP",serif}
+.lat{font-family:"Noto Serif CJK SC","Noto Serif CJK JP",serif;text-transform:uppercase}
+.sans{font-family:"Inter","Inter Display",sans-serif}
+.v{writing-mode:vertical-rl;text-orientation:upright}
+.img{position:absolute;background-size:cover;background-position:center;background-repeat:no-repeat}
+
+
+.page{background:#f3efe6;color:#2b2925}
+.hair{position:absolute;background:#2b2925;opacity:.35}
+.fit{background-size:auto 100%}
+.up{writing-mode:vertical-rl;text-orientation:upright}
+.side{writing-mode:vertical-rl;text-orientation:mixed}
+.small{font-size:12px;letter-spacing:.35em;text-transform:uppercase;color:#6b665c}
+.vb{position:absolute;top:110px;height:780px;writing-mode:vertical-rl;text-orientation:mixed}
+.vb>*{display:block}
+.vb .h{font-size:30px;letter-spacing:.3em;font-weight:300;text-orientation:mixed;margin-left:16px}
+.vb .sub{font-size:12px;letter-spacing:.35em;text-transform:uppercase;color:#6b665c;margin-left:44px}
+.vb .tag{font-size:17px;letter-spacing:.14em;font-weight:400;line-height:1.9;text-orientation:mixed;margin-left:36px}
+.vb .rule{width:1px;height:48px;background:#2b2925;opacity:.35;margin-left:36px}
+.vb .body{font-size:15px;line-height:2.3;letter-spacing:.08em;color:#4a463f;font-weight:300;text-orientation:mixed}
+.vb .body p{margin-left:1.1em}
+.vb .body p.quote{margin-right:2.4em}
+.vb .body a{color:inherit;text-decoration:none;border-right:1px solid rgba(43,41,37,.35);padding-right:1px}
+.fade-r{-webkit-mask-image:linear-gradient(90deg,#000 0%,#000 55%,rgba(0,0,0,0) 100%);mask-image:linear-gradient(90deg,#000 0%,#000 55%,rgba(0,0,0,0) 100%)}
+.fade-l{-webkit-mask-image:linear-gradient(270deg,#000 0%,#000 55%,rgba(0,0,0,0) 100%);mask-image:linear-gradient(270deg,#000 0%,#000 55%,rgba(0,0,0,0) 100%)}
+.lt{position:relative;left:.11em}.lt.lc{left:.2em}
+.folio{position:absolute;bottom:62px;writing-mode:vertical-rl;text-orientation:mixed;font-size:12px;letter-spacing:.35em;color:#6b665c;text-transform:uppercase}
+.ph{position:absolute;bottom:62px;font-size:11px;letter-spacing:.3em;color:#b0a894}
+
+
+
+html{background:#f3efe6;color:#2b2925;-webkit-text-size-adjust:100%}
+body{background:#f3efe6;margin:0}
+a{color:inherit;text-decoration:none}
+/* ---- book ---- */
+.book{display:none}
+.sheet{width:calc(1600px*var(--s));height:calc(1000px*var(--s));margin:0 auto;position:relative;overflow:hidden;scroll-snap-align:start}
+.sheet .page{transform:scale(var(--s));transform-origin:0 0;margin:0}
+/* ---- corner labels (language toggle top-right, PDF bottom-right): drawn as SVG by the script below ---- */
+.corner{position:fixed;right:22px;z-index:9;display:none;color:#6b665c;font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",Helvetica,Arial,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans CJK SC",sans-serif}
+.corner.top{top:22px} .corner.bottom{bottom:22px}
+.corner a{color:#6b665c;transition:color .2s} .corner a:hover{color:#2b2925}
+.corner .cur{color:#2b2925}
+/* ---- flow ---- */
+.flow{display:block;max-width:640px;margin:0 auto}
+.flow .lt{position:static;left:0}   /* the vertical-text nudge must not apply to horizontal text */
+.f-cover img,.f-pics img{display:block;width:100%;height:auto}
+.f-ct{padding:56px 28px 40px;text-align:center}
+.f-title{font-size:30px;font-weight:300;letter-spacing:.38em;line-height:1;display:flex;flex-direction:column;align-items:center;gap:22px}
+.f-title .x{line-height:.6}   /* the mark's own box is small so the gaps around it stay even */
+.axis-h .f-title{text-transform:uppercase;font-size:26px;letter-spacing:.3em}
+.axis-h .flow{font-feature-settings:"pwid"}   /* proportional Latin punctuation (curly quotes, apostrophes) in the CJK serif */
+.f-title .x{color:#8a8577;font-size:.9em;letter-spacing:0}
+.f-subtitle{font-size:14px;letter-spacing:.45em;font-weight:300;color:#4a463f;margin-top:22px;padding-left:.45em}
+.axis-h .f-subtitle{font-size:12px;letter-spacing:.3em;text-transform:uppercase;padding-left:.3em}
+.f-sec{padding:0 0 64px}
+.f-text{padding:40px 28px 0}
+.f-h{font-size:26px;letter-spacing:.3em;font-weight:300;line-height:1.4}
+.axis-h .f-h{letter-spacing:.03em;line-height:1.3}
+.f-small{font-size:11px;letter-spacing:.35em;text-transform:uppercase;color:#6b665c;margin-top:10px}
+.f-tag{font-size:17px;letter-spacing:.12em;font-weight:400;line-height:1.9;margin-top:30px}
+.axis-h .f-tag{letter-spacing:0;line-height:1.7}
+.f-rule{width:40px;height:1px;background:#2b2925;opacity:.35;margin:30px 0}
+.f-body{font-size:15px;line-height:2.2;letter-spacing:.06em;color:#4a463f;font-weight:300}
+.axis-h .f-body{font-size:16px;line-height:1.85;letter-spacing:0;color:#403c36}
+.f-body p{margin:0 0 1.2em}
+.f-body p.f-quote{margin-top:1.8em}
+.axis-h .f-body p.f-quote{padding-left:16px;border-left:1px solid rgba(43,41,37,.25)}
+.f-label{font-weight:400;color:#2b2925}
+.f-body a{text-decoration:none;border-bottom:1px solid rgba(43,41,37,.45);padding-bottom:2px}
+.f-url{font-size:11px;letter-spacing:.3em;color:#6b665c;margin-top:8px}
+.f-url a{text-decoration:none;text-transform:none;letter-spacing:.2em}
+.f-brand{padding:72px 28px 40px}
+.f-cells{margin-top:12px}
+.f-cell{border-left:1px solid rgba(43,41,37,.3);padding-left:18px;margin:34px 0}
+.f-cellh{font-size:19px;letter-spacing:.15em;margin:6px 0 8px}
+.axis-h .f-cellh{letter-spacing:.02em}
+.f-sanmi{padding:80px 28px}
+.f-line{font-size:19px;letter-spacing:.2em;font-weight:300;line-height:1.9;text-align:center;margin-bottom:22px}
+.axis-h .f-line{letter-spacing:.02em;line-height:1.6}
+.f-strong{font-size:21px;font-weight:400}
+.f-zen{padding:80px 28px}
+.f-contact{padding:96px 28px 80px;text-align:center}
+.f-logo{width:150px;display:block;margin:0 auto}
+.f-ccol{margin:28px 0}
+.f-cval{font-size:15px;line-height:2;letter-spacing:.1em;color:#4a463f;font-weight:300;margin-top:4px}
+.f-cval a{text-decoration:none}
+.f-end{font-size:12px;letter-spacing:.5em;color:#8a8577;font-weight:300;margin-top:64px}
+.axis-h .f-end{letter-spacing:.3em;text-transform:uppercase;font-size:11px}
+@media (min-width:900px) and (min-height:560px){
+  html{scroll-snap-type:y proximity}
+  .book{display:block} .corner{display:block} .flow{display:none}
+}
+
+</style>
+</head>
+<body>
+<div class="book">
+<div class="sheet"><div class="page">
+  <div class="img fit" style="left:160px;top:0;width:667px;height:1000px;background-image:url(img/cover.jpg);background-position:left center"></div>
+  <div class="cjk side" style="position:absolute;right:110px;top:100px;font-size:48px;font-weight:300;line-height:1;letter-spacing:.38em"><span class="up">玄光<span style="color:#2b2925;font-size:1.5em;margin:-.24em 0">•</span></span><span style="letter-spacing:.3em;position:relative;left:3px">STARLIA</span></div>
+  <div class="cjk up" style="position:absolute;right:196px;top:116px;font-size:18px;letter-spacing:.45em;font-weight:300;color:#4a463f">回到完美的内在</div>
+</div></div>
+<div class="sheet"><div class="page">
+  <div class="vb" style="right:110px">
+    <div class="lat" style="font-size:30px;letter-spacing:.3em;font-weight:300;margin-left:28px">Starlia</div>
+    <div class="cjk side" style="font-size:17px;line-height:1.9;letter-spacing:.12em;font-weight:400;margin-left:36px"><span class="lt lc">Starlia</span> 相信我们的内在本自完美，<br>只要善于觉知，不同的途径皆可抵达圆满的生命。</div>
+    <div style="border-right:1px solid rgba(43,41,37,.3);padding-right:16px;margin-left:24px;height:fit-content"><div class="lat small" style="margin-left:12px"><span class="lt">Ikebana</span></div><div class="cjk side" style="font-size:19px;letter-spacing:.15em;margin-left:10px">一生一花 · Isshoikka</div><div class="cjk body" style="font-size:14px;line-height:2.1">通过「禅花一味」，由花的自然，体会生命的自然。</div></div><div style="border-right:1px solid rgba(43,41,37,.3);padding-right:16px;margin-left:24px;height:fit-content"><div class="lat small" style="margin-left:12px"><span class="lt">Poetry</span></div><div class="cjk side" style="font-size:19px;letter-spacing:.15em;margin-left:10px">落星集 · 九歌诗社</div><div class="cjk body" style="font-size:14px;line-height:2.1">星辰落地化为文字；淬炼文字复归星辰。</div></div><div style="border-right:1px solid rgba(43,41,37,.3);padding-right:16px;margin-left:24px;height:fit-content"><div class="lat small" style="margin-left:12px"><span class="lt">Calligraphy</span></div><div class="cjk side" style="font-size:19px;letter-spacing:.15em;margin-left:10px">书法篆刻</div><div class="cjk body" style="font-size:14px;line-height:2.1">一笔一划，亦方亦圆；外师造化，中得心源。</div></div><div style="border-right:1px solid rgba(43,41,37,.3);padding-right:16px;margin-left:24px;height:fit-content"><div class="lat small" style="margin-left:12px"><span class="lt">Music</span></div><div class="cjk side" style="font-size:19px;letter-spacing:.15em;margin-left:10px">太玄琴社</div><div class="cjk body" style="font-size:14px;line-height:2.1">目送归鸿，手挥五弦；俯仰自得，游心太玄。</div></div><div style="border-right:1px solid rgba(43,41,37,.3);padding-right:16px;margin-left:24px;height:fit-content"><div class="lat small" style="margin-left:12px"><span class="lt">Creation</span></div><div class="cjk side" style="font-size:19px;letter-spacing:.15em;margin-left:10px">设计创造</div><div class="cjk body" style="font-size:14px;line-height:2.1">陶艺、木工、设计、建造：通过创作抵达生命的源泉。</div></div><div style="border-right:1px solid rgba(43,41,37,.3);padding-right:16px;margin-left:24px;height:fit-content"><div class="lat small" style="margin-left:12px"><span class="lt">Technology</span></div><div class="cjk side" style="font-size:19px;letter-spacing:.15em;margin-left:10px">Lumilab.AI</div><div class="cjk body" style="font-size:14px;line-height:2.1">融合前沿 <span class="lt">AI</span> 科技和传统智慧，推动内在探索生活化，成为每一个当下的主人。</div></div><div style="border-right:1px solid rgba(43,41,37,.3);padding-right:16px;margin-left:24px;height:fit-content"><div class="lat small" style="margin-left:12px"><span class="lt">Crystal</span></div><div class="cjk side" style="font-size:19px;letter-spacing:.15em;margin-left:10px">能量水晶</div><div class="cjk body" style="font-size:14px;line-height:2.1">通过造物的精华，体会生命的振动。</div></div><div style="border-right:1px solid rgba(43,41,37,.3);padding-right:16px;margin-left:24px;height:fit-content"><div class="lat small" style="margin-left:12px"><span class="lt">Objects</span></div><div class="cjk side" style="font-size:19px;letter-spacing:.15em;margin-left:10px">器物收藏</div><div class="cjk body" style="font-size:14px;line-height:2.1">古董、茶器、花器、香炉、卷轴：美丽的灵魂超越时空，跨越千古见证生命永恒。</div></div><div style="border-right:1px solid rgba(43,41,37,.3);padding-right:16px;margin-left:24px;height:fit-content"><div class="lat small" style="margin-left:12px"><span class="lt">Zen</span></div><div class="cjk side" style="font-size:19px;letter-spacing:.15em;margin-left:10px">禅修探索</div><div class="cjk body" style="font-size:14px;line-height:2.1">生命的本质，是超越的智慧。</div></div>
+  </div>
+  <div class="lat folio" style="right:110px"><span class="lt">Starlia</span></div>
+</div></div>
+<div class="sheet"><div class="page"><div class="img fit " style="left:0;top:0;width:796px;height:1000px;background-image:url(img/21.jpg);background-position:left center;"></div><div class="vb" style="left:889px;right:auto"><a href="https://isshoikka.com" style="color:inherit;text-decoration:none;display:block"><div class="cjk h">一生一花 · Isshoikka</div><div class="lat sub"><span class="lt">Ikebana</span> <span class="lt">·</span> 禅花一味</div></a><div class="cjk tag">通过「禅花一味」，<br>由花的自然，体会生命的自然。</div><div class="rule"></div><div class="cjk body"><p>「一生一花」始创于二〇一五年，旨在于插花中融入禅境，以花为镜，照见自己。现有关注<a href="https://www.facebook.com/isshoikka">二十六万</a>，硅谷线下工作坊广受好评。</p><p>创始人玄光修习插花十余年，多次于日本京都池坊总部进修、参展，具池坊师范资质。玄光以禅修实践融入花艺创作中，令人体悟与自然合一的深层喜悦；进而把「禅花一味」的领悟带入日常生活中，获得更多的自适、自洽和自然。</p></div></div><div class="lat folio" style="right:110px"><span class="lt">01</span> <span class="lt">·</span> 一生一花 <span class="lt">·</span> <a href="https://isshoikka.com" style="color:inherit;text-decoration:none;text-transform:none;font-size:11px;letter-spacing:.22em"><span class="lt lc">isshoikka.com</span></a></div></div></div>
+<div class="sheet"><div class="page"><div class="img fit " style="right:0;top:0;width:750px;height:1000px;background-image:url(img/workshop.jpg);background-position:right center;"></div><div class="vb" style="right:860px"><a href="https://isshoikka.com" style="color:inherit;text-decoration:none;display:block"><div class="cjk h">止语</div><div class="lat sub"><span class="lt">Silence</span> <span class="lt">·</span> 工作坊</div></a><div class="cjk tag">没有手机，没有说话，没有预设或评判。</div><div class="rule"></div><div class="cjk body"><p>拈花，凝视，裁剪，安置。每一个当下即是觉知，每一份宁静即是感动。</p><p class="quote">「在很安静很流动的环境里，感受植物本来的美。在每一下修枝叶的落剪时，都在感受植物本身的美。通过整理花材去顺应花道的框架的过程中，也是整理内心对于何为自然何为美的一场内观之旅。」—— 学员 <span class="lt">C.</span></p></div></div><div class="lat folio" style="left:110px"><span class="lt">01</span> <span class="lt">·</span> 一生一花 <span class="lt">·</span> <a href="https://isshoikka.com" style="color:inherit;text-decoration:none;text-transform:none;font-size:11px;letter-spacing:.22em"><span class="lt lc">isshoikka.com</span></a></div></div></div>
+<div class="sheet"><div class="page" style="background:#d8d1b3"><div class="img" style="left:0;top:0;width:796px;height:1000px;background-image:url(img/baked_en_5.jpg);background-size:100% 100%"></div><div class="vb" style="right:110px"><a href="https://isshoikka.com" style="color:inherit;text-decoration:none;display:block"><div class="cjk h">一枝见天地</div><div class="lat sub"><span class="lt">One stem</span>, <span class="lt">the whole world</span></div></a><div class="rule"></div><div class="cjk body"><p><span style="font-weight:400;color:#2b2925">见无常：</span>「立于吹散花朵、剥落枝叶的风前，便可能领受开悟的种子。」</p><p><span style="font-weight:400;color:#2b2925">见自然：</span>「让自身去聆听自然之无声而又隐秘的秩序。」</p><p><span style="font-weight:400;color:#2b2925">见合一：</span>「天然之姿为表现之本，其中蕴含我们印象的理想之像。」</p><p class="quote">「随着专注地去观察与修剪，才发现看似单一的花材竟然能展现出如此不同的风骨。过程中甚至触发了许多关于哲学与人生的领悟。」—— 学员 <span class="lt">K.</span></p></div></div><div class="lat folio" style="right:110px"><span class="lt">01</span> <span class="lt">·</span> 一生一花 <span class="lt">·</span> <a href="https://isshoikka.com" style="color:inherit;text-decoration:none;text-transform:none;font-size:11px;letter-spacing:.22em"><span class="lt lc">isshoikka.com</span></a></div></div></div>
+<div class="sheet"><div class="page">
+  <div class="vb" style="right:620px;top:230px;height:560px">
+    <div class="cjk" style="font-size:26px;letter-spacing:.3em;font-weight:300;line-height:1;margin-left:34px">世间的插花，追求感官的享受；</div>
+    <div class="cjk" style="font-size:26px;letter-spacing:.3em;font-weight:300;line-height:1;margin-left:34px">出世的插花，追求情感的共鸣；</div>
+    <div class="cjk" style="font-size:26px;letter-spacing:.3em;font-weight:300;line-height:1;margin-left:34px">究竟的插花，是人与自然的合一。</div>
+    <div class="rule" style="margin-left:44px"></div>
+    <div class="cjk h" style="margin-left:44px">花的自然，即是人的自然。</div>
+  </div>
+  <div class="lat folio" style="right:110px"><span class="lt">01</span> <span class="lt">·</span> 一生一花 <span class="lt">·</span> <a href="https://isshoikka.com" style="color:inherit;text-decoration:none;text-transform:none;font-size:11px;letter-spacing:.22em"><span class="lt lc">isshoikka.com</span></a></div>
+</div></div>
+<div class="sheet"><div class="page"><div class="img fit " style="left:0;top:0;width:727px;height:1000px;background-image:url(img/poem_right.jpg);background-position:left center;"></div><div class="vb" style="right:110px"><a href="https://haoshou.app" style="color:inherit;text-decoration:none;display:block"><div class="cjk h">落星集</div><div class="lat sub"><span class="lt">Poetry</span> <span class="lt">·</span> 九歌诗社</div></a><div class="cjk tag">星辰落地化为文字；<br>淬炼文字复归星辰。</div><div class="rule"></div><div class="cjk body"><p>玄光笔耕二十余年，每有所感，常以诗记之。多写光阴四季，沧海桑田，山川花草，日月星辰。不重雕琢，随心所至，而与天地交通，屡有出尘之思。近作常以禅入诗，直溯本源。</p><p>存诗千首。见录于<a href="https://haoshou.app">「落星集」</a>。</p><p>二〇二二年于谷歌联合创立「九歌诗社」，多次组织线上线下雅集、古诗词普及活动及诗词创作分享，影响数千人。</p></div></div><div class="lat folio" style="right:110px"><span class="lt">02</span> <span class="lt">·</span> 落星集 <span class="lt">·</span> <a href="https://haoshou.app" style="color:inherit;text-decoration:none;text-transform:none;font-size:11px;letter-spacing:.22em"><span class="lt lc">haoshou.app</span></a></div></div></div>
+<div class="sheet"><div class="page"><div class="img" style="right:0;top:0;width:678px;height:1000px;background-image:url(img/baked_en_8.jpg);background-size:100% 100%"></div><div class="vb" style="right:788px"><div class="cjk h">太玄琴社</div><div class="lat sub"><span class="lt">Music</span> <span class="lt">·</span> <span class="lt">Guqin</span></div><div class="cjk tag">目送归鸿，手挥五弦；<br>俯仰自得，游心太玄。</div><div class="rule"></div><div class="cjk body"><p>「太玄琴社」始创于二〇二二年，旨在于琴声中体会天人合一。重古朴，轻浮华，推崇自然、不造作的音乐；在演奏中体察内在情感的流动，进而与自然合而为一。</p><p>玄光尤擅古谱考校，亦通箫、钢琴。琴社多次巡演硅谷在地文艺集会，历年受邀山景城市政府参与新春演出。现有社员百余人。</p></div></div><div class="lat folio" style="left:110px"><span class="lt">03</span> <span class="lt">·</span> 太玄琴社</div></div></div>
+<div class="sheet"><div class="page"><div class="img" style="left:160px;top:0;width:721px;height:1000px;background-image:url(img/baked_en_9.jpg);background-size:100% 100%"></div><div class="vb" style="right:110px"><div class="cjk h">书法篆刻</div><div class="lat sub"><span class="lt">Calligraphy</span> <span class="lt">·</span> <span class="lt">Seal Carving</span></div><div class="cjk tag">一笔一划，亦方亦圆；<br>外师造化，中得心源。</div><div class="rule"></div><div class="cjk body"><p>书法是纸与墨的交融，篆刻是金与石的碰撞。一笔一划之间，是心与自然的合一。</p><p>玄光自幼受家庭熏陶学习书画篆刻艺术，书从楷篆，印尚自然。在一笔一划的宁静中，雕琢和工巧渐渐褪去，唯留内心最纯粹的本然。</p></div></div><div class="lat folio" style="right:110px"><span class="lt">04</span> <span class="lt">·</span> 书法篆刻</div></div></div>
+<div class="sheet"><div class="page"><div style="position:absolute;top:0;height:1000px;right:935px;width:11px;background:#4a2b23"></div><div class="img" style="right:0;top:0;width:936px;height:1000px;background-image:url(img/baked_en_stack_10.jpg);background-size:100% 100%"></div><div class="vb" style="right:1046px"><div class="cjk h">设计创造</div><div class="lat sub"><span class="lt">Creation</span> <span class="lt">·</span> 陶艺 <span class="lt">·</span> 木工 <span class="lt">·</span> 设计 <span class="lt">·</span> 建造</div><div class="cjk tag">通过创作抵达生命的源泉。</div><div class="rule"></div><div class="cjk body"><p>玄光亦涉猎陶艺、纸艺、木工、车制木碗等。尤擅侘寂风格的设计及落地，在创造中体会与生命本源的链接。</p></div></div><div class="lat folio" style="left:110px"><span class="lt">05</span> <span class="lt">·</span> 设计创造</div></div></div>
+<div class="sheet"><div class="page"><div class="img" style="left:0;top:0;width:1000px;height:1000px;background-image:url(img/baked_en_11.jpg);background-size:100% 100%"></div><div class="vb" style="right:110px"><a href="https://starlia.ai/ring" style="color:inherit;text-decoration:none;display:block"><div class="cjk h">Lumilab.AI</div><div class="lat sub"><span class="lt">Technology</span></div></a><div class="cjk tag">融合前沿 AI 科技和传统智慧，推动内在探索生活化，成为每一个当下的主人。</div><div class="rule"></div><div class="cjk body"><p>当今物质富足，科技进步，可人们的精神健康却每况愈下。<span class="lt lc">Lumilab.AI</span> 创立于二〇二五年，立足于结合最新的 <span class="lt">AI</span> 技术和传统智慧，帮助人们了解自己的内在系统，尤其是觉知和调控自己的情绪，塑造更加稳定、自洽、幸福的生活。</p></div></div><div class="lat folio" style="right:110px"><span class="lt">06</span> <span class="lt">·</span> <span class="lt">Lumilab</span> <span class="lt">·</span> <a href="https://starlia.ai/ring" style="color:inherit;text-decoration:none;text-transform:none;font-size:11px;letter-spacing:.22em"><span class="lt lc">starlia.ai/ring</span></a></div></div></div>
+<div class="sheet"><div class="page"><div class="img" style="right:0;top:0;width:1000px;height:1000px;background-image:url(img/baked_en_12.jpg);background-size:100% 100%"></div><div class="vb" style="right:1110px"><a href="https://starlia.ai/crystal" style="color:inherit;text-decoration:none;display:block"><div class="cjk h">能量水晶</div><div class="lat sub"><span class="lt">Crystal</span></div></a><div class="cjk tag">通过造物的精华，体会生命的振动。</div><div class="rule"></div><div class="cjk body"><p>水晶是天地能量的结晶，回响宇宙的频率，蕴含灵性的启发。水晶的洁净亦能洗涤灵魂，帮助深入探索内在的旅程。<span class="lt lc">Starlia</span> 受到水晶的感召，通过全球最纯净的能量点，帮助有缘人链接到他们的灵魂伴侣。</p></div></div><div class="lat folio" style="left:110px"><span class="lt">07</span> <span class="lt">·</span> 能量水晶 <span class="lt">·</span> <a href="https://starlia.ai/crystal" style="color:inherit;text-decoration:none;text-transform:none;font-size:11px;letter-spacing:.22em"><span class="lt lc">starlia.ai/crystal</span></a></div></div></div>
+<div class="sheet"><div class="page"><div class="img" style="left:0;top:0;width:1000px;height:1000px;background-image:url(img/baked_en_13.jpg);background-size:100% 100%"></div><div class="vb" style="right:110px"><div class="cjk h">器物收藏</div><div class="lat sub"><span class="lt">Objects</span> <span class="lt">·</span> 古董 <span class="lt">·</span> 茶器 <span class="lt">·</span> 花器 <span class="lt">·</span> 香炉 <span class="lt">·</span> 卷轴</div><div class="cjk tag">美丽的灵魂超越时空，跨越千古见证生命永恒。</div><div class="rule"></div><div class="cjk body"><p>器物是沧海桑田的见证。斯人已逝，而他们的精神和情感通过器物流转，千年后依旧启发并鼓舞着后人。细查传承之不朽，即能了悟生命之永恒。</p><p><span class="lt lc">Starlia</span> 专注于收藏富含人文情感和温度的古董，包括茶器、花器、瓷器、铁器、香炉、卷轴等，从跨越沧桑的见证中播撒探寻内在不朽的种子。</p></div></div><div class="lat folio" style="right:110px"><span class="lt">08</span> <span class="lt">·</span> 器物收藏</div></div></div>
+<div class="sheet"><div class="page">
+  <div class="cjk" style="position:absolute;left:0;right:0;top:300px;text-align:center;font-size:38px;letter-spacing:.42em;font-weight:200">生命的本质，是超越的智慧。</div>
+  <div class="lat" style="position:absolute;left:0;right:0;top:380px;text-align:center;font-size:13px;letter-spacing:.35em;color:#7a7568">Zen &nbsp;·&nbsp; 禅修探索</div>
+  <div class="hair" style="left:799px;top:460px;width:1px;height:60px"></div>
+  <div class="cjk" style="position:absolute;left:400px;right:400px;top:570px;text-align:center;font-size:15px;line-height:2.3;letter-spacing:.06em;color:#4a463f;font-weight:300">
+    <p style="margin-bottom:1.3em">二〇二三年一次机缘巧合，玄光走上了禅修的道路。至此先前所学融会贯通，从而找到了人生的方向：探索那个圆满完美的内在源泉。</p>
+    <p><span class="lt lc">Starlia</span> 深信：生命的本质，是超越的智慧，体现出一切美好的品质。而当我们带有觉知，所有的一切都能成为通向那美好本质的道路。希望所有人都能走上这条光明之路。</p>
+  </div>
+  <div class="lat folio" style="right:110px"><span class="lt">09</span> <span class="lt">·</span> 禅修探索</div>
+</div></div>
+<div class="sheet"><div class="page"><div class="img fit " style="right:0;top:0;width:1000px;height:1000px;background-image:url(img/portrait.jpg);background-position:right center;"></div><div style="position:absolute;top:110px;height:780px;left:0;right:1000px;display:flex;justify-content:center"><div class="vb" style="position:static"><div class="cjk h">玄光</div><div class="lat sub"><span class="lt">Xuan Guang</span></div><div class="rule"></div><div class="cjk body"><p>玄光，本名钱力，祖籍杭州，现定居美国硅谷。浙江大学竺可桢学院、香港大学学士，密歇根大学计算机硕士、博士。曾事脸书、谷歌十余年，任工程师经理。</p><p>家学渊源，自幼受文艺熏陶，涉猎诗歌、音乐、书法、篆刻、花道、茶道、剑道、陶艺、木艺、纸艺、汉服、收藏等。创立一生一花、太玄琴社、九歌诗社、<span class="lt lc">Ocean & Morus</span>、<span class="lt lc">Starlia</span>、<span class="lt lc">Lumilab.AI</span>、内在探索研究实验室。</p><p>多年坚持禅修、实修，大量从事志愿工作，致力于把生命内在探索融入到各个领域，启发人类成就圆满、完美、幸福、快乐的生命。</p></div></div></div></div></div>
+<div class="sheet"><div class="page">
+  <img src="img/logo.png" style="position:absolute;left:670px;top:268px;width:260px">
+  <div class="hair" style="left:799px;top:604px;width:1px;height:56px"></div>
+  <div style="position:absolute;left:0;right:0;top:704px;display:flex;justify-content:center;gap:40px"><div style="width:300px;text-align:center"><div class="lat" style="font-size:11px;letter-spacing:.4em;color:#8a8577">WeChat</div><div class="cjk" style="font-size:15px;line-height:2.2;letter-spacing:.12em;margin-top:10px;color:#4a463f;font-weight:300">6462973</div></div><div style="width:300px;text-align:center"><div class="lat" style="font-size:11px;letter-spacing:.4em;color:#8a8577">Web</div><div class="cjk" style="font-size:15px;line-height:2.2;letter-spacing:.12em;margin-top:10px;color:#4a463f;font-weight:300"><a href="https://starlia.ai" style="color:inherit;text-decoration:none">starlia.ai</a><br><a href="https://isshoikka.com" style="color:inherit;text-decoration:none">isshoikka.com</a><br><a href="https://haoshou.app" style="color:inherit;text-decoration:none">haoshou.app</a></div></div><div style="width:300px;text-align:center"><div class="lat" style="font-size:11px;letter-spacing:.4em;color:#8a8577">Email</div><div class="cjk" style="font-size:15px;line-height:2.2;letter-spacing:.12em;margin-top:10px;color:#4a463f;font-weight:300"><a href="mailto:li@starlia.ai" style="color:inherit;text-decoration:none">li@starlia.ai</a></div></div></div>
+  <div class="cjk" style="position:absolute;left:0;right:0;top:884px;text-align:center;font-size:12px;letter-spacing:.5em;color:#8a8577;font-weight:300">回到完美的内在</div>
+</div></div>
+</div>
+<div class="corner top" data-items='[{"t":"中","cur":1},{"sep":1},{"t":"EN","href":"en/","nav":1}]'></div>
+<div class="corner bottom" data-items='[{"t":"PDF","href":"Starlia_XuanGuang.pdf","dl":1},{"arrow":1}]'></div>
+<div class="flow">
+<section class="f-cover">
+  <img src="img/cover.jpg" alt="">
+  <div class="f-ct"><div class="f-title cjk"><div style="margin-right:-.38em">玄光</div><div class="x" style="font-size:1.5em;color:#2b2925">•</div><div class="lat" style="letter-spacing:.3em;margin-right:-.3em">STARLIA</div></div>
+  <div class="f-subtitle cjk">回到完美的内在</div></div>
+</section>
+<section class="f-sec f-brand">
+  <div class="lat f-h" style="letter-spacing:.3em">Starlia</div>
+  <div class="cjk f-tag"><span class="lt lc">Starlia</span> 相信我们的内在本自完美，<br>只要善于觉知，不同的途径皆可抵达圆满的生命。</div>
+  <div class="f-rule"></div>
+  <div class="f-cells"><div class="f-cell"><div class="lat f-small">Ikebana</div><div class="cjk f-cellh">一生一花 · Isshoikka</div><div class="cjk f-body">通过「禅花一味」，由花的自然，体会生命的自然。</div></div><div class="f-cell"><div class="lat f-small">Poetry</div><div class="cjk f-cellh">落星集 · 九歌诗社</div><div class="cjk f-body">星辰落地化为文字；淬炼文字复归星辰。</div></div><div class="f-cell"><div class="lat f-small">Calligraphy</div><div class="cjk f-cellh">书法篆刻</div><div class="cjk f-body">一笔一划，亦方亦圆；外师造化，中得心源。</div></div><div class="f-cell"><div class="lat f-small">Music</div><div class="cjk f-cellh">太玄琴社</div><div class="cjk f-body">目送归鸿，手挥五弦；俯仰自得，游心太玄。</div></div><div class="f-cell"><div class="lat f-small">Creation</div><div class="cjk f-cellh">设计创造</div><div class="cjk f-body">陶艺、木工、设计、建造：通过创作抵达生命的源泉。</div></div><div class="f-cell"><div class="lat f-small">Technology</div><div class="cjk f-cellh">Lumilab.AI</div><div class="cjk f-body">融合前沿 <span class="lt">AI</span> 科技和传统智慧，推动内在探索生活化，成为每一个当下的主人。</div></div><div class="f-cell"><div class="lat f-small">Crystal</div><div class="cjk f-cellh">能量水晶</div><div class="cjk f-body">通过造物的精华，体会生命的振动。</div></div><div class="f-cell"><div class="lat f-small">Objects</div><div class="cjk f-cellh">器物收藏</div><div class="cjk f-body">古董、茶器、花器、香炉、卷轴：美丽的灵魂超越时空，跨越千古见证生命永恒。</div></div><div class="f-cell"><div class="lat f-small">Zen</div><div class="cjk f-cellh">禅修探索</div><div class="cjk f-body">生命的本质，是超越的智慧。</div></div></div>
+</section>
+<section class="f-sec">
+  <div class="f-pics"><img src="img/21.jpg" alt=""></div>
+  <div class="f-text"><a href="https://isshoikka.com" style="color:inherit;text-decoration:none;display:block"><div class="cjk f-h">一生一花 · Isshoikka</div><div class="lat f-small">Ikebana · 禅花一味</div></a><div class="cjk f-tag">通过「禅花一味」，由花的自然，体会生命的自然。</div><div class="f-rule"></div><div class="cjk f-body"><p>「一生一花」始创于二〇一五年，旨在于插花中融入禅境，以花为镜，照见自己。现有关注<a href="https://www.facebook.com/isshoikka">二十六万</a>，硅谷线下工作坊广受好评。</p><p>创始人玄光修习插花十余年，多次于日本京都池坊总部进修、参展，具池坊师范资质。玄光以禅修实践融入花艺创作中，令人体悟与自然合一的深层喜悦；进而把「禅花一味」的领悟带入日常生活中，获得更多的自适、自洽和自然。</p></div><div class="f-url lat"><a href="https://isshoikka.com">isshoikka.com</a></div></div>
+</section>
+<section class="f-sec">
+  <div class="f-pics"><img src="img/workshop.jpg" alt=""></div>
+  <div class="f-text"><a href="https://isshoikka.com" style="color:inherit;text-decoration:none;display:block"><div class="cjk f-h">止语</div><div class="lat f-small">Silence · 工作坊</div></a><div class="cjk f-tag">没有手机，没有说话，没有预设或评判。</div><div class="f-rule"></div><div class="cjk f-body"><p>拈花，凝视，裁剪，安置。每一个当下即是觉知，每一份宁静即是感动。</p><p class="f-quote">「在很安静很流动的环境里，感受植物本来的美。在每一下修枝叶的落剪时，都在感受植物本身的美。通过整理花材去顺应花道的框架的过程中，也是整理内心对于何为自然何为美的一场内观之旅。」—— 学员 <span class="lt">C.</span></p></div><div class="f-url lat"><a href="https://isshoikka.com">isshoikka.com</a></div></div>
+</section>
+<section class="f-sec">
+  <div class="f-pics"><img src="img/36.jpg" alt=""></div>
+  <div class="f-text"><a href="https://isshoikka.com" style="color:inherit;text-decoration:none;display:block"><div class="cjk f-h">一枝见天地</div><div class="lat f-small">One stem, the whole world</div></a><div class="f-rule"></div><div class="cjk f-body"><p><span class="f-label">见无常：</span>「立于吹散花朵、剥落枝叶的风前，便可能领受开悟的种子。」</p><p><span class="f-label">见自然：</span>「让自身去聆听自然之无声而又隐秘的秩序。」</p><p><span class="f-label">见合一：</span>「天然之姿为表现之本，其中蕴含我们印象的理想之像。」</p><p class="f-quote">「随着专注地去观察与修剪，才发现看似单一的花材竟然能展现出如此不同的风骨。过程中甚至触发了许多关于哲学与人生的领悟。」—— 学员 <span class="lt">K.</span></p></div><div class="f-url lat"><a href="https://isshoikka.com">isshoikka.com</a></div></div>
+</section>
+<section class="f-sec f-sanmi">
+  <div class="cjk f-line">世间的插花，<br>追求感官的享受；</div>
+  <div class="cjk f-line">出世的插花，<br>追求情感的共鸣；</div>
+  <div class="cjk f-line">究竟的插花，<br>是人与自然的合一。</div>
+  <div class="f-rule" style="margin:34px auto"></div>
+  <div class="cjk f-line f-strong">花的自然，<br>即是人的自然。</div>
+</section>
+<section class="f-sec">
+  <div class="f-pics"><img src="img/poem_right.jpg" alt=""></div>
+  <div class="f-text"><a href="https://haoshou.app" style="color:inherit;text-decoration:none;display:block"><div class="cjk f-h">落星集</div><div class="lat f-small">Poetry · 九歌诗社</div></a><div class="cjk f-tag">星辰落地化为文字；淬炼文字复归星辰。</div><div class="f-rule"></div><div class="cjk f-body"><p>玄光笔耕二十余年，每有所感，常以诗记之。多写光阴四季，沧海桑田，山川花草，日月星辰。不重雕琢，随心所至，而与天地交通，屡有出尘之思。近作常以禅入诗，直溯本源。</p><p>存诗千首。见录于<a href="https://haoshou.app">「落星集」</a>。</p><p>二〇二二年于谷歌联合创立「九歌诗社」，多次组织线上线下雅集、古诗词普及活动及诗词创作分享，影响数千人。</p></div><div class="f-url lat"><a href="https://haoshou.app">haoshou.app</a></div></div>
+</section>
+<section class="f-sec">
+  <div class="f-pics"><img src="img/guqin.jpg" alt=""></div>
+  <div class="f-text"><div class="cjk f-h">太玄琴社</div><div class="lat f-small">Music · Guqin</div><div class="cjk f-tag">目送归鸿，手挥五弦；俯仰自得，游心太玄。</div><div class="f-rule"></div><div class="cjk f-body"><p>「太玄琴社」始创于二〇二二年，旨在于琴声中体会天人合一。重古朴，轻浮华，推崇自然、不造作的音乐；在演奏中体察内在情感的流动，进而与自然合而为一。</p><p>玄光尤擅古谱考校，亦通箫、钢琴。琴社多次巡演硅谷在地文艺集会，历年受邀山景城市政府参与新春演出。现有社员百余人。</p></div></div>
+</section>
+<section class="f-sec">
+  <div class="f-pics"><img src="img/seal.jpg" alt=""></div>
+  <div class="f-text"><div class="cjk f-h">书法篆刻</div><div class="lat f-small">Calligraphy · Seal Carving</div><div class="cjk f-tag">一笔一划，亦方亦圆；外师造化，中得心源。</div><div class="f-rule"></div><div class="cjk f-body"><p>书法是纸与墨的交融，篆刻是金与石的碰撞。一笔一划之间，是心与自然的合一。</p><p>玄光自幼受家庭熏陶学习书画篆刻艺术，书从楷篆，印尚自然。在一笔一划的宁静中，雕琢和工巧渐渐褪去，唯留内心最纯粹的本然。</p></div></div>
+</section>
+<section class="f-sec">
+  <div class="f-pics"><img src="img/attic_render.jpg" alt=""><img src="img/attic_photo.jpg" alt=""></div>
+  <div class="f-text"><div class="cjk f-h">设计创造</div><div class="lat f-small">Creation · 陶艺 · 木工 · 设计 · 建造</div><div class="cjk f-tag">通过创作抵达生命的源泉。</div><div class="f-rule"></div><div class="cjk f-body"><p>玄光亦涉猎陶艺、纸艺、木工、车制木碗等。尤擅侘寂风格的设计及落地，在创造中体会与生命本源的链接。</p></div></div>
+</section>
+<section class="f-sec">
+  <div class="f-pics"><img src="img/lumilab_sq.jpg" alt=""></div>
+  <div class="f-text"><a href="https://starlia.ai/ring" style="color:inherit;text-decoration:none;display:block"><div class="cjk f-h">Lumilab.AI</div><div class="lat f-small">Technology</div></a><div class="cjk f-tag">融合前沿 AI 科技和传统智慧，推动内在探索生活化，成为每一个当下的主人。</div><div class="f-rule"></div><div class="cjk f-body"><p>当今物质富足，科技进步，可人们的精神健康却每况愈下。<span class="lt lc">Lumilab.AI</span> 创立于二〇二五年，立足于结合最新的 <span class="lt">AI</span> 技术和传统智慧，帮助人们了解自己的内在系统，尤其是觉知和调控自己的情绪，塑造更加稳定、自洽、幸福的生活。</p></div><div class="f-url lat"><a href="https://starlia.ai/ring">starlia.ai/ring</a></div></div>
+</section>
+<section class="f-sec">
+  <div class="f-pics"><img src="img/crystal_sq.jpg" alt=""></div>
+  <div class="f-text"><a href="https://starlia.ai/crystal" style="color:inherit;text-decoration:none;display:block"><div class="cjk f-h">能量水晶</div><div class="lat f-small">Crystal</div></a><div class="cjk f-tag">通过造物的精华，体会生命的振动。</div><div class="f-rule"></div><div class="cjk f-body"><p>水晶是天地能量的结晶，回响宇宙的频率，蕴含灵性的启发。水晶的洁净亦能洗涤灵魂，帮助深入探索内在的旅程。<span class="lt lc">Starlia</span> 受到水晶的感召，通过全球最纯净的能量点，帮助有缘人链接到他们的灵魂伴侣。</p></div><div class="f-url lat"><a href="https://starlia.ai/crystal">starlia.ai/crystal</a></div></div>
+</section>
+<section class="f-sec">
+  <div class="f-pics"><img src="img/objects_sq.jpg" alt=""></div>
+  <div class="f-text"><div class="cjk f-h">器物收藏</div><div class="lat f-small">Objects · 古董 · 茶器 · 花器 · 香炉 · 卷轴</div><div class="cjk f-tag">美丽的灵魂超越时空，跨越千古见证生命永恒。</div><div class="f-rule"></div><div class="cjk f-body"><p>器物是沧海桑田的见证。斯人已逝，而他们的精神和情感通过器物流转，千年后依旧启发并鼓舞着后人。细查传承之不朽，即能了悟生命之永恒。</p><p><span class="lt lc">Starlia</span> 专注于收藏富含人文情感和温度的古董，包括茶器、花器、瓷器、铁器、香炉、卷轴等，从跨越沧桑的见证中播撒探寻内在不朽的种子。</p></div></div>
+</section>
+<section class="f-sec f-zen">
+  <div class="cjk f-h" style="text-align:center;letter-spacing:.3em">生命的本质，<br>是超越的智慧。</div>
+  <div class="lat f-small" style="text-align:center;margin-top:14px">Zen &nbsp;·&nbsp; 禅修探索</div>
+  <div class="f-rule" style="margin:34px auto"></div>
+  <div class="cjk f-body" style="text-align:center">
+    <p>二〇二三年一次机缘巧合，玄光走上了禅修的道路。至此先前所学融会贯通，从而找到了人生的方向：探索那个圆满完美的内在源泉。</p>
+    <p><span class="lt lc">Starlia</span> 深信：生命的本质，是超越的智慧，体现出一切美好的品质。而当我们带有觉知，所有的一切都能成为通向那美好本质的道路。希望所有人都能走上这条光明之路。</p>
+  </div>
+</section>
+<section class="f-sec">
+  <div class="f-pics"><img src="img/portrait.jpg" alt=""></div>
+  <div class="f-text"><div class="cjk f-h">玄光</div><div class="lat f-small">Xuan Guang</div><div class="f-rule"></div><div class="cjk f-body"><p>玄光，本名钱力，祖籍杭州，现定居美国硅谷。浙江大学竺可桢学院、香港大学学士，密歇根大学计算机硕士、博士。曾事脸书、谷歌十余年，任工程师经理。</p><p>家学渊源，自幼受文艺熏陶，涉猎诗歌、音乐、书法、篆刻、花道、茶道、剑道、陶艺、木艺、纸艺、汉服、收藏等。创立一生一花、太玄琴社、九歌诗社、<span class="lt lc">Ocean & Morus</span>、<span class="lt lc">Starlia</span>、<span class="lt lc">Lumilab.AI</span>、内在探索研究实验室。</p><p>多年坚持禅修、实修，大量从事志愿工作，致力于把生命内在探索融入到各个领域，启发人类成就圆满、完美、幸福、快乐的生命。</p></div></div>
+</section>
+<section class="f-sec f-contact">
+  <img class="f-logo" src="img/logo.png" alt="Starlia">
+  <div class="f-rule" style="margin:36px auto"></div>
+  <div class="f-ccol"><div class="lat f-small">WeChat</div><div class="cjk f-cval">6462973</div></div>
+  <div class="f-ccol"><div class="lat f-small">Web</div><div class="cjk f-cval"><a href="https://starlia.ai" style="color:inherit;text-decoration:none">starlia.ai</a><br><a href="https://isshoikka.com" style="color:inherit;text-decoration:none">isshoikka.com</a><br><a href="https://haoshou.app" style="color:inherit;text-decoration:none">haoshou.app</a></div></div>
+  <div class="f-ccol"><div class="lat f-small">Email</div><div class="cjk f-cval"><a href="mailto:li@starlia.ai" style="color:inherit;text-decoration:none">li@starlia.ai</a></div></div>
+  <div class="f-ccol"><div class="lat f-small">PDF</div><div class="cjk f-cval"><a href="Starlia_XuanGuang.pdf" download style="color:inherit;text-decoration:none">下载本书 ↓</a></div></div>
+  <div class="cjk f-end">回到完美的内在</div>
+</section>
+</div>
+<script>
+(function(){
+  var r=document.documentElement;
+  function fit(){ r.style.setProperty('--s', Math.min(innerWidth/1600, innerHeight/1000)); }
+  fit(); addEventListener('resize', fit); addEventListener('orientationchange', fit);
+})();
+// Corner labels, drawn as SVG. Every glyph run is measured on a canvas (tight ink box) and placed so that its ink
+// centre sits exactly on the column/row axis; runs are spaced by ink, not by font boxes. Independent of font, size
+// and browser, so the labels stay centred and symmetric whatever the corners are set in.
+(function(){
+  var AXIS=document.documentElement.className.indexOf('axis-h')>=0?'h':'v', SIZE=12, NS='http://www.w3.org/2000/svg';
+  var LS=(AXIS==='v'?0.35:0.2)*SIZE, W=16;                 // W: box width → axis 22+8 = 30px from the edge
+  function go(){
+    var cv=document.createElement('canvas').getContext('2d');
+    document.querySelectorAll('.corner').forEach(function(box){
+      var FONT=getComputedStyle(box).fontFamily; cv.font=SIZE+'px '+FONT;
+      function ink(s){ var x=0,L=null,R=0,A=0,D=0; for(var ch of s){ var m=cv.measureText(ch);
+          var l=x-m.actualBoundingBoxLeft, rr=x+m.actualBoundingBoxRight; if(L===null)L=l; R=rr;
+          A=Math.max(A,m.actualBoundingBoxAscent); D=Math.max(D,m.actualBoundingBoxDescent); x+=m.width+LS; } return {L:L,R:R,A:A,D:D}; }
+      function el(n,at){ var e=document.createElementNS(NS,n); for(var k in at) e.setAttribute(k,at[k]); return e; }
+      var items=JSON.parse(box.dataset.items), svg=el('svg',{}), cur=0, c=W/2, nodes=[], pdf=box.classList.contains('bottom');
+      var GAP = pdf ? (AXIS==='v'?10:6) : 9;
+      items.forEach(function(it,i){
+        if(i) cur+=GAP;
+        var node;
+        if(it.t){ var m=ink(it.t), cjk=/[㐀-鿿]/.test(it.t), rot=(AXIS==='v' && !cjk);
+          node=el('text',{'font-family':FONT,'font-size':SIZE,'letter-spacing':LS,fill:'currentColor'}); node.textContent=it.t;
+          if(AXIS==='v'){
+            if(rot){ node.setAttribute('transform','translate('+(c-(m.A-m.D)/2)+','+(cur-m.L)+') rotate(90)'); cur+=m.R-m.L; }
+            else   { node.setAttribute('x',c-(m.L+m.R)/2); node.setAttribute('y',cur+m.A); cur+=m.A+m.D; }
+          } else { node.setAttribute('x',cur-m.L); node.setAttribute('y',c+(m.A-m.D)/2); cur+=m.R-m.L; }
+        } else if(it.sep){
+          node = AXIS==='v' ? el('line',{x1:c-6,x2:c+6,y1:cur+.5,y2:cur+.5}) : el('line',{y1:c-6,y2:c+6,x1:cur+.5,x2:cur+.5});
+          node.setAttribute('stroke','rgba(43,41,37,.3)'); cur+=1;
+        } else if(it.arrow){
+          node=el('path',{d:'M4 0.5v10M1 7.5l3 3 3-3',fill:'none',stroke:'currentColor','stroke-width':'1'});
+          node.setAttribute('transform', AXIS==='v' ? 'translate('+(c-4)+','+cur+')' : 'translate('+cur+','+(c-5.5)+')'); cur+= AXIS==='v' ? 11 : 8;
+        }
+        if(it.href){ var a=el('a',{href:it.href}); if(it.dl) a.setAttribute('download',''); else if(!it.nav){a.setAttribute('target','_blank');a.setAttribute('rel','noopener');} a.appendChild(node); node=a; }
+        if(it.cur) node.setAttribute('class','cur');
+        nodes.push(node);
+      });
+      var len=Math.ceil(cur);
+      svg.setAttribute('width', AXIS==='v'?W:len); svg.setAttribute('height', AXIS==='v'?len:W);
+      svg.setAttribute('viewBox','0 0 '+(AXIS==='v'?W:len)+' '+(AXIS==='v'?len:W)); svg.style.display='block'; svg.style.overflow='visible';
+      nodes.forEach(function(n){svg.appendChild(n);}); box.innerHTML=''; box.appendChild(svg);
+    });
+  }
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(go); else go();
+})();
+</script>
+</body>
+</html>
